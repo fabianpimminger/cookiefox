@@ -1,5 +1,6 @@
 /vendor
 /node_modules
 /build
-/.nova
-/.DS_Store
+.nova
+/release
+.DS_Store

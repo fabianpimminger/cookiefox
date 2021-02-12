@@ -1,0 +1,276 @@
+<?php
+/**
+ * Frontend.
+ *
+ * @package CookieFox
+ */
+
+namespace CookieFox;
+
+defined('ABSPATH') || exit;
+
+class Settings {
+	public function __construct() {
+		add_action('cmb2_admin_init', array($this, 'metabox'));
+	}
+
+	public function metabox() {
+		$main_options = new_cmb2_box(array(
+			'id' => 'cookiefox_options_main',
+			'title' => __('CookieFox Settings', 'cookiefox'),
+			'object_types' => array( 'options-page' ),
+			'option_key' => 'cookiefox',
+			'icon_url' => 'dashicons-shield-alt',
+			'menu_title' => __('Cookie Notice', 'cookiefox'),
+			'capability' => 'manage_options',
+			'parent_slug' => 'options-general.php',
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('General Settings', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_general'
+		));
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Enable Cookie Notice', 'cookiefox'),
+			'id' => 'cookie_notice_enabled',
+			'desc' => __('The privacy notice will be displayed when this option is enabled.', 'cookiefox'),
+			'type' => 'toggle',
+		));
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Disable on Privacy Page', 'cookiefox'),
+			'id' => 'cookie_notice_hide_on_privacy_page',
+			'desc' => __('Hides the privacy notice on the privacy page (configure in Settings -> <a href="'.admin_url("options-privacy.php").'">Privacy</a>.', 'cookiefox'),
+			'type' => 'toggle',
+		));
+
+
+		$main_options->add_field(array(
+			'name' => __('Privacy Notice', 'cookiefox'),
+			'desc' => __('The privacy notice can either be displayed as a modal or banner. Modals obscure the content while being displayed and require explizit user action while banners are fixed on the bottom of the viewport and the user can browse the site without interacting with the notice.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_notice'
+		));
+
+		$main_options->add_field(array(
+			'name' => 'Display Privacy Notice as',
+			'id' => 'notice_display',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'banner',
+			'options' => array(
+				'banner' => __('Banner', 'cmb2'),
+				'modal' => __('Modal', 'cmb2'),
+			),
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Title', 'cookiefox'),
+			'id' => 'notice_title',
+			'type' => 'text',
+		));
+				
+		$main_options->add_field(array(
+			'name' => __('Text', 'cookiefox'),
+			'id' => 'notice_text',
+			'type' => 'textarea',
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Accept Button Text', 'cookiefox'),
+			'id' => 'notice_button_accept',
+			'type' => 'text',
+		));
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Enable Decline Button', 'cookiefox'),
+			'desc' => __('Disabling this option could violate the privacy laws in your country. Use with caution.', 'cookiefox'),
+			'id' => 'notice_button_decline_enabled',
+			'type' => 'toggle',
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Decline Button Text', 'cookiefox'),
+			'id' => 'notice_button_decline',
+			'type' => 'text',
+			'attributes' => array(
+				'data-conditional-id' => 'notice_button_decline_enabled',
+				'data-conditional-value' => 'on',
+			),
+		));
+
+		// $main_options->add_field(array(
+		// 	'name' => esc_html__('Support this Plugin with a Link', 'cookiefox'),
+		// 	'id' => 'cookie_notice_support',
+		// 	'type' => 'toggle',
+		// ));
+		
+		$main_options->add_field(array(
+			'name' => __('Scripts & Cookies', 'cookiefox'),
+			'desc' => __('You can set the scripts to be executed when the user accepts or declines the use of cookies.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_scripts'
+		));
+
+		$main_options->add_field(array(
+			'name' => 'Opt-In Scripts',
+			'desc' => __('These scripts will be executed when the user opts in to the use of cookies.', 'cookiefox'),
+			'id' => 'scripts_consent',
+			'type' => 'textarea_code'
+		));
+
+		$main_options->add_field(array(
+			'name' => 'Opt-Out Scripts',
+			'desc' => __('These scripts will be executed when the user declines the use of cookies.', 'cookiefox'),
+			'id' => 'scripts_no_consent',
+			'type' => 'textarea_code'
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Design', 'cookiefox'),
+			'desc' => __('Basic design customizations are available in this section. Advanced customization is available through CSS variables.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_design'
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Font', 'cookiefox'),
+			'desc' => __('Choose Theme Font to automatically use the font from the active theme', 'cookiefox'),
+			'id' => 'font',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'theme',
+			'options' => array(
+				'theme' => __('Theme Font', 'cookiefox'),
+				'system' => __('Browser/System Font', 'cookiefox'),
+				'arial' => 'Arial',
+				'verdana' => 'Verdana',
+				'georgia' => 'Georgia',
+				'tahoma' => 'Tahoma'
+			),
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Background Color', 'cookiefox'),
+			'id' => 'color_background',
+			'type' => 'colorpicker',
+			'default' => '#ffffff',
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Primary Text Color', 'cookiefox'),
+			'id' => 'color_text_primary',
+			'type' => 'colorpicker',
+			'default' => '#000000',
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Secondary Text Color', 'cookiefox'),
+			'id' => 'color_text_secondary',
+			'type' => 'colorpicker',
+			'default' => '#666',
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Accent Color', 'cookiefox'),
+			'id' => 'color_accent',
+			'type' => 'colorpicker',
+			'default' => '#60B665',
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Consent Cookie Settings', 'cookiefox'),
+			'desc' => __('CookieFox persists consent information in the browser using a Cookie.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_cookie'
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Cookie Name', 'cookiefox'),
+			'desc' => __('The name of the consent cookie.', 'cookiefox'),
+			'id' => 'cookie_name',
+			'type' => 'text',
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Cookie Domain', 'cookiefox'),
+			'desc' => __('The domain that the cookie is available to. Leave empty to use the default domain of your site.', 'cookiefox'),
+			'id' => 'cookie_domain',
+			'type' => 'text',
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Expiration Time in Days', 'cookiefox'),
+			'desc' => __('The number of days the consent cookie should be stored.', 'cookiefox'),
+			'default' => '90',
+			'id' => 'cookie_expiration',
+			'type' => 'text_small'
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Advanced Settings & Performance', 'cookiefox'),
+			'desc' => __('These settings can be used to customize some performance characteristics of CookieFox.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_performance'
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Stylesheet', 'cookiefox'),
+			'desc' => __('CSS can be included via an external stylesheet, an inline style-tag or not be included at all.', 'cookiefox'),
+			'id' => 'stylesheet',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'theme',
+			'options' => array(
+				'external' => __('External Stylesheet', 'cookiefox'),
+				'inline' => __('Inline CSS', 'cookiefox'),
+				'none' => 'Do not include Styles',
+			),
+		));
+		
+		$main_options->add_field(array(
+			'name' => __('Javascript', 'cookiefox'),
+			'desc' => __('The modern version has a smaller file size and should more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option.', 'cookiefox'),
+			'id' => 'javascript',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'modern',
+			'options' => array(
+				'modern' => __('Modern Browsers', 'cookiefox'),
+				'legacy' => __('Legacy (including IE11)', 'cookiefox'),
+			),
+		));
+
+	}
+	
+	public static function register_defaults(){
+		
+		$settings = get_option("cookiefox", array());
+		
+		$settings = array_merge(array(
+		  'cookie_notice_enabled' => 'on',
+			'cookie_notice_hide_on_privacy_page' => 'on',
+		  'notice_display' => 'banner',
+		  'notice_title' => __('Privacy Settings', 'cookiefox'),
+		  'notice_text' => __('We use cookies to improve your experience on our site. To learn more, view our privacy policy.', 'cookiefox'),
+		  'notice_button_accept' => __('Accept', 'cookiefox'),
+		  'notice_button_decline_enabled' => 'on',
+		  'notice_button_decline' => __('Decline', 'cookiefox'),
+		  'font' => 'theme',
+		  'color_background' => '#ffffff',
+		  'color_text_primary' => '#000000',
+		  'color_text_secondary' => '#666666',
+		  'color_text_tertiary' => '#d8d8d8',
+		  'color_accent' => '#60B665',
+		  'cookie_name' => 'cookiefox_consent',
+		  'cookie_expiration' => '90',
+		  'stylesheet' => 'external',
+		  'javascript' => 'modern',
+		), $settings);
+		
+		update_option("cookiefox", $settings, true);
+	}
+}
+new Settings();
