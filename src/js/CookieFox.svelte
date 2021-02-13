@@ -112,7 +112,7 @@
 	
 </script>
 
-<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'true' : 'false'}">
+<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}">
 	<div class="cookiefox__inner">
 		<div class="cookiefox__body">
 			<h3 class="cookiefox__title">{data.notice_title}</h3>
@@ -204,7 +204,6 @@
 	left: 0px;
 	width: 100%;	
 	height: 100%;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: auto;
