@@ -110,7 +110,7 @@ class Frontend {
 		
 		?>
 		<script>
-			var cookiefox = <?php echo wp_json_encode($data); ?>;
+			var cookiefox = {data: <?php echo wp_json_encode($data); ?>};
 		</script>
 		<div id="cookiefox"></div>
 		

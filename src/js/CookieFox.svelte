@@ -4,6 +4,8 @@
 	import { onMount } from 'svelte';
 
 	let cookie;
+	let forceNotice = false;
+	$: showNotice = (cookie === undefined || forceNotice);
 
 	onMount(() => {
 		if(isCrawler()){
@@ -18,16 +20,20 @@
 			handleConsentChange();
 			setCookie();
 		}
+		
+		initAPI();
 	});
 	
 	function handleAccept() {
 		cookie = {consent: true};
+		forceNotice = false;
 		handleConsentChange();
 		setCookie();
 	}	
 	
 	function handleDecline() {
 		cookie = {consent: false};
+		forceNotice = false;
 		handleConsentChange();
 		setCookie();
 	}	
@@ -70,6 +76,13 @@
 		
 	}
 	
+	function initAPI() {		
+		window.cookiefox.api = {};
+		window.cookiefox.api.show = function(){
+    	forceNotice = true;
+  	};
+	}
+	
 	function isCrawler() {
 		if (/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)){
 			return true;
@@ -99,7 +112,7 @@
 	
 </script>
 
-<div class="cookiefox cookiefox--{data.notice_display}" style="{cookie === undefined ? 'display: flex;' : ''}" aria-hidden="{cookie === undefined ? 'true' : 'false'}">
+<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'true' : 'false'}">
 	<div class="cookiefox__inner">
 		<div class="cookiefox__body">
 			<h3 class="cookiefox__title">{data.notice_title}</h3>
