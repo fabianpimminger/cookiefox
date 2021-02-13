@@ -272,7 +272,7 @@
 }
 
 .cookiefox__footer{	
-	> *{
+	> .cookiefox__button{
 		margin-right: 1.5em;
 		
 		&:last-child{
