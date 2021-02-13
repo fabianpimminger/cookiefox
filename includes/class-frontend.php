@@ -107,6 +107,7 @@ class Frontend {
 		
 		$data = get_option("cookiefox", array());
 		$data["privacy_type"] = "basic";
+		$data["disabled_on_privacy_page"] = $this->is_disabled_on_privacy_page();
 		
 		?>
 		<script>
@@ -125,11 +126,7 @@ class Frontend {
 		if($option_enabled !== "on"){
 			$enabled = false;
 		}
-		
-		if($enabled == true && $this->is_disabled_on_privacy_page()){
-			$enabled = false;
-		}
-		
+				
 		$enabled = apply_filters( 'cookiefox_privacy_notice_enabled', $enabled);
 		
 		return $enabled;
@@ -149,7 +146,11 @@ class Frontend {
 		}
 		
 		if($page_id == get_the_ID()){
-			return true;
+			$option_enabled = Helper::get_option("cookie_notice_hide_on_privacy_page", false);
+			
+			if($option_enabled === "on"){
+				return true;
+			}
 		}
 		
 		return false;
