@@ -106,7 +106,7 @@ class Frontend {
 	public function footer() {
 		
 		$data = get_option("cookiefox", array());
-		$data["privay_type"] = "basic";
+		$data["privacy_type"] = "basic";
 		
 		?>
 		<script>
