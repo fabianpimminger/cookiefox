@@ -5,7 +5,7 @@
 
 	let cookie;
 	let forceNotice = false;
-	$: showNotice = (cookie === undefined || forceNotice);
+	$: showNotice = (forceNotice || (cookie === undefined && !data.disabled_on_privacy_page));
 
 	onMount(() => {
 		if(isCrawler()){
