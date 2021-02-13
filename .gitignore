@@ -4,3 +4,5 @@
 .nova
 /release
 .DS_Store
+assets/frontend/js/
+assets/frontend/css/
