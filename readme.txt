@@ -4,7 +4,7 @@ Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
 Tested up to: 5.6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,18 +46,25 @@ Please note that you are responsible for complying with your local and internati
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed an issue where it wasn't possible to dismiss the modal notice.
+* Fixed an issue where it wasn't possible to show the modal on the privacy page.
+* Privacy notice can now be opened via Javascript cookiefox.api.show().
+* Introduction of a shortcode to display a link/button to open the privacy notice: [cookiefox_show_notice].
+* Smaller typos fixes, styling changes and bug fixes.
+
 = 1.0.3 =
-* Styling changes and small bug fixes
+* Styling changes and small bug fixes.
 
 = 1.0.2 =
 * Option to disable the privacy notice on the privacy policy page.
-* Styling changes and small bug fixes
+* Styling changes and small bug fixes.
 
 = 1.0.1 =
-* Styling changes and small bug fixes
+* Styling changes and small bug fixes.
 
 = 1.0.0 =
-* First public release of CookieFox
+* First public release of CookieFox.
 
 == Upgrade Notice ==
-This plugin has been tested with WordPress 5.6
+This plugin has been tested with WordPress 5.6.1
