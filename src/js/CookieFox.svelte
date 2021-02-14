@@ -112,7 +112,7 @@
 	
 </script>
 
-<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}">
+<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet>
 	<div class="cookiefox__inner">
 		<div class="cookiefox__body">
 			<h3 class="cookiefox__title">{data.notice_title}</h3>
@@ -148,6 +148,7 @@
 	--cookiefox-color-border-footer: rgba(0,0,0,0.05);
 	--cookiefox-border-radius-modal: 10px;
 	
+	box-sizing: border-box;
 	font-size: var(--cookiefox-font-size-base);
 	font-family: var(--cookiefox-font-family);
 	line-height: var(--cookiefox-line-height);
