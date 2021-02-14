@@ -4,7 +4,7 @@ Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
 Tested up to: 5.6.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,11 +19,13 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 
 - The cookie notice can either be displayed as a modal or a banner on the bottom of the viewport.
 
-- Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or implementing your own stylesheet.
+- Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or by providing your own stylesheet.
 
 - All texts and buttons can be customized to fit your requirements.
 
 - Configured scripts and services can be executed when a user accepts or rejects the use of cookies.
+
+- Multi-Language Support: Use WPML or Polylang to easily translate your privacy notice.
 
 == Frequently Asked Questions ==
 
@@ -45,6 +47,11 @@ Please note that you are responsible for complying with your local and internati
 6. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 1.0.5 =
+* WPML support
+* Polylang support
+* Design section is no hidden when styles are not included
 
 = 1.0.4 =
 * Fixed an issue where it wasn't possible to dismiss the modal notice.
