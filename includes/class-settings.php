@@ -136,7 +136,11 @@ class Settings {
 			'name' => __('Design', 'cookiefox'),
 			'desc' => __('Basic design customizations are available in this section. Advanced customization is available through CSS variables.', 'cookiefox'),
 			'type' => 'title',
-			'id' => 'title_design'
+			'id' => 'title_design',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
 		));
 
 		$main_options->add_field(array(
@@ -152,7 +156,11 @@ class Settings {
 				'arial' => 'Arial',
 				'verdana' => 'Verdana',
 				'georgia' => 'Georgia',
-				'tahoma' => 'Tahoma'
+				'tahoma' => 'Tahoma'	
+			),
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
 			),
 		));
 		
@@ -161,6 +169,10 @@ class Settings {
 			'id' => 'color_background',
 			'type' => 'colorpicker',
 			'default' => '#ffffff',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
 		));
 
 		$main_options->add_field(array(
@@ -168,6 +180,10 @@ class Settings {
 			'id' => 'color_text_primary',
 			'type' => 'colorpicker',
 			'default' => '#000000',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
 		));
 
 		$main_options->add_field(array(
@@ -175,6 +191,10 @@ class Settings {
 			'id' => 'color_text_secondary',
 			'type' => 'colorpicker',
 			'default' => '#666',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
 		));
 		
 		$main_options->add_field(array(
@@ -182,6 +202,10 @@ class Settings {
 			'id' => 'color_accent',
 			'type' => 'colorpicker',
 			'default' => '#60B665',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
 		));
 		
 		$main_options->add_field(array(
@@ -230,7 +254,7 @@ class Settings {
 			'options' => array(
 				'external' => __('External Stylesheet', 'cookiefox'),
 				'inline' => __('Inline CSS', 'cookiefox'),
-				'none' => 'Do not include Styles',
+				'none' => 'Do not include styles',
 			),
 		));
 		
