@@ -70,18 +70,21 @@ class Settings {
 			'name' => __('Title', 'cookiefox'),
 			'id' => 'notice_title',
 			'type' => 'text',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_title')
 		));
 				
 		$main_options->add_field(array(
 			'name' => __('Text', 'cookiefox'),
 			'id' => 'notice_text',
 			'type' => 'textarea',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_text'),
 		));
 
 		$main_options->add_field(array(
 			'name' => __('Accept Button Text', 'cookiefox'),
 			'id' => 'notice_button_accept',
 			'type' => 'text',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_accept'),
 		));
 
 		$main_options->add_field(array(
@@ -95,6 +98,7 @@ class Settings {
 			'name' => __('Decline Button Text', 'cookiefox'),
 			'id' => 'notice_button_decline',
 			'type' => 'text',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_decline'),
 			'attributes' => array(
 				'data-conditional-id' => 'notice_button_decline_enabled',
 				'data-conditional-value' => 'on',

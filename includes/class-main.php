@@ -44,6 +44,7 @@ class Main {
 		include_once COOKIEFOX_ABSPATH . 'includes/class-settings.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-frontend.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-shortcode.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-internationalization.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/cmb2/class-cmb2-toggle.php';
 	}
 
