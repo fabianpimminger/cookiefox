@@ -1,0 +1,10 @@
+<wpml-config>
+	<admin-texts>
+		<key name="cookiefox">
+  		<key name="notice_title" />
+  		<key name="notice_text" />
+  		<key name="notice_button_accept" />
+  		<key name="notice_button_decline" />
+		</key>
+	</admin-texts>
+</wpml-config>
