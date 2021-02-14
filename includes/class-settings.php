@@ -49,7 +49,7 @@ class Settings {
 
 		$main_options->add_field(array(
 			'name' => __('Privacy Notice', 'cookiefox'),
-			'desc' => __('The privacy notice can either be displayed as a modal or banner. Modals obscure the content while being displayed and require explicit user action while banners are fixed on the bottom of the viewport and users can browse the site without a prior interaction.', 'cookiefox'),
+			'desc' => apply_filters("cookiefox_settings_title_desc", __('The privacy notice can either be displayed as a modal or banner. Modals obscure the content while being displayed and require explicit user action while banners are fixed on the bottom of the viewport and users can browse the site without a prior interaction.', 'cookiefox'), 'title_notice'),
 			'type' => 'title',
 			'id' => 'title_notice'
 		));
