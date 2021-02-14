@@ -42,14 +42,14 @@ class Settings {
 		$main_options->add_field(array(
 			'name' => esc_html__('Disable on Privacy Page', 'cookiefox'),
 			'id' => 'cookie_notice_hide_on_privacy_page',
-			'desc' => __('Hides the privacy notice on the privacy page (configure in Settings -> <a href="'.admin_url("options-privacy.php").'">Privacy</a>.', 'cookiefox'),
+			'desc' => __('Hides the privacy notice on the privacy page configured in Settings -> <a href="'.admin_url("options-privacy.php").'">Privacy</a>.', 'cookiefox'),
 			'type' => 'toggle',
 		));
 
 
 		$main_options->add_field(array(
 			'name' => __('Privacy Notice', 'cookiefox'),
-			'desc' => __('The privacy notice can either be displayed as a modal or banner. Modals obscure the content while being displayed and require explizit user action while banners are fixed on the bottom of the viewport and the user can browse the site without interacting with the notice.', 'cookiefox'),
+			'desc' => __('The privacy notice can either be displayed as a modal or banner. Modals obscure the content while being displayed and require explicit user action while banners are fixed on the bottom of the viewport and users can browse the site without a prior interaction.', 'cookiefox'),
 			'type' => 'title',
 			'id' => 'title_notice'
 		));
@@ -113,7 +113,7 @@ class Settings {
 		
 		$main_options->add_field(array(
 			'name' => __('Scripts & Cookies', 'cookiefox'),
-			'desc' => __('You can set the scripts to be executed when the user accepts or declines the use of cookies.', 'cookiefox'),
+			'desc' => __('You can set the scripts to be executed when the user accepts or declines the use of cookies. The scripts will be executed directly after consent is given and at each page view.', 'cookiefox'),
 			'type' => 'title',
 			'id' => 'title_scripts'
 		));
@@ -145,7 +145,7 @@ class Settings {
 
 		$main_options->add_field(array(
 			'name' => __('Font', 'cookiefox'),
-			'desc' => __('Choose Theme Font to automatically use the font from the active theme', 'cookiefox'),
+			'desc' => __('Choose "Theme Font" to automatically use the font of your active theme.', 'cookiefox'),
 			'id' => 'font',
 			'type' => 'select',
 			'show_option_none' => false,
@@ -231,7 +231,7 @@ class Settings {
 
 		$main_options->add_field(array(
 			'name' => __('Expiration Time in Days', 'cookiefox'),
-			'desc' => __('The number of days the consent cookie should be stored.', 'cookiefox'),
+			'desc' => __('The number of days the consent cookie is stored.', 'cookiefox'),
 			'default' => '90',
 			'id' => 'cookie_expiration',
 			'type' => 'text_small'
@@ -260,7 +260,7 @@ class Settings {
 		
 		$main_options->add_field(array(
 			'name' => __('Javascript', 'cookiefox'),
-			'desc' => __('The modern version has a smaller file size and should more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option.', 'cookiefox'),
+			'desc' => __('The modern version has a smaller file size and is more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option.', 'cookiefox'),
 			'id' => 'javascript',
 			'type' => 'select',
 			'show_option_none' => false,
