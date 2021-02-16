@@ -24,6 +24,7 @@ class Main {
 		$this->autoload();
 		$this->includes();
 		register_activation_hook(COOKIEFOX_PLUGIN_FILE, array($this, 'activation_hook'));
+		add_action('init', array($this, 'load_textdomain'));
 	}
 
 	private function constants() {
@@ -53,7 +54,11 @@ class Main {
 	}
 
 	public function activation_hook() {
-		Settings::register_defaults();		
+		Settings::register_defaults();
+	}
+	
+	public function load_textdomain() {
+	  load_plugin_textdomain( 'cookiefox', false, dirname( plugin_basename( COOKIEFOX_PLUGIN_FILE ) ) . '/languages' ); 
 	}
 }
 Main::instance();

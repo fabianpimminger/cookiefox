@@ -1,0 +1,354 @@
+# Copyright (C) 2021 Fabian Pimminger
+# This file is distributed under the same license as the CookieFox plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: CookieFox 1.0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
+"POT-Creation-Date: 2021-02-16T19:44:57+00:00\n"
+"PO-Revision-Date: 2021-02-16 20:45+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Domain: cookiefox\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "CookieFox"
+msgstr "CookieFox"
+
+#. Description of the plugin
+msgid "A performant and accessible cookie and consent solution for WordPress."
+msgstr ""
+"Eine performante und barrierefreie Lösung für Cookie-Hinweise und Consent-"
+"Abfragen für Wordpress."
+
+#. Author of the plugin
+msgid "Fabian Pimminger"
+msgstr "Fabian Pimminger"
+
+#. Author URI of the plugin
+msgid "https://fabianpimminger.com/work/"
+msgstr "https://fabianpimminger.com/work/"
+
+#. translators: %2$s is the closing a tag
+#: includes/class-internationalization.php:32
+msgid ""
+"Translation of this section is available via WPML in %1$sString Translation"
+"%2$s."
+msgstr "Übersetze diesen Bereich in WPML unter %1$sString Translation%2$s."
+
+#. translators: %2$s is the closing a tag
+#: includes/class-internationalization.php:41
+msgid ""
+"Translation of this section is available via Polylang in %1$sStrings "
+"translations%2$s."
+msgstr ""
+"Übersetze diesen Bereich in Polylang unter %1$sÜbersetzungen von "
+"Zeichenketten%2$s."
+
+#. translators: %2$s is the closing a tag
+#: includes/class-internationalization.php:57
+msgid "Translate this field in %1$sString Translation%2$s."
+msgstr "Übersetze dieses Feld in %1$sString Translation%2$s."
+
+#. translators: %2$s is the closing a tag
+#: includes/class-internationalization.php:66
+msgid "Translate this field in %1$sStrings translations%2$s."
+msgstr "Übersetze dieses Feld in %1$sÜbersetzungen von Zeichenketten%2$s."
+
+#: includes/class-settings.php:20
+msgid "CookieFox Settings"
+msgstr "CookieFox Einstellungen"
+
+#: includes/class-settings.php:24
+msgid "Cookie Notice"
+msgstr "Cookie-Hinweis"
+
+#: includes/class-settings.php:30
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: includes/class-settings.php:36
+msgid "Enable Cookie Notice"
+msgstr "Cookie-Hinweis aktivieren"
+
+#: includes/class-settings.php:38
+msgid "The privacy notice will be displayed when this option is enabled."
+msgstr ""
+"Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
+
+#: includes/class-settings.php:43
+msgid "Disable on Privacy Page"
+msgstr "Auf Datenschutzerklärung deaktivieren"
+
+#. translators: %2$s is the closing a tag
+#: includes/class-settings.php:48
+msgid ""
+"Hides the privacy notice on the privacy page configured in Settings -> "
+"%1$sPrivacy%2$s."
+msgstr ""
+"Deaktiviert den Datenschutz-Hinweis auf der Datenschutzerklärung, die in "
+"Einstellungen -> %1$sDatenschutz%2$s ausgewählt wurde."
+
+#: includes/class-settings.php:57
+msgid "Privacy Notice"
+msgstr "Datenschutz-Hinweis"
+
+#: includes/class-settings.php:58
+msgid ""
+"The privacy notice can either be displayed as a modal or banner. Modals "
+"obscure the content while being displayed and require explicit user action "
+"while banners are fixed on the bottom of the viewport and users can browse "
+"the site without a prior interaction."
+msgstr ""
+"Der Datenschutz-Hinweis kann entweder als Modal oder als Banner angezeigt "
+"werden. Modals legen sich über die Website und erfordern eine explizite "
+"Nutzerinteraktion. Banner sind auf der unteren Seite des Browsers fixiert "
+"und Nutzer*innen können die Inhalte auch ohne Interaktion ansehen."
+
+#: includes/class-settings.php:64
+msgid "Display Privacy Notice as"
+msgstr "Anzeigen als"
+
+#: includes/class-settings.php:76
+msgid "Title"
+msgstr "Überschrift"
+
+#: includes/class-settings.php:83
+msgid "Text"
+msgstr "Text"
+
+#: includes/class-settings.php:90
+msgid "Accept Button Text"
+msgstr "Akzeptieren Button Text"
+
+#: includes/class-settings.php:97
+msgid "Enable Decline Button"
+msgstr "Ablehnen Button aktivieren"
+
+#: includes/class-settings.php:98
+msgid ""
+"Disabling this option could violate the privacy laws in your country. Use "
+"with caution."
+msgstr ""
+"Vorsicht! Wird diese Option deaktiviert könnte die Seite gegen die "
+"Datenschutz-Gesetze in manchen Ländern verstoßen."
+
+#: includes/class-settings.php:104
+msgid "Decline Button Text"
+msgstr "Ablehnen Button Text"
+
+#: includes/class-settings.php:121
+msgid "Scripts & Cookies"
+msgstr "Skripte & Cookies"
+
+#: includes/class-settings.php:122
+msgid ""
+"You can set the scripts to be executed when the user accepts or declines the "
+"use of cookies. The scripts will be executed directly after consent is given "
+"and at each page view."
+msgstr ""
+"Hier können Skripte konfiguriert werden, die nach dem Akzeptieren oder "
+"Ablehnen der Cookies ausgeführt werden. Diese werden direkt nach dem Consent "
+"ausgeführt und anschließend bei jedem Seitenzugriff."
+
+#: includes/class-settings.php:128
+msgid "Opt-In Scripts"
+msgstr "Opt-In Skripte"
+
+#: includes/class-settings.php:129
+msgid ""
+"These scripts will be executed when the user opts in to the use of cookies."
+msgstr ""
+"Diese Skripte werden ausgeführt wenn der User der Nutzung von Cookies "
+"zustimmt."
+
+#: includes/class-settings.php:135
+msgid "Opt-Out Scripts"
+msgstr "Opt-Out Skripte"
+
+#: includes/class-settings.php:136
+msgid ""
+"These scripts will be executed when the user declines the use of cookies."
+msgstr ""
+"Diese Skripte werden ausgeführt wenn der User die Nutzung von Cookies "
+"ablehnt."
+
+#: includes/class-settings.php:142
+msgid "Design"
+msgstr "Design"
+
+#: includes/class-settings.php:143
+msgid ""
+"Basic design customizations are available in this section. Advanced "
+"customization is available through CSS variables."
+msgstr ""
+"In diesem Bereich können einfache Design-Einstellungen angepasst werden. "
+"Weitere Möglichkeiten gibt es mittels CSS Variablen."
+
+#: includes/class-settings.php:153
+msgid "Font"
+msgstr "Schriftart"
+
+#: includes/class-settings.php:154
+msgid ""
+"Choose \"Theme Font\" to automatically use the font of your active theme."
+msgstr ""
+"Wähle \"Theme-Schriftart“ um automatisch die Schriftart des aktuellen Themes "
+"zu verwenden."
+
+#: includes/class-settings.php:160
+msgid "Theme Font"
+msgstr "Theme-Schriftart"
+
+#: includes/class-settings.php:161
+msgid "Browser/System Font"
+msgstr "Browser/System Schriftart"
+
+#: includes/class-settings.php:174
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: includes/class-settings.php:185
+msgid "Primary Text Color"
+msgstr "Primäre Textfarbe"
+
+#: includes/class-settings.php:196
+msgid "Secondary Text Color"
+msgstr "Sekundäre Textfarbe"
+
+#: includes/class-settings.php:207
+msgid "Accent Color"
+msgstr "Akzentfarbe"
+
+#: includes/class-settings.php:218
+msgid "Consent Cookie Settings"
+msgstr "Consent Cookie-Einstellungen"
+
+#: includes/class-settings.php:219
+msgid "CookieFox persists consent information in the browser using a Cookie."
+msgstr "CookieFox speichert die Consent Informationen in einem Browser Cookie."
+
+#: includes/class-settings.php:225
+msgid "Cookie Name"
+msgstr "Cookie Name"
+
+#: includes/class-settings.php:226
+msgid "The name of the consent cookie."
+msgstr "Der Name des Consent Cookies."
+
+#: includes/class-settings.php:232
+msgid "Cookie Domain"
+msgstr "Cookie Domain"
+
+#: includes/class-settings.php:233
+msgid ""
+"The domain that the cookie is available to. Leave empty to use the default "
+"domain of your site."
+msgstr ""
+"Die Domain des Cookies. Leer lassen um die Standard-Domain der Seite zu "
+"verwenden."
+
+#: includes/class-settings.php:239
+msgid "Expiration Time in Days"
+msgstr "Ablaufzeit in Tagen"
+
+#: includes/class-settings.php:240
+msgid "The number of days the consent cookie is stored."
+msgstr "Die Anzahl der Tage nach denen der Consent Cookie abläuft."
+
+#: includes/class-settings.php:247
+msgid "Advanced Settings & Performance"
+msgstr "Fortgeschrittene Einstellungen & Performance"
+
+#: includes/class-settings.php:248
+msgid ""
+"These settings can be used to customize some performance characteristics of "
+"CookieFox."
+msgstr ""
+"Diese Einstellungen können verwendet werden um die Performance von CookieFox "
+"anzupassen."
+
+#: includes/class-settings.php:254
+msgid "Stylesheet"
+msgstr "Stylesheet"
+
+#: includes/class-settings.php:255
+msgid ""
+"CSS can be included via an external stylesheet, an inline style-tag or not "
+"be included at all."
+msgstr ""
+"CSS kann über einen externen Stylesheet, einen inline Style-Tax oder gar "
+"nicht eingebunden werden."
+
+#: includes/class-settings.php:261
+msgid "External Stylesheet"
+msgstr "Externer Stylesheet"
+
+#: includes/class-settings.php:262
+msgid "Inline CSS"
+msgstr "Inline CSS"
+
+#: includes/class-settings.php:263
+msgid "Do not include styles"
+msgstr "Keinen Stylesheet einbinden"
+
+#: includes/class-settings.php:268
+msgid "Javascript"
+msgstr "Javascript"
+
+#: includes/class-settings.php:269
+msgid ""
+"The modern version has a smaller file size and is more performant than the "
+"legacy version. If you need to support legacy browsers such as Internet "
+"Explorer 11, please choose the legacy option."
+msgstr ""
+"Die Version für moderne Browser hat eine kleinere Dateigröße und ist "
+"performanter als die Legacy Version. Wenn eine Unterstützung für alte "
+"Browser wie zum Beispiel den Internet Explorer 11 benötigt wird, sollte die "
+"Version für Legacy Browser ausgewählt werden."
+
+#: includes/class-settings.php:275
+msgid "Modern Browsers"
+msgstr "Moderne Browser"
+
+#: includes/class-settings.php:276
+msgid "Legacy (including IE11)"
+msgstr "Legacy (inkl. IE11)"
+
+#: includes/class-settings.php:290
+msgid "Privacy Settings"
+msgstr "Datenschutz-Einstellungen"
+
+#: includes/class-settings.php:291
+msgid ""
+"We use cookies to improve your experience on our site. To learn more, view "
+"our privacy policy."
+msgstr ""
+"Wir verwenden Cookies um dir die bestmögliche Erfahrung auf unserer Seite zu "
+"bieten. Um mehr zu erfahren, schau dir die Datenschutzerklärung an."
+
+#: includes/class-settings.php:292
+msgid "Accept"
+msgstr "Akzeptieren"
+
+#: includes/class-settings.php:294
+msgid "Decline"
+msgstr "Ablehnen"
+
+#: includes/class-shortcode.php:28
+msgid "Show Privacy Settings"
+msgstr "Datenschutz-Einstellungen anzeigen"
+
+#~ msgid ""
+#~ "The modern version has a smaller file size and should more performant "
+#~ "than the legacy version. If you need to support legacy browsers such as "
+#~ "Internet Explorer 11, please choose the legacy option."
+#~ msgstr ""
+#~ "Die Version für Moderne Browser hat eine kleinere Dateigröße und sollte "
+#~ "performanter sein als die Legacy Version. Wenn ältere Browser wie der "
+#~ "Internet Explorer 11 unterstützt werden soll, wähle die Legacy Option."

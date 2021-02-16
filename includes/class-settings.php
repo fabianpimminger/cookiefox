@@ -42,7 +42,13 @@ class Settings {
 		$main_options->add_field(array(
 			'name' => esc_html__('Disable on Privacy Page', 'cookiefox'),
 			'id' => 'cookie_notice_hide_on_privacy_page',
-			'desc' => __('Hides the privacy notice on the privacy page configured in Settings -> <a href="'.admin_url("options-privacy.php").'">Privacy</a>.', 'cookiefox'),
+			'desc' => sprintf(
+				// translators: %1$s is the opening a tag
+				// translators: %2$s is the closing a tag
+				esc_html__('Hides the privacy notice on the privacy page configured in Settings -> %1$sPrivacy%2$s.', 'cookiefox'),
+				'<a href="'.esc_url(admin_url("options-privacy.php")).'">',
+				'</a>'
+			),
 			'type' => 'toggle',
 		));
 
@@ -55,7 +61,7 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
-			'name' => 'Display Privacy Notice as',
+			'name' => __('Display Privacy Notice as', 'cookiefox'),
 			'id' => 'notice_display',
 			'type' => 'select',
 			'show_option_none' => false,
@@ -119,14 +125,14 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
-			'name' => 'Opt-In Scripts',
+			'name' => __('Opt-In Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user opts in to the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_consent',
 			'type' => 'textarea_code'
 		));
 
 		$main_options->add_field(array(
-			'name' => 'Opt-Out Scripts',
+			'name' => __('Opt-Out Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user declines the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_no_consent',
 			'type' => 'textarea_code'
@@ -254,7 +260,7 @@ class Settings {
 			'options' => array(
 				'external' => __('External Stylesheet', 'cookiefox'),
 				'inline' => __('Inline CSS', 'cookiefox'),
-				'none' => 'Do not include styles',
+				'none' => __('Do not include styles', 'cookiefox'),
 			),
 		));
 		
