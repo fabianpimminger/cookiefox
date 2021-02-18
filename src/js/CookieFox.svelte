@@ -115,8 +115,12 @@
 <div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet>
 	<div class="cookiefox__inner">
 		<div class="cookiefox__body">
+			{#if data.notice_title}
 			<h3 class="cookiefox__title">{data.notice_title}</h3>
+			{/if}
+			{#if data.notice_text}
 			<div class="cookiefox__text">{@html data.notice_text}</div>
+			{/if}
 		</div>
 		<footer class="cookiefox__footer">
 			
