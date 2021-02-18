@@ -294,6 +294,7 @@
 	cursor: pointer;	
 	border-radius: 5px;
 	line-height: 1;
+	box-shadow: none;
 }
 
 .cookiefox__button--primary{
