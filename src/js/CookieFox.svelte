@@ -187,15 +187,16 @@
 			
 			.cookiefox__body{
 				flex: 1;
+				align-self: center;
 				margin-right: 40px;
 			}
 		}	
 	}
 	
 	.cookiefox__footer{
-		margin-top: 0.75em;
 		
 		@media(max-width: 640px){
+			margin-top: 0.75em;
 			display: flex;
 			justify-content: space-between;
 		}
