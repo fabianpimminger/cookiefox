@@ -45,6 +45,7 @@
 			if(data.scripts_consent !== undefined && data.scripts_consent !== ""){
 				scripts = data.scripts_consent;
 			}
+			embedContent();
 		} else {
 			if(data.scripts_no_consent !== undefined && data.scripts_no_consent !== ""){
 				scripts = data.scripts_no_consent;
@@ -55,25 +56,37 @@
 			let div = document.createElement("div");
 	    div.innerHTML = scripts;
 	    document.body.appendChild(div);
-			
-	    let scriptElements = div.getElementsByTagName('script');
-	    let j = -1;
-	    while ( ++j < scriptElements.length ) {                                    
-	        
-	        var script  = document.createElement("script");
-	        script.text = scriptElements[j].innerHTML;
-					
-	        let k = -1, attrs = scriptElements[j].attributes, attr;
-	        while ( ++k < attrs.length ) {                                    
-	          script.setAttribute( (attr = attrs[k]).name, attr.value );
-	        }
-	      
-	        scriptElements[j].parentNode.replaceChild(script, scriptElements[j]);
-					
-	    }			
-			
+			injectScripts(div);
 		}
 		
+	}
+	
+	function embedContent() {
+		let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");
+		
+    if(embeds.length > 0){
+			embeds.forEach(function(embed, index) {
+        if(embed.dataset.embed !== null){
+					let parent = embed.parentNode;
+          embed.classList.remove("is-blocked");
+          parent.innerHTML = embed.dataset.embed;
+					injectScripts(parent);
+				}
+			});
+    }
+	}
+	
+	function injectScripts(container) {
+    var scripts = container.querySelectorAll('script');
+		scripts.forEach(function(script){
+			let newScript = document.createElement("script");
+      newScript.text = script.innerHTML;
+      let k = -1, attrs = script.attributes, attr;
+      while ( ++k < attrs.length ) {                                    
+      	script.setAttribute( (attr = attrs[k]).name, attr.value );
+      }
+      script.parentNode.replaceChild(newScript, script);
+		});
 	}
 	
 	function initAPI() {		
@@ -112,7 +125,7 @@
 	
 </script>
 
-<div class="cookiefox cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet>
+<div class="cookiefox cookiefox--notice cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet>
 	<div class="cookiefox__inner">
 		<div class="cookiefox__body">
 			{#if data.notice_title}
@@ -136,6 +149,7 @@
 
 <style global lang="scss">
 
+
 .cookiefox{
 	--cookiefox-box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
 	--cookiefox-font-size-base: 16px;
@@ -157,11 +171,14 @@
 	font-family: var(--cookiefox-font-family);
 	line-height: var(--cookiefox-line-height);
 	color: var(--cookiefox-color-text-primary);
-	display: none;
 	
 	@media(max-width: 640px){
 		font-size: var(--cookiefox-font-size-base-mobile);
 	}
+}
+
+.cookiefox--notice{
+	display: none;
 }
 
 .cookiefox--banner{
@@ -325,6 +342,34 @@
 		color: var(--cookiefox-color-text-primary);
 		background-color: transparent;
 		text-decoration: none;
+	}
+}
+
+.cookiefox__embed{
+	background-color: #f0f0f0;
+	border: 1px solid #e8e8e8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	
+	.wp-embed-responsive .wp-has-aspect-ratio &{
+		position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+	}
+	
+	.cookiefox__embed-notice{
+		padding: 2em 2.5em; 
+	}
+	
+	.cookiefox__embed-footer{
+		margin-top: 1.25em;
 	}
 }
 
