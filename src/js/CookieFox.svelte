@@ -348,6 +348,7 @@
 .cookiefox__embed{
 	background-color: #f0f0f0;
 	border: 1px solid #e8e8e8;
+	font-family: var(--cookiefox-font-family);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -365,6 +366,7 @@
 	}
 	
 	.cookiefox__embed-notice{
+		font-family: var(--cookiefox-font-family);
 		padding: 2em 2.5em; 
 	}
 	
