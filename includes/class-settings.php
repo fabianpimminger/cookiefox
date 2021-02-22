@@ -139,6 +139,20 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
+			'name' => __('Embedded Content', 'cookiefox'),
+			'desc' => __('Embedded content from external sites such as Youtube-Videos and Tweets can violate your users\' privacy. CookieFox allows users to opt-in.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_embeds',
+		));
+		
+		$main_options->add_field(array(
+			'name' => esc_html__('Block Auto-Embeds', 'cookiefox'),
+			'desc' => __('Enable this option to block external content from being automatically embedded. After accepting the privacy notice, all content will be embedded.', 'cookiefox'),
+			'id' => 'block_embeds',
+			'type' => 'toggle',
+		));		
+
+		$main_options->add_field(array(
 			'name' => __('Design', 'cookiefox'),
 			'desc' => __('Basic design customizations are available in this section. Advanced customization is available through CSS variables.', 'cookiefox'),
 			'type' => 'title',
@@ -292,6 +306,7 @@ class Settings {
 		  'notice_button_accept' => __('Accept', 'cookiefox'),
 		  'notice_button_decline_enabled' => 'on',
 		  'notice_button_decline' => __('Decline', 'cookiefox'),
+		  'block_embeds' => 'off',
 		  'font' => 'theme',
 		  'color_background' => '#ffffff',
 		  'color_text_primary' => '#000000',
