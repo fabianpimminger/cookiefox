@@ -162,7 +162,9 @@
 	--cookiefox-font-size-button: 1.0625em;
 	--cookiefox-font-weight-button: normal;
 	--cookiefox-text-transform-button: none;
+	--cookiefox-color-background-embed: #f0f0f0;
 	--cookiefox-color-background-footer: rgba(0,0,0,0.025);
+	--cookiefox-color-border-embed: #e8e8e8;
 	--cookiefox-color-border-footer: rgba(0,0,0,0.05);
 	--cookiefox-border-radius-modal: 10px;
 	
@@ -346,9 +348,9 @@
 }
 
 .cookiefox__embed{
-	background-color: #f0f0f0;
-	border: 1px solid #e8e8e8;
 	font-family: var(--cookiefox-font-family);
+	background-color: var(--cookiefox-color-background-embed);
+	border: 1px solid var(--cookiefox-color-border-embed);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
