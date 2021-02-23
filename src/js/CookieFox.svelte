@@ -151,31 +151,37 @@
 
 
 .cookiefox{
-	--cookiefox-box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-	--cookiefox-font-size-base: 16px;
-	--cookiefox-font-size-base-mobile: 14px;
-	--cookiefox-line-height: 1.5;
-	--cookiefox-font-size-title: 1.3125em;
-	--cookiefox-font-weight-title: bold;
-	--cookiefox-font-size-text: 1em;
-	--cookiefox-font-weight-text: normal;
-	--cookiefox-font-size-button: 1.0625em;
-	--cookiefox-font-weight-button: normal;
-	--cookiefox-text-transform-button: none;
-	--cookiefox-color-background-embed: #f0f0f0;
-	--cookiefox-color-background-footer: rgba(0,0,0,0.025);
-	--cookiefox-color-border-embed: #e8e8e8;
-	--cookiefox-color-border-footer: rgba(0,0,0,0.05);
-	--cookiefox-border-radius-modal: 10px;
+	--cookiefox--color-primary: #000000;
+	--cookiefox--color-secondary: #666666;
+	--cookiefox--color-accent: #60B665;
+	--cookiefox--background: #ffffff;
+	--cookiefox--font-family: inherit;
+	--cookiefox--font-size: 16px;
+	--cookiefox--font-size-mobile: 14px;
+	--cookiefox--line-height: 1.5;
+	--cookiefox__notice--box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+	--cookiefox__modal--border-radius: 10px;
+	--cookiefox__title--font-size: 1.3125em;
+	--cookiefox__title--font-weight: bold;
+	--cookiefox__text--font-size: 1em;
+	--cookiefox__text--font-weight: normal;
+	--cookiefox__button--font-size: 1.0625em;
+	--cookiefox__button--font-weight: normal;
+	--cookiefox__button--text-transform: none;
+	--cookiefox__button--border-radius: 5px;
+	--cookiefox__footer--background: rgba(0,0,0,0.025);
+	--cookiefox__footer--color-border: rgba(0,0,0,0.05);
+	--cookiefox__embed--background: #f0f0f0;
+	--cookiefox__embed--border-color: #e8e8e8;
 	
 	box-sizing: border-box;
-	font-size: var(--cookiefox-font-size-base);
+	font-size: var(--cookiefox--font-size);
 	font-family: var(--cookiefox-font-family);
-	line-height: var(--cookiefox-line-height);
-	color: var(--cookiefox-color-text-primary);
+	line-height: var(--cookiefox--line-height);
+	color: var(--cookiefox--color-primary);
 	
 	@media(max-width: 640px){
-		font-size: var(--cookiefox-font-size-base-mobile);
+		font-size: var(--cookiefox--font-size-mobile);
 	}
 }
 
@@ -189,9 +195,9 @@
 	bottom: 0px;
 	left: 0px;
 	width: 100%;	
-	background: var(--cookiefox-color-background);
+	background: var(--cookiefox--background);
 	padding: 28px 24px;
-	box-shadow: var(--cookiefox-box-shadow);
+	box-shadow: var(--cookiefox--box-shadow);
 	
 	@media(max-width: 640px){
 		padding: 18px 14px 14px;
@@ -235,17 +241,17 @@
 	background-color: #000;
 	background-color: rgba(0,0,0,0.55);
 	padding: 5px;
-	box-shadow: var(--cookiefox-box-shadow);
+	box-shadow: var(--cookiefox--box-shadow);
 	
 	.cookiefox__inner{
 		max-width: 600px;
-		background: var(--cookiefox-color-background);
-		border-radius: var(--cookiefox-border-radius-modal);
+		background: var(--cookiefox--background);
+		border-radius: var(--cookiefox__modal--border-radius);
 		overflow: hidden;
 		
 		.cookiefox__footer{
-			border-top: 1px solid var(--cookiefox-color-border-footer); 
-			background-color: var(--cookiefox-color-background-footer);
+			border-top: 1px solid var(--cookiefox__footer--color-border); 
+			background: var(--cookiefox__footer--background);
 			display: flex;
 			justify-content: space-between;
 			padding: 14px 24px;
@@ -270,19 +276,19 @@
 
 .cookiefox__title{
 	font-family: var(--cookiefox-font-family);
-	font-size: var(--cookiefox-font-size-title);
-	font-weight: var(--cookiefox-font-weight-title);
+	font-size: var(--cookiefox__title--font-size);
+	font-weight: var(--cookiefox__title--font-weight);
 	margin: 0 0 0.5em;
 }
 
 .cookiefox__text{
 	font-family: var(--cookiefox-font-family);
-	font-size: var(--cookiefox-font-size-text);
-	font-weight: var(--cookiefox-font-weight-text);
+	font-size: var(--cookiefox__text--font-size);
+	font-weight: var(--cookiefox__text--font-weight);
 	
 	a{
 		text-decoration: underline;
-		color: var(--cookiefox-color-text-primary);
+		color: var(--cookiefox--color-primary);
 		
 		&:visited{
 			color: inherit;
@@ -290,7 +296,7 @@
 		
 		&:hover{
 			text-decoration: none;
-			color: var(--cookiefox-color-text-primary);
+			color: var(--cookiefox--color-primary);
 		}
 	}
 }
@@ -308,31 +314,31 @@
 .cookiefox__button {
 	font-family: inherit;
 	text-decoration: none;
-	font-size: var(--cookiefox-font-size-button);
-	font-weight: var(--cookiefox-font-weight-button);
-	text-transform: var(--cookiefox-text-transform-button);
+	font-size: var(--cookiefox__button--font-size);
+	font-weight: var(--cookiefox__button--font-weight);
+	text-transform: var(--cookiefox__button--text-transform);
 	cursor: pointer;	
-	border-radius: 5px;
+	border-radius: var(--cookiefox__button--border-radius);
 	line-height: 1;
 	box-shadow: none;
 }
 
 .cookiefox__button--primary{
-	border: 1px solid var(--cookiefox-color-accent);
-	background-color: var(--cookiefox-color-accent);
-	color: var(--cookiefox-color-background);
+	border: 1px solid var(--cookiefox--color-accent);
+	background-color: var(--cookiefox--color-accent);
+	color: var(--cookiefox--background);
 	padding: 0.5625em 1.375em;
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 	
 	&:hover{
-		background-color: var(--cookiefox-color-text-primary);
-		border: 1px solid var(--cookiefox-color-text-primary);
+		background-color: var(--cookiefox--color-primary);
+		border: 1px solid var(--cookiefox--color-primary);
 		text-decoration: none;
 	}
 }
 
 .cookiefox__button--secondary{
-	color: var(--cookiefox-color-text-secondary);	
+	color: var(--cookiefox--color-secondary);	
 	background-color: transparent;
 	padding: 0.5625em 0em;
 	border: 1px solid transparent;
@@ -341,16 +347,15 @@
 
 	&:hover{
 		border: 1px solid transparent;
-		color: var(--cookiefox-color-text-primary);
+		color: var(--cookiefox--color-primary);
 		background-color: transparent;
 		text-decoration: none;
 	}
 }
 
 .cookiefox__embed{
-	font-family: var(--cookiefox-font-family);
-	background-color: var(--cookiefox-color-background-embed);
-	border: 1px solid var(--cookiefox-color-border-embed);
+	background-color: var(--cookiefox__embed--background);
+	border: 1px solid var(--cookiefox__embed--border-color);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -368,7 +373,6 @@
 	}
 	
 	.cookiefox__embed-notice{
-		font-family: var(--cookiefox-font-family);
 		padding: 2em 2.5em; 
 	}
 	
