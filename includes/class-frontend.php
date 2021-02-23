@@ -83,7 +83,7 @@ class Frontend {
 			}			
 		}		
 
-		$color_background = Helper::get_option("color_background", "white");
+		$color_background = Helper::get_option("color_background", "#ffffff");
 		$color_text_primary = Helper::get_option("color_text_primary", "#000000");
 		$color_text_secondary = Helper::get_option("color_text_secondary", "#666666");
 		$color_accent = Helper::get_option("color_accent", "#60B665");
@@ -92,11 +92,11 @@ class Frontend {
 		?>
 		<style>
 			.cookiefox{
-				--cookiefox-font-family: <?php echo $font; ?>;
-				--cookiefox-color-background: <?php echo esc_html($color_background); ?>;
-				--cookiefox-color-text-primary: <?php echo esc_html($color_text_primary); ?>;
-				--cookiefox-color-text-secondary: <?php echo esc_html($color_text_secondary); ?>;
-				--cookiefox-color-accent: <?php echo esc_html($color_accent); ?>;
+				--cookiefox--font-family: <?php echo $font; ?>;
+				--cookiefox--background: <?php echo esc_html($color_background); ?>;
+				--cookiefox--color-primary: <?php echo esc_html($color_text_primary); ?>;
+				--cookiefox--color-secondary: <?php echo esc_html($color_text_secondary); ?>;
+				--cookiefox--color-accent: <?php echo esc_html($color_accent); ?>;
 			}
 		</style>
 		<?php
