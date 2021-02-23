@@ -83,7 +83,7 @@
       newScript.text = script.innerHTML;
       let k = -1, attrs = script.attributes, attr;
       while ( ++k < attrs.length ) {                                    
-      	script.setAttribute( (attr = attrs[k]).name, attr.value );
+      	newScript.setAttribute( (attr = attrs[k]).name, attr.value );
       }
       script.parentNode.replaceChild(newScript, script);
 		});
