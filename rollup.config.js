@@ -26,7 +26,12 @@ export default {
       preprocess: sveltePreprocess({
          sourceMap: !production,
          postcss: {
-           plugins: [require('autoprefixer')()]
+           plugins: [
+              require('autoprefixer')(),
+              require('cssnano')({
+                preset: 'default',
+              })
+            ]
          }
       }),
     }),
@@ -63,7 +68,10 @@ export default {
 
     production && terser({
   		ecma: buildType === "legacy" ? 5 : 2017,
-			safari10: true
+			safari10: true,
+      format: {
+        comments: false
+      }
 		})
   ],
   watch: {
