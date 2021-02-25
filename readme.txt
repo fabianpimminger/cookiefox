@@ -13,7 +13,7 @@ CookieFox is a performant and accessible cookie notice and consent solution for 
 
 == Description ==
 
-CookieFox helps you to make your WordPress site compliant with privacy laws such as GDPR by providing an easy to use and customizable cookie notice. It is optimized for performance and having a minimal impact on loading times.
+CookieFox helps you to make your WordPress site compliant with privacy laws such as GDPR by providing an easy to use and customizable cookie notice. It is optimized for performance and to have a minimal impact on loading times.
 
 == Key Features ==
 
