@@ -51,6 +51,8 @@
 				scripts = data.scripts_no_consent;
 			}
 		}
+
+		scripts += data.scripts_always;
 		
 		if(scripts !== undefined && scripts !== ""){
 			let div = document.createElement("div");
@@ -58,8 +60,8 @@
 	    document.body.appendChild(div);
 			injectScripts(div);
 		}
-		
 	}
+
 	
 	function embedContent() {
 		let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");
@@ -361,6 +363,10 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	
+	&:first-child:last-child{
+		height: 100%;
+	}
 	
 	.wp-embed-responsive .wp-has-aspect-ratio &{
 		position: absolute;

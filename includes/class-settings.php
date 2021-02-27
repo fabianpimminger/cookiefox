@@ -139,6 +139,13 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
+			'name' => __('Always-On Scripts', 'cookiefox'),
+			'desc' => __('These scripts will always be executed.', 'cookiefox'),
+			'id' => 'scripts_always',
+			'type' => 'textarea_code'
+		));
+
+		$main_options->add_field(array(
 			'name' => __('Embedded Content', 'cookiefox'),
 			'desc' => __('Embedded content from external sites such as Youtube-Videos and Tweets can violate your users\' privacy. CookieFox allows users to opt-in.', 'cookiefox'),
 			'type' => 'title',
