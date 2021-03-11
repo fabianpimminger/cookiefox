@@ -71,11 +71,24 @@
         if(embed.dataset.embed !== null){
 					let parent = embed.parentNode;
           embed.classList.remove("is-blocked");
-          parent.innerHTML = embed.dataset.embed;
+					replaceNodeWithHtml(embed, embed.dataset.embed)
 					injectScripts(parent);
 				}
 			});
     }
+	}
+	
+	function replaceNodeWithHtml(node, html){
+	  var i, tmp, elm, last;
+		tmp = document.createElement(html.indexOf('<td')!=-1?'tr':'div');
+	  tmp.innerHTML = html;
+	  i = tmp.childNodes.length;
+	  last = node;
+	  while(i--){
+	    node.parentNode.insertBefore((elm = tmp.childNodes[i]), last);
+	    last = elm;
+	  }
+	  node.parentNode.removeChild(node);
 	}
 	
 	function injectScripts(container) {
