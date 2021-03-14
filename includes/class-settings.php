@@ -328,6 +328,7 @@ class Settings {
 		  'notice_button_decline' => __('Decline', 'cookiefox'),
 		  'block_embeds' => 'off',
 		  'font' => 'theme',
+		  'button_style' => 'rounded',
 		  'color_background' => '#ffffff',
 		  'color_text_primary' => '#000000',
 		  'color_text_secondary' => '#666666',
