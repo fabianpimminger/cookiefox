@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
 "POT-Creation-Date: 2021-03-14T13:22:37+00:00\n"
-"PO-Revision-Date: 2021-03-14 14:23+0100\n"
+"PO-Revision-Date: 2021-03-14 14:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -129,7 +129,7 @@ msgstr "Anzeigen als"
 
 #: includes/class-settings.php:70
 msgid "Banner"
-msgstr "Button"
+msgstr "Banner"
 
 #: includes/class-settings.php:71
 msgid "Modal"
