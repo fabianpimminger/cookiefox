@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2021-02-27T12:46:49+00:00\n"
-"PO-Revision-Date: 2021-02-27 13:51+0100\n"
+"POT-Creation-Date: 2021-03-14T13:22:37+00:00\n"
+"PO-Revision-Date: 2021-03-14 14:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -43,7 +43,7 @@ msgstr ""
 "externen Inhalten wird nach Zustimmung in den Datenschutz-Einstellungen "
 "aktiviert."
 
-#: includes/class-embeds.php:45 includes/class-settings.php:311
+#: includes/class-embeds.php:45 includes/class-settings.php:324
 msgid "Privacy Settings"
 msgstr "Datenschutz-Einstellungen"
 
@@ -126,6 +126,14 @@ msgstr ""
 #: includes/class-settings.php:64
 msgid "Display Privacy Notice as"
 msgstr "Anzeigen als"
+
+#: includes/class-settings.php:70
+msgid "Banner"
+msgstr "Button"
+
+#: includes/class-settings.php:71
+msgid "Modal"
+msgstr "Modal"
 
 #: includes/class-settings.php:76
 msgid "Title"
@@ -256,42 +264,58 @@ msgid "Browser/System Font"
 msgstr "Browser/System Schriftart"
 
 #: includes/class-settings.php:195
+msgid "Button Style"
+msgstr "Button-Style"
+
+#: includes/class-settings.php:201
+msgid "Plain"
+msgstr "Gerade Ecken"
+
+#: includes/class-settings.php:202
+msgid "Rounded Corners"
+msgstr "Abgerundete Ecken"
+
+#: includes/class-settings.php:203
+msgid "Round Corners"
+msgstr "Runder Button"
+
+#: includes/class-settings.php:208
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
-#: includes/class-settings.php:206
+#: includes/class-settings.php:219
 msgid "Primary Text Color"
 msgstr "Primäre Textfarbe"
 
-#: includes/class-settings.php:217
+#: includes/class-settings.php:230
 msgid "Secondary Text Color"
 msgstr "Sekundäre Textfarbe"
 
-#: includes/class-settings.php:228
+#: includes/class-settings.php:241
 msgid "Accent Color"
 msgstr "Akzentfarbe"
 
-#: includes/class-settings.php:239
+#: includes/class-settings.php:252
 msgid "Consent Cookie Settings"
 msgstr "Consent Cookie-Einstellungen"
 
-#: includes/class-settings.php:240
+#: includes/class-settings.php:253
 msgid "CookieFox persists consent information in the browser using a Cookie."
 msgstr "CookieFox speichert die Consent Informationen in einem Browser Cookie."
 
-#: includes/class-settings.php:246
+#: includes/class-settings.php:259
 msgid "Cookie Name"
 msgstr "Cookie Name"
 
-#: includes/class-settings.php:247
+#: includes/class-settings.php:260
 msgid "The name of the consent cookie."
 msgstr "Der Name des Consent Cookies."
 
-#: includes/class-settings.php:253
+#: includes/class-settings.php:266
 msgid "Cookie Domain"
 msgstr "Cookie Domain"
 
-#: includes/class-settings.php:254
+#: includes/class-settings.php:267
 msgid ""
 "The domain that the cookie is available to. Leave empty to use the default "
 "domain of your site."
@@ -299,19 +323,19 @@ msgstr ""
 "Die Domain des Cookies. Leer lassen um die Standard-Domain der Seite zu "
 "verwenden."
 
-#: includes/class-settings.php:260
+#: includes/class-settings.php:273
 msgid "Expiration Time in Days"
 msgstr "Ablaufzeit in Tagen"
 
-#: includes/class-settings.php:261
+#: includes/class-settings.php:274
 msgid "The number of days the consent cookie is stored."
 msgstr "Die Anzahl der Tage nach denen der Consent Cookie abläuft."
 
-#: includes/class-settings.php:268
+#: includes/class-settings.php:281
 msgid "Advanced Settings & Performance"
 msgstr "Fortgeschrittene Einstellungen & Performance"
 
-#: includes/class-settings.php:269
+#: includes/class-settings.php:282
 msgid ""
 "These settings can be used to customize some performance characteristics of "
 "CookieFox."
@@ -319,11 +343,11 @@ msgstr ""
 "Diese Einstellungen können verwendet werden um die Performance von CookieFox "
 "anzupassen."
 
-#: includes/class-settings.php:275
+#: includes/class-settings.php:288
 msgid "Stylesheet"
 msgstr "Stylesheet"
 
-#: includes/class-settings.php:276
+#: includes/class-settings.php:289
 msgid ""
 "CSS can be included via an external stylesheet, an inline style-tag or not "
 "be included at all."
@@ -331,23 +355,23 @@ msgstr ""
 "CSS kann über einen externen Stylesheet, einen inline Style-Tag oder gar "
 "nicht eingebunden werden."
 
-#: includes/class-settings.php:282
+#: includes/class-settings.php:295
 msgid "External Stylesheet"
 msgstr "Externer Stylesheet"
 
-#: includes/class-settings.php:283
+#: includes/class-settings.php:296
 msgid "Inline CSS"
 msgstr "Inline CSS"
 
-#: includes/class-settings.php:284
+#: includes/class-settings.php:297
 msgid "Do not include styles"
 msgstr "Keinen Stylesheet einbinden"
 
-#: includes/class-settings.php:289
+#: includes/class-settings.php:302
 msgid "Javascript"
 msgstr "Javascript"
 
-#: includes/class-settings.php:290
+#: includes/class-settings.php:303
 msgid ""
 "The modern version has a smaller file size and is more performant than the "
 "legacy version. If you need to support legacy browsers such as Internet "
@@ -358,15 +382,15 @@ msgstr ""
 "Browser wie zum Beispiel den Internet Explorer 11 benötigt wird, sollte die "
 "Version für Legacy Browser ausgewählt werden."
 
-#: includes/class-settings.php:296
+#: includes/class-settings.php:309
 msgid "Modern Browsers"
 msgstr "Moderne Browser"
 
-#: includes/class-settings.php:297
+#: includes/class-settings.php:310
 msgid "Legacy (including IE11)"
 msgstr "Legacy (inkl. IE11)"
 
-#: includes/class-settings.php:312
+#: includes/class-settings.php:325
 msgid ""
 "We use cookies to improve your experience on our site. To learn more, view "
 "our privacy policy."
@@ -374,11 +398,11 @@ msgstr ""
 "Wir verwenden Cookies um dir die bestmögliche Erfahrung auf unserer Seite zu "
 "bieten. Um mehr zu erfahren, schau dir die Datenschutzerklärung an."
 
-#: includes/class-settings.php:313
+#: includes/class-settings.php:326
 msgid "Accept"
 msgstr "Akzeptieren"
 
-#: includes/class-settings.php:315
+#: includes/class-settings.php:328
 msgid "Decline"
 msgstr "Ablehnen"
 

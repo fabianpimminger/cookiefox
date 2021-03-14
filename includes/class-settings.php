@@ -67,8 +67,8 @@ class Settings {
 			'show_option_none' => false,
 			'default' => 'banner',
 			'options' => array(
-				'banner' => __('Banner', 'cmb2'),
-				'modal' => __('Modal', 'cmb2'),
+				'banner' => __('Banner', 'cookiefox'),
+				'modal' => __('Modal', 'cookiefox'),
 			),
 		));
 
@@ -188,6 +188,19 @@ class Settings {
 			'attributes' => array(
 				'data-conditional-id' => 'stylesheet',
 				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Button Style', 'cookiefox'),
+			'id' => 'button_style',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'rounded',
+			'options' => array(
+				'plain' => __('Plain', 'cookiefox'),
+				'rounded' => __('Rounded Corners', 'cookiefox'),
+				'round' => __('Round Corners', 'cookiefox'),
 			),
 		));
 		
