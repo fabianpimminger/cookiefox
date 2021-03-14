@@ -3,8 +3,8 @@ Contributors: fabianpimminger
 Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
-Tested up to: 5.6.2
-Stable tag: 1.1.1
+Tested up to: 5.7
+Stable tag: 1.1.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -49,6 +49,12 @@ Please note that you are responsible for complying with your local and internati
 6. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 1.1.2 =
+* Added always-on scripts
+* Added cookiefox_consent filter for custom content blocking
+* Fixed an issue with auto-blocking embeds
+* Fixed german translations 
 
 = 1.1.1 =
 * Auto-block embeds

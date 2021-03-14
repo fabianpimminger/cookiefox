@@ -2,7 +2,7 @@
 /**
  * Plugin Name: CookieFox
  * Description: A performant and accessible cookie and consent solution for WordPress.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Requires at least: 5.0
  * Author: Fabian Pimminger
  * Author URI: https://fabianpimminger.com/work/
