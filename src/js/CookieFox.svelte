@@ -51,9 +51,11 @@
 				scripts = data.scripts_no_consent;
 			}
 		}
-
-		scripts += data.scripts_always;
 		
+		if(data.scripts_always !== undefined){
+			scripts += data.scripts_always;
+		}
+
 		if(scripts !== undefined && scripts !== ""){
 			let div = document.createElement("div");
 	    div.innerHTML = scripts;
