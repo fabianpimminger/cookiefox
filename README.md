@@ -6,6 +6,10 @@ CookieFox is a performant and accessible cookie notice and consent solution for 
 
 Install CookieFox directly in your WordPress Dashboard or download the plugin in the [Plugin Directory](https://wordpress.org/plugins/cookiefox/).
 
+## Documentation & How-Tos
+
+Documentation and tutorials/samples are avaialable in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).
+
 ## Performance
 
 * **Javascript**: There's just one 4kb (gzip) Javascript file. No dependencies. No jQuery.
