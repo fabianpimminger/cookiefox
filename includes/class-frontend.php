@@ -83,6 +83,22 @@ class Frontend {
 			}			
 		}		
 
+		$button_style = Helper::get_option("button_style", "rounded");
+		$border_radius = "5px";
+		if($button_style != "rounded"){
+			switch ($button_style) {
+			  case "round":
+			    $border_radius = '3em';
+			    break;
+			  case "plain":
+			    $border_radius = "0px";
+			    break;
+				default:
+					$border_radius = "5px";
+			    break;
+			}			
+		}
+
 		$color_background = Helper::get_option("color_background", "#ffffff");
 		$color_text_primary = Helper::get_option("color_text_primary", "#000000");
 		$color_text_secondary = Helper::get_option("color_text_secondary", "#666666");
@@ -97,6 +113,7 @@ class Frontend {
 				--cookiefox--color-primary: <?php echo esc_html($color_text_primary); ?>;
 				--cookiefox--color-secondary: <?php echo esc_html($color_text_secondary); ?>;
 				--cookiefox--color-accent: <?php echo esc_html($color_accent); ?>;
+				--cookiefox__button--border-radius: <?php echo esc_html($border_radius); ?>;
 			}
 		</style>
 		<?php

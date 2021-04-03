@@ -3,8 +3,8 @@ Contributors: fabianpimminger
 Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
-Tested up to: 5.6.2
-Stable tag: 1.1.1
+Tested up to: 5.7
+Stable tag: 1.1.3
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,13 +13,13 @@ CookieFox is a performant and accessible cookie notice and consent solution for 
 
 == Description ==
 
-CookieFox helps you to make your WordPress site compliant with privacy laws such as GDPR by providing an easy to use and customizable cookie notice. It is optimized for performance and having a minimal impact on loading times.
+CookieFox helps you to make your WordPress site compliant with privacy laws such as GDPR by providing an easy-to-use and customizable cookie notice. It is optimized for performance and to have a minimal impact on loading times.
 
 == Key Features ==
 
 - The cookie notice can either be displayed as a modal or a banner on the bottom of the viewport.
 
-- Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or by providing your own stylesheet.
+- Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or by providing a custom stylesheet.
 
 - All texts and buttons can be customized to fit your requirements.
 
@@ -32,10 +32,10 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 == Frequently Asked Questions ==
 
 = Does CookieFox block cookies? =
-No, CookieFox does not block cookies. Scripts that would set a cookie can be defined in the admin settings to only load when an user has accepted the use of cookies. 
+No, CookieFox does not block cookies. Scripts that would set a cookie can be defined in the admin settings to only load when a user has accepted the use of cookies. 
 
 = Why is the cookie notice not being displayed? =
-Please check in the admin settings if the toggle for "Enable Cookie Notice" is switched to "on". Also check your website with browser development tools regarding errors. If you find an incompatibility or bug, please use the plugins support forum.
+Please check in the admin settings if the toggle for "Enable Cookie Notice" is switched to "on". Also, check your website with browser development tools regarding errors. If you find an incompatibility or bug, please use the plugins support forum.
 
 = Is my site compliant after installing and activating CookieFox? =
 Please note that you are responsible for complying with your local and international laws. CookieFox can help you to be compliant by providing a cookie notice and the possibility for users to opt-in to defined scripts and services, but installation and activation alone (without configuration) are probably not enough to be compliant.
@@ -50,9 +50,18 @@ Please note that you are responsible for complying with your local and internati
 
 == Changelog ==
 
+= 1.1.3 =
+* Fixed an issue that displayed "undefined" at bottom of the site
+
+= 1.1.2 =
+* Added always-on scripts
+* Added cookiefox_consent filter for custom content blocking
+* Fixed an issue with auto-blocking embeds
+* Fixed german translations 
+
 = 1.1.1 =
 * Auto-block embeds
-* Renaming of some css variables for consistency. If you've customized your variables, please update them to reflect the changes.
+* Renaming of some CSS variables for consistency. If you've customized your variables, please update them to reflect the changes.
 
 = 1.0.6 =
 * German translation
@@ -68,7 +77,7 @@ Please note that you are responsible for complying with your local and internati
 * Fixed an issue where it wasn't possible to show the modal on the privacy page.
 * Privacy notice can now be opened via Javascript cookiefox.api.show().
 * Introduction of a shortcode to display a link/button to open the privacy notice: [cookiefox_show_notice].
-* Smaller typos fixes, styling changes and bug fixes.
+* Smaller typos fixes, styling changes, and bug fixes.
 
 = 1.0.3 =
 * Styling changes and small bug fixes.

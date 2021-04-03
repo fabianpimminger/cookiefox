@@ -67,8 +67,8 @@ class Settings {
 			'show_option_none' => false,
 			'default' => 'banner',
 			'options' => array(
-				'banner' => __('Banner', 'cmb2'),
-				'modal' => __('Modal', 'cmb2'),
+				'banner' => __('Banner', 'cookiefox'),
+				'modal' => __('Modal', 'cookiefox'),
 			),
 		));
 
@@ -139,6 +139,13 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
+			'name' => __('Always-On Scripts', 'cookiefox'),
+			'desc' => __('These scripts will always be executed.', 'cookiefox'),
+			'id' => 'scripts_always',
+			'type' => 'textarea_code'
+		));
+
+		$main_options->add_field(array(
 			'name' => __('Embedded Content', 'cookiefox'),
 			'desc' => __('Embedded content from external sites such as Youtube-Videos and Tweets can violate your users\' privacy. CookieFox allows users to opt-in.', 'cookiefox'),
 			'type' => 'title',
@@ -181,6 +188,19 @@ class Settings {
 			'attributes' => array(
 				'data-conditional-id' => 'stylesheet',
 				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Button Style', 'cookiefox'),
+			'id' => 'button_style',
+			'type' => 'select',
+			'show_option_none' => false,
+			'default' => 'rounded',
+			'options' => array(
+				'plain' => __('Plain', 'cookiefox'),
+				'rounded' => __('Rounded Corners', 'cookiefox'),
+				'round' => __('Round Corners', 'cookiefox'),
 			),
 		));
 		
@@ -308,6 +328,7 @@ class Settings {
 		  'notice_button_decline' => __('Decline', 'cookiefox'),
 		  'block_embeds' => 'off',
 		  'font' => 'theme',
+		  'button_style' => 'rounded',
 		  'color_background' => '#ffffff',
 		  'color_text_primary' => '#000000',
 		  'color_text_secondary' => '#666666',
