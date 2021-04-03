@@ -8,6 +8,8 @@
 	$: showNotice = (forceNotice || (cookie === undefined && !data.disabled_on_privacy_page));
 
 	onMount(() => {
+		alwaysOnScripts();
+		
 		if(isCrawler()){
 			cookie = {consent: false};
 			handleConsentChange();
@@ -38,29 +40,38 @@
 		setCookie();
 	}	
 	
+	function getContainer() {
+		var container = document.createElement("div");
+		container.style.display = "none"; 
+		return container
+	}
+	
+	function alwaysOnScripts() {
+		if(data.scripts_always !== undefined && data.scripts_always !== ""){
+			let container = getContainer();
+	    container.innerHTML = data.scripts_always;
+			injectElements(container.children);
+		}
+	}
+	
 	function handleConsentChange() {
-		var scripts;
+		var scripts = "";
 		
 		if(cookie.consent === true){
 			if(data.scripts_consent !== undefined && data.scripts_consent !== ""){
-				scripts = data.scripts_consent;
+				scripts += data.scripts_consent;
 			}
 			embedContent();
 		} else {
 			if(data.scripts_no_consent !== undefined && data.scripts_no_consent !== ""){
-				scripts = data.scripts_no_consent;
+				scripts += data.scripts_no_consent;
 			}
 		}
-		
-		if(data.scripts_always !== undefined){
-			scripts += data.scripts_always;
-		}
 
-		if(scripts !== undefined && scripts !== ""){
-			let div = document.createElement("div");
-	    div.innerHTML = scripts;
-	    document.body.appendChild(div);
-			injectScripts(div);
+		if(scripts !== ""){
+			let container = getContainer();
+	    container.innerHTML = scripts;
+			injectElements(container.children);
 		}
 	}
 
@@ -73,8 +84,9 @@
         if(embed.dataset.embed !== null){
 					let parent = embed.parentNode;
           embed.classList.remove("is-blocked");
-					replaceNodeWithHtml(embed, embed.dataset.embed)
-					injectScripts(parent);
+					embed = replaceNodeWithHtml(embed, embed.dataset.embed);
+					var scripts = parent.querySelectorAll('script');
+					injectElements(scripts);
 				}
 			});
     }
@@ -93,16 +105,15 @@
 	  node.parentNode.removeChild(node);
 	}
 	
-	function injectScripts(container) {
-    var scripts = container.querySelectorAll('script');
-		scripts.forEach(function(script){
-			let newScript = document.createElement("script");
-      newScript.text = script.innerHTML;
-      let k = -1, attrs = script.attributes, attr;
+	function injectElements(elements) {
+		Array.from(elements).forEach(function(element){
+			let newElement = document.createElement(element.tagName);
+      newElement.text = element.innerHTML;
+      let k = -1, attrs = element.attributes, attr;
       while ( ++k < attrs.length ) {                                    
-      	newScript.setAttribute( (attr = attrs[k]).name, attr.value );
+      	newElement.setAttribute( (attr = attrs[k]).name, attr.value );
       }
-      script.parentNode.replaceChild(newScript, script);
+      document.body.appendChild(newElement);
 		});
 	}
 	
