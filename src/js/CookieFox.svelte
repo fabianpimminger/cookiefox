@@ -66,6 +66,7 @@
 			if(data.scripts_no_consent !== undefined && data.scripts_no_consent !== ""){
 				scripts += data.scripts_no_consent;
 			}
+			removeCookies();
 		}
 
 		if(scripts !== ""){
@@ -74,7 +75,24 @@
 			injectElements(container.children);
 		}
 	}
-
+	
+	function removeCookies() {
+		if(data.cookies === undefined || data.cookies === ""){
+			return;
+		}
+		var cookiesToRemove = data.cookies.split(",").map(cookie => cookie.trim());
+		
+		if(cookiesToRemove.length > 0){
+			var cookies = Object.keys(Cookies.get());
+			cookies = cookies.filter(element => cookiesToRemove.indexOf(element) !== -1);
+			if(cookies.length > 0){
+				cookies.forEach(function(name){
+					Cookies.remove(name);
+					Cookies.remove(name, {domain: "."+window.location.hostname});
+		    });		
+			}	
+		}
+	}
 	
 	function embedContent() {
 		let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");

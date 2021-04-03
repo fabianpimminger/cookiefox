@@ -146,6 +146,13 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
+			'name' => __('Cookies', 'cookiefox'),
+			'desc' => __('These cookies will be removed after opt-out. Seperate multiple cookies by a comma.', 'cookiefox'),
+			'id' => 'cookies',
+			'type' => 'text'
+		));
+		
+		$main_options->add_field(array(
 			'name' => __('Embedded Content', 'cookiefox'),
 			'desc' => __('Embedded content from external sites such as Youtube-Videos and Tweets can violate your users\' privacy. CookieFox allows users to opt-in.', 'cookiefox'),
 			'type' => 'title',
