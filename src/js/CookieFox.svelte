@@ -71,7 +71,7 @@
 
 		if(scripts !== ""){
 			let container = getContainer();
-	    container.innerHTML = scripts;
+			container.innerHTML = scripts;
 			injectElements(container.children);
 		}
 	}
@@ -89,57 +89,68 @@
 				cookies.forEach(function(name){
 					Cookies.remove(name);
 					Cookies.remove(name, {domain: "."+window.location.hostname});
-		    });		
-			}	
+				});
+			}
 		}
 	}
 	
 	function embedContent() {
 		let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");
 		
-    if(embeds.length > 0){
+		if(embeds.length > 0){
 			embeds.forEach(function(embed, index) {
-        if(embed.dataset.embed !== null){
+				if(embed.dataset.embed !== null){
+					embed.classList.remove("is-blocked");
 					let parent = embed.parentNode;
-          embed.classList.remove("is-blocked");
-					embed = replaceNodeWithHtml(embed, embed.dataset.embed);
-					var scripts = parent.querySelectorAll('script');
-					injectElements(scripts);
+					let container = getContainer();
+					container.innerHTML = embed.dataset.embed;
+					let elements = container.children;
+					
+					Array.from(elements).forEach(element => {
+						
+						var newElement = cloneElement(element);
+
+						if(!parent.classList.contains("wp-block-embed__wrapper") && element.tagName === "IFRAME"){
+							var pElement = document.createElement("p");
+							pElement.appendChild(newElement);
+							newElement = pElement;
+						}
+						
+						document.body.appendChild(newElement);
+						parent.insertBefore(newElement, embed);
+					});
+					
+					parent.removeChild(embed);
+					
 				}
 			});
-    }
+			
+			window.dispatchEvent(new Event('resize'));
+		}
 	}
-	
-	function replaceNodeWithHtml(node, html){
-	  var i, tmp, elm, last;
-		tmp = document.createElement(html.indexOf('<td')!=-1?'tr':'div');
-	  tmp.innerHTML = html;
-	  i = tmp.childNodes.length;
-	  last = node;
-	  while(i--){
-	    node.parentNode.insertBefore((elm = tmp.childNodes[i]), last);
-	    last = elm;
-	  }
-	  node.parentNode.removeChild(node);
+		
+	function cloneElement(element){
+		let newElement = document.createElement(element.tagName);
+		newElement.innerHTML = element.innerHTML;
+		let k = -1, attrs = element.attributes, attr;
+		while ( ++k < attrs.length ) {
+			newElement.setAttribute( (attr = attrs[k]).name, attr.value );
+		}
+		return newElement;
 	}
 	
 	function injectElements(elements) {
 		Array.from(elements).forEach(function(element){
-			let newElement = document.createElement(element.tagName);
-      newElement.text = element.innerHTML;
-      let k = -1, attrs = element.attributes, attr;
-      while ( ++k < attrs.length ) {                                    
-      	newElement.setAttribute( (attr = attrs[k]).name, attr.value );
-      }
-      document.body.appendChild(newElement);
+			let newElement = cloneElement(element);
+			document.body.appendChild(newElement);
 		});
 	}
 	
 	function initAPI() {		
 		window.cookiefox.api = {};
 		window.cookiefox.api.show = function(){
-    	forceNotice = true;
-  	};
+			forceNotice = true;
+		};
 	}
 	
 	function isCrawler() {
@@ -414,12 +425,12 @@
 	
 	.wp-embed-responsive .wp-has-aspect-ratio &{
 		position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
 	}
 	
 	.cookiefox__embed-notice{
@@ -435,7 +446,7 @@
 	.cookiefox__button--primary,
 	.cookiefox__button--secondary{
 		padding-top: 0.75em;
-    padding-bottom: 0.75em;
+		padding-bottom: 0.75em;
 	}
 }
 
