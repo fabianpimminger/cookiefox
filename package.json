@@ -37,7 +37,8 @@
     "build:modern": "env ROLLUP_BUILD_TYPE=\"modern\" rollup -c",
     "watch": "rollup -w -c",
     "release:zip": "bestzip release/zip/cookiefox.zip assets/* cookiefox.php includes/* vendor/* languages/* readme.txt wpml-config.xml",
-    "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml release/files/cookiefox"
+    "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml release/files/cookiefox",
+    "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox"
   },
   "author": "",
   "license": "ISC"
