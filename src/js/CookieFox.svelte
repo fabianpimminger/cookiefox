@@ -254,7 +254,7 @@
 	width: 100%;	
 	background: var(--cookiefox--background);
 	padding: 28px 24px;
-	box-shadow: var(--cookiefox--box-shadow);
+	box-shadow: var(--cookiefox__notice--box-shadow);
 	
 	@media(max-width: 640px){
 		padding: 18px 14px 14px;
@@ -298,7 +298,7 @@
 	background-color: #000;
 	background-color: rgba(0,0,0,0.55);
 	padding: 5px;
-	box-shadow: var(--cookiefox--box-shadow);
+	box-shadow: var(--cookiefox__notice--box-shadow);
 	
 	.cookiefox__inner{
 		max-width: 600px;
