@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the CookieFox plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: CookieFox 1.1.1\n"
+"Project-Id-Version: CookieFox 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-14T13:22:37+00:00\n"
+"POT-Creation-Date: 2021-04-06T11:53:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: cookiefox\n"
@@ -35,7 +35,7 @@ msgid "External content is hidden due to privacy reasons. It will be embedded af
 msgstr ""
 
 #: includes/class-embeds.php:45
-#: includes/class-settings.php:324
+#: includes/class-settings.php:331
 msgid "Privacy Settings"
 msgstr ""
 
@@ -165,162 +165,170 @@ msgid "These scripts will always be executed."
 msgstr ""
 
 #: includes/class-settings.php:149
-msgid "Embedded Content"
+msgid "Cookies"
 msgstr ""
 
 #: includes/class-settings.php:150
-msgid "Embedded content from external sites such as Youtube-Videos and Tweets can violate your users' privacy. CookieFox allows users to opt-in."
+msgid "These cookies will be removed after opt-out. Seperate multiple cookies by a comma."
 msgstr ""
 
 #: includes/class-settings.php:156
-msgid "Block Auto-Embeds"
+msgid "Embedded Content"
 msgstr ""
 
 #: includes/class-settings.php:157
-msgid "Enable this option to block external content from being automatically embedded. After accepting the privacy notice, all content will be embedded."
+msgid "Embedded content from external sites such as Youtube-Videos and Tweets can violate your users' privacy. CookieFox allows users to opt-in."
 msgstr ""
 
 #: includes/class-settings.php:163
-msgid "Design"
+msgid "Block Auto-Embeds"
 msgstr ""
 
 #: includes/class-settings.php:164
+msgid "Enable this option to block external content from being automatically embedded. After accepting the privacy notice, all content will be embedded."
+msgstr ""
+
+#: includes/class-settings.php:170
+msgid "Design"
+msgstr ""
+
+#: includes/class-settings.php:171
 msgid "Basic design customizations are available in this section. Advanced customization is available through CSS variables."
 msgstr ""
 
-#: includes/class-settings.php:174
+#: includes/class-settings.php:181
 msgid "Font"
 msgstr ""
 
-#: includes/class-settings.php:175
+#: includes/class-settings.php:182
 msgid "Choose \"Theme Font\" to automatically use the font of your active theme."
 msgstr ""
 
-#: includes/class-settings.php:181
+#: includes/class-settings.php:188
 msgid "Theme Font"
 msgstr ""
 
-#: includes/class-settings.php:182
+#: includes/class-settings.php:189
 msgid "Browser/System Font"
 msgstr ""
 
-#: includes/class-settings.php:195
+#: includes/class-settings.php:202
 msgid "Button Style"
 msgstr ""
 
-#: includes/class-settings.php:201
+#: includes/class-settings.php:208
 msgid "Plain"
 msgstr ""
 
-#: includes/class-settings.php:202
+#: includes/class-settings.php:209
 msgid "Rounded Corners"
 msgstr ""
 
-#: includes/class-settings.php:203
+#: includes/class-settings.php:210
 msgid "Round Corners"
 msgstr ""
 
-#: includes/class-settings.php:208
+#: includes/class-settings.php:215
 msgid "Background Color"
 msgstr ""
 
-#: includes/class-settings.php:219
+#: includes/class-settings.php:226
 msgid "Primary Text Color"
 msgstr ""
 
-#: includes/class-settings.php:230
+#: includes/class-settings.php:237
 msgid "Secondary Text Color"
 msgstr ""
 
-#: includes/class-settings.php:241
+#: includes/class-settings.php:248
 msgid "Accent Color"
 msgstr ""
 
-#: includes/class-settings.php:252
+#: includes/class-settings.php:259
 msgid "Consent Cookie Settings"
 msgstr ""
 
-#: includes/class-settings.php:253
+#: includes/class-settings.php:260
 msgid "CookieFox persists consent information in the browser using a Cookie."
 msgstr ""
 
-#: includes/class-settings.php:259
+#: includes/class-settings.php:266
 msgid "Cookie Name"
 msgstr ""
 
-#: includes/class-settings.php:260
+#: includes/class-settings.php:267
 msgid "The name of the consent cookie."
 msgstr ""
 
-#: includes/class-settings.php:266
+#: includes/class-settings.php:273
 msgid "Cookie Domain"
 msgstr ""
 
-#: includes/class-settings.php:267
+#: includes/class-settings.php:274
 msgid "The domain that the cookie is available to. Leave empty to use the default domain of your site."
 msgstr ""
 
-#: includes/class-settings.php:273
+#: includes/class-settings.php:280
 msgid "Expiration Time in Days"
 msgstr ""
 
-#: includes/class-settings.php:274
+#: includes/class-settings.php:281
 msgid "The number of days the consent cookie is stored."
 msgstr ""
 
-#: includes/class-settings.php:281
+#: includes/class-settings.php:288
 msgid "Advanced Settings & Performance"
 msgstr ""
 
-#: includes/class-settings.php:282
+#: includes/class-settings.php:289
 msgid "These settings can be used to customize some performance characteristics of CookieFox."
 msgstr ""
 
-#: includes/class-settings.php:288
+#: includes/class-settings.php:295
 msgid "Stylesheet"
 msgstr ""
 
-#: includes/class-settings.php:289
+#: includes/class-settings.php:296
 msgid "CSS can be included via an external stylesheet, an inline style-tag or not be included at all."
 msgstr ""
 
-#: includes/class-settings.php:295
+#: includes/class-settings.php:302
 msgid "External Stylesheet"
 msgstr ""
 
-#: includes/class-settings.php:296
+#: includes/class-settings.php:303
 msgid "Inline CSS"
 msgstr ""
 
-#: includes/class-settings.php:297
+#: includes/class-settings.php:304
 msgid "Do not include styles"
 msgstr ""
 
-#: includes/class-settings.php:302
+#: includes/class-settings.php:309
 msgid "Javascript"
 msgstr ""
 
-#: includes/class-settings.php:303
+#: includes/class-settings.php:310
 msgid "The modern version has a smaller file size and is more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option."
 msgstr ""
 
-#: includes/class-settings.php:309
+#: includes/class-settings.php:316
 msgid "Modern Browsers"
 msgstr ""
 
-#: includes/class-settings.php:310
+#: includes/class-settings.php:317
 msgid "Legacy (including IE11)"
 msgstr ""
 
-#: includes/class-settings.php:325
+#: includes/class-settings.php:332
 msgid "We use cookies to improve your experience on our site. To learn more, view our privacy policy."
 msgstr ""
 
-#: includes/class-settings.php:326
+#: includes/class-settings.php:333
 msgid "Accept"
 msgstr ""
 
-#: includes/class-settings.php:328
+#: includes/class-settings.php:335
 msgid "Decline"
 msgstr ""
 
