@@ -125,7 +125,7 @@ class Frontend {
 		$data = get_option("cookiefox", array());
 		$data["privacy_type"] = "basic";
 		$data["disabled_on_privacy_page"] = $this->is_disabled_on_privacy_page();
-		
+		$data = $this->prepare_data($data);
 		?>
 		<script>
 			var cookiefox = {data: <?php echo wp_json_encode($data); ?>};
@@ -133,6 +133,27 @@ class Frontend {
 		<div id="cookiefox" data-nosnippet></div>
 		
 		<?php
+	}
+	
+	private function prepare_data($data) {
+		
+		if(defined('COOKIEFOX_UNMASK_SCRIPTS') && COOKIEFOX_UNMASK_SCRIPTS == true) {
+			$keys = array("scripts_consent", "scripts_no_consent", "scripts_always");
+			
+			foreach($keys as $key){
+				if(!empty($data[$key])){
+					$data[$key] = $this->unmask_scripts($data[$key]);
+				}
+			}
+		}
+		
+		$data = apply_filters( 'cookiefox_frontend_prepare_data', $data );
+		
+		return $data;
+	}
+	
+	private function unmask_scripts($html) {
+		return str_replace("%script%", "script", $html);
 	}
 	
 	private function privacy_notice_enabled() {
