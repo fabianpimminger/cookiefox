@@ -243,7 +243,7 @@ class Settings {
 			'name' => __('Secondary Text Color', 'cookiefox'),
 			'id' => 'color_text_secondary',
 			'type' => 'colorpicker',
-			'default' => '#666',
+			'default' => '#767676',
 			'attributes' => array(
 				'data-conditional-id' => 'stylesheet',
 				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
@@ -265,7 +265,7 @@ class Settings {
 			'name' => __('Secondary Button Color', 'cookiefox'),
 			'id' => 'color_button_secondary',
 			'type' => 'colorpicker',
-			'default' => '#666666',
+			'default' => '#767676',
 			'attributes' => array(
 				'data-conditional-id' => 'stylesheet',
 				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
