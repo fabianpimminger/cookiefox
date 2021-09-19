@@ -55,6 +55,7 @@ class Main {
 	}
 
 	public function activation_hook() {
+		$this->load_textdomain();
 		Settings::register_defaults();
 	}
 	
