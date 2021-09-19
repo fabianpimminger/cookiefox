@@ -94,10 +94,16 @@ class Settings {
 		));
 
 		$main_options->add_field(array(
-			'name' => esc_html__('Enable Decline Button', 'cookiefox'),
+			'name' => esc_html__('Decline Button', 'cookiefox'),
 			'desc' => __('Disabling this option could violate the privacy laws in your country. Use with caution.', 'cookiefox'),
-			'id' => 'notice_button_decline_enabled',
-			'type' => 'toggle',
+			'id' => 'notice_button_decline_type',
+			'type' => 'select',
+			'default' => 'text',
+			'options' => array(
+				'none' => __('None', 'cookiefox'),
+				'text' => __('Text', 'cookiefox'),
+				'button' => __('Button', 'cookiefox'),
+			),
 		));
 		
 		$main_options->add_field(array(
@@ -106,8 +112,8 @@ class Settings {
 			'type' => 'text',
 			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_decline'),
 			'attributes' => array(
-				'data-conditional-id' => 'notice_button_decline_enabled',
-				'data-conditional-value' => 'on',
+				'data-conditional-id' => 'notice_button_decline_style',
+				'data-conditional-value' => wp_json_encode(array('text', 'button')),
 			),
 		));
 
@@ -245,10 +251,21 @@ class Settings {
 		));
 		
 		$main_options->add_field(array(
-			'name' => __('Accent Color', 'cookiefox'),
-			'id' => 'color_accent',
+			'name' => __('Primary Button Color', 'cookiefox'),
+			'id' => 'color_button_primary',
 			'type' => 'colorpicker',
-			'default' => '#60B665',
+			'default' => '#3D854F',
+			'attributes' => array(
+				'data-conditional-id' => 'stylesheet',
+				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
+			),
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Secondary Button Color', 'cookiefox'),
+			'id' => 'color_button_secondary',
+			'type' => 'colorpicker',
+			'default' => '#666666',
 			'attributes' => array(
 				'data-conditional-id' => 'stylesheet',
 				'data-conditional-value' => wp_json_encode(array('external', 'inline')),
@@ -324,29 +341,8 @@ class Settings {
 		
 		$settings = get_option("cookiefox", array());
 		
-		$settings = array_merge(array(
-		  'cookie_notice_enabled' => 'on',
-			'cookie_notice_hide_on_privacy_page' => 'on',
-		  'notice_display' => 'banner',
-		  'notice_title' => __('Privacy Settings', 'cookiefox'),
-		  'notice_text' => __('We use cookies to improve your experience on our site. To learn more, view our privacy policy.', 'cookiefox'),
-		  'notice_button_accept' => __('Accept', 'cookiefox'),
-		  'notice_button_decline_enabled' => 'on',
-		  'notice_button_decline' => __('Decline', 'cookiefox'),
-		  'block_embeds' => 'off',
-		  'font' => 'theme',
-		  'button_style' => 'rounded',
-		  'color_background' => '#ffffff',
-		  'color_text_primary' => '#000000',
-		  'color_text_secondary' => '#666666',
-		  'color_text_tertiary' => '#d8d8d8',
-		  'color_accent' => '#60B665',
-		  'cookie_name' => 'cookiefox_consent',
-		  'cookie_expiration' => '90',
-		  'stylesheet' => 'external',
-		  'javascript' => 'modern',
-		), $settings);
-		
+		Helper::merge_default_settings($settings);
+					
 		update_option("cookiefox", $settings, true);
 	}
 }

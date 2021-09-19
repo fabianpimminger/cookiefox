@@ -194,12 +194,12 @@
 		</div>
 		<footer class="cookiefox__footer">
 			
-			{#if data.notice_button_decline_enabled === "on"}
+			{#if data.notice_button_decline_type !== "none"}
 			<!-- svelte-ignore a11y-positive-tabindex -->
-			<button class="cookiefox__button cookiefox__button--secondary" on:click={handleDecline} tabindex="1">{data.notice_button_decline}</button>
+			<button class="cookiefox__button cookiefox__button--secondary is-{data.notice_button_decline_type}" on:click={handleDecline} tabindex="1">{data.notice_button_decline}</button>
 			{/if}
 			<!-- svelte-ignore a11y-positive-tabindex -->
-			<button class="cookiefox__button cookiefox__button--primary" on:click={handleAccept} tabindex="1">{data.notice_button_accept}</button>
+			<button class="cookiefox__button cookiefox__button--primary is-button" on:click={handleAccept} tabindex="1">{data.notice_button_accept}</button>
 		</footer>
 	</div>
 </div>
@@ -209,8 +209,9 @@
 
 .cookiefox{
 	--cookiefox--color-primary: #000000;
-	--cookiefox--color-secondary: #666666;
-	--cookiefox--color-accent: #60B665;
+	--cookiefox--color-secondary: #767676;
+	--cookiefox--color-button-primary: #3d854f;
+	--cookiefox--color-button-secondary: #767676;
 	--cookiefox--background: #ffffff;
 	--cookiefox--font-family: inherit;
 	--cookiefox--font-size: 16px;
@@ -378,35 +379,59 @@
 	border-radius: var(--cookiefox__button--border-radius);
 	line-height: 1;
 	box-shadow: none;
+	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+	
+	&.is-button{
+		padding: 0.5625em 1.375em;
+	}
+	
+	&.is-text{
+		padding: 0.5625em 0em;		
+	}
+	
+	&:hover{
+		text-decoration: none !important;
+	}
 }
 
 .cookiefox__button--primary{
-	border: 1px solid var(--cookiefox--color-accent);
-	background-color: var(--cookiefox--color-accent);
-	color: var(--cookiefox--background);
-	padding: 0.5625em 1.375em;
-	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-	
-	&:hover{
-		background-color: var(--cookiefox--color-primary);
-		border: 1px solid var(--cookiefox--color-primary);
-		text-decoration: none;
+	&.is-button{
+		border: 1px solid var(--cookiefox--color-button-primary) !important;
+		background-color: var(--cookiefox--color-button-primary) !important;
+		color: var(--cookiefox--background) !important;
+		
+		&:hover{
+			background-color: var(--cookiefox--color-primary) !important;
+			border: 1px solid var(--cookiefox--color-primary) !important;
+		}
 	}
 }
 
 .cookiefox__button--secondary{
-	color: var(--cookiefox--color-secondary);	
-	background-color: transparent;
-	padding: 0.5625em 0em;
-	border: 1px solid transparent;
-	background-color: transparent;
-	transition: color 0.15s ease-in-out;
-
-	&:hover{
-		border: 1px solid transparent;
-		color: var(--cookiefox--color-primary);
+	&.is-button{
+		border: 1px solid var(--cookiefox--color-button-secondary) !important;
+		background-color: var(--cookiefox--color-button-secondary) !important;
+		color: var(--cookiefox--background) !important;
+		
+		&:hover{
+			background-color: var(--cookiefox--color-primary) !important;
+			border: 1px solid var(--cookiefox--color-primary) !important;
+			color: var(--cookiefox--background) !important;
+		}
+	}	
+	
+	&.is-text{
+		border: 1px solid transparent !important;
+		background-color: transparent !important;
+		color: var(--cookiefox--color-secondary) !important;
 		background-color: transparent;
-		text-decoration: none;
+		transition: color 0.15s ease-in-out;
+	
+		&:hover{
+			border: 1px solid transparent !important;
+			background-color: transparent !important;
+			color: var(--cookiefox--color-primary) !important;
+		}
 	}
 }
 

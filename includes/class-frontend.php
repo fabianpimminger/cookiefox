@@ -101,18 +101,19 @@ class Frontend {
 
 		$color_background = Helper::get_option("color_background", "#ffffff");
 		$color_text_primary = Helper::get_option("color_text_primary", "#000000");
-		$color_text_secondary = Helper::get_option("color_text_secondary", "#666666");
-		$color_accent = Helper::get_option("color_accent", "#60B665");
-		
+		$color_text_secondary = Helper::get_option("color_text_secondary", "#767676");
+		$color_button_primary = Helper::get_option("color_button_primary", "#3D854F");
+		$color_button_secondary = Helper::get_option("color_button_secondary", "#767676");
 
 		?>
 		<style>
 			.cookiefox{
 				--cookiefox--font-family: <?php echo $font; ?>;
 				--cookiefox--background: <?php echo esc_html($color_background); ?>;
-				--cookiefox--color-primary: <?php echo esc_html($color_text_primary); ?>;
-				--cookiefox--color-secondary: <?php echo esc_html($color_text_secondary); ?>;
-				--cookiefox--color-accent: <?php echo esc_html($color_accent); ?>;
+				--cookiefox--color-text-primary: <?php echo esc_html($color_text_primary); ?>;
+				--cookiefox--color-text-secondary: <?php echo esc_html($color_text_secondary); ?>;
+				--cookiefox--color-button-primary: <?php echo esc_html($color_button_primary); ?>;
+				--cookiefox--color-button-secondary: <?php echo esc_html($color_button_secondary); ?>;
 				--cookiefox__button--border-radius: <?php echo esc_html($border_radius); ?>;
 			}
 		</style>
@@ -146,6 +147,8 @@ class Frontend {
 				}
 			}
 		}
+		
+		$data = Helper::merge_default_settings($data);
 		
 		$data = apply_filters( 'cookiefox_frontend_prepare_data', $data );
 		
