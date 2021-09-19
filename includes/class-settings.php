@@ -98,7 +98,7 @@ class Settings {
 			'desc' => __('Disabling this option could violate the privacy laws in your country. Use with caution.', 'cookiefox'),
 			'id' => 'notice_button_decline_type',
 			'type' => 'select',
-			'default' => 'text',
+			'default' => 'button',
 			'options' => array(
 				'none' => __('None', 'cookiefox'),
 				'text' => __('Text', 'cookiefox'),
@@ -341,7 +341,7 @@ class Settings {
 		
 		$settings = get_option("cookiefox", array());
 		
-		Helper::merge_default_settings($settings);
+		$settings = Helper::merge_default_settings($settings);
 					
 		update_option("cookiefox", $settings, true);
 	}

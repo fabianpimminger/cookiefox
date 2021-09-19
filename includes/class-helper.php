@@ -36,7 +36,7 @@ class Helper {
 			'notice_title' => __('Privacy Settings', 'cookiefox'),
 			'notice_text' => __('We use cookies to improve your experience on our site. To learn more, view our privacy policy.', 'cookiefox'),
 			'notice_button_accept' => __('Accept', 'cookiefox'),
-			'notice_button_decline_type' => 'text',
+			'notice_button_decline_type' => 'button',
 			'notice_button_decline' => __('Decline', 'cookiefox'),
 			'block_embeds' => 'off',
 			'font' => 'theme',
