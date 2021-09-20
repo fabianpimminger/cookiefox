@@ -208,8 +208,8 @@
 
 
 .cookiefox{
-	--cookiefox--color-primary: #000000;
-	--cookiefox--color-secondary: #767676;
+	--cookiefox--color-text-primary: #000000;
+	--cookiefox--color-text-secondary: #767676;
 	--cookiefox--color-button-primary: #3d854f;
 	--cookiefox--color-button-secondary: #767676;
 	--cookiefox--background: #ffffff;
@@ -236,7 +236,7 @@
 	font-size: var(--cookiefox--font-size);
 	font-family: var(--cookiefox-font-family);
 	line-height: var(--cookiefox--line-height);
-	color: var(--cookiefox--color-primary);
+	color: var(--cookiefox--color-text-primary);
 	
 	@media(max-width: 640px){
 		font-size: var(--cookiefox--font-size-mobile);
@@ -346,7 +346,7 @@
 	
 	a{
 		text-decoration: underline;
-		color: var(--cookiefox--color-primary);
+		color: var(--cookiefox--color-text-primary);
 		
 		&:visited{
 			color: inherit;
@@ -354,7 +354,7 @@
 		
 		&:hover{
 			text-decoration: none;
-			color: var(--cookiefox--color-primary);
+			color: var(--cookiefox--color-text-primary);
 		}
 	}
 }
@@ -401,8 +401,8 @@
 		color: var(--cookiefox--background) !important;
 		
 		&:hover{
-			background-color: var(--cookiefox--color-primary) !important;
-			border: 1px solid var(--cookiefox--color-primary) !important;
+			background-color: var(--cookiefox--color-text-primary) !important;
+			border: 1px solid var(--cookiefox--color-text-primary) !important;
 		}
 	}
 }
@@ -414,8 +414,8 @@
 		color: var(--cookiefox--background) !important;
 		
 		&:hover{
-			background-color: var(--cookiefox--color-primary) !important;
-			border: 1px solid var(--cookiefox--color-primary) !important;
+			background-color: var(--cookiefox--color-text-primary) !important;
+			border: 1px solid var(--cookiefox--color-text-primary) !important;
 			color: var(--cookiefox--background) !important;
 		}
 	}	
@@ -423,14 +423,14 @@
 	&.is-text{
 		border: 1px solid transparent !important;
 		background-color: transparent !important;
-		color: var(--cookiefox--color-secondary) !important;
+		color: var(--cookiefox--color-button-secondary) !important;
 		background-color: transparent;
 		transition: color 0.15s ease-in-out;
 	
 		&:hover{
 			border: 1px solid transparent !important;
 			background-color: transparent !important;
-			color: var(--cookiefox--color-primary) !important;
+			color: var(--cookiefox--color-text-primary) !important;
 		}
 	}
 }
