@@ -4,7 +4,7 @@ Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -49,6 +49,15 @@ Please note that you are responsible for complying with your local and internati
 6. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+
+= 1.3.1 =
+* Fixed an issue that displayed a wrong primary text color
+
+= 1.3.0 =
+* More sensible default colors regarding color contrast
+* Option for decline action to be a button (now the default)
+* Fixed an issue where wrong language was loaded for default settings
 
 = 1.2.1 =
 * Added feature to mask script to circumvent server security measures when sending script tags in POST requests.
