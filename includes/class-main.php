@@ -42,12 +42,17 @@ class Main {
 	private function includes() {
 		include_once COOKIEFOX_ABSPATH . 'includes/class-helper.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-admin.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-cmb2.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-post_type.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-settings.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-frontend.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-sample_content.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-shortcode.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-embeds.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-internationalization.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-rest_api.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/cmb2/class-cmb2-toggle.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/cmb2/class-cmb2-button.php';
 	}
 
 	public static function plugin_url() {

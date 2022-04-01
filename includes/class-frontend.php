@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 
 class Frontend {
 	public function __construct() {
-		
 		add_action("wp", array($this, "init_frontend"));
+		add_filter('cookiefox_prepare_scripts', array($this, "prepare_scripts"));
 	}
 	
 	public function init_frontend() {
@@ -150,6 +150,15 @@ class Frontend {
 		
 		$data = Helper::merge_default_settings($data);
 		
+		$data["api_base"] = get_rest_url();
+		$data["lang"] = Helper::get_language();
+		$data["notice_button_back"] = __("Back", "cookiefox");
+		$data["notice_button_cookie_information"] = __("Cookie information", "cookiefox");
+		$data["notice_text_name"] = __("Name", "cookiefox");
+		$data["notice_text_vendor"] = __("Vendor", "cookiefox");
+		$data["notice_text_purpose"] = __("Purpose", "cookiefox");
+		$data["notice_text_privacy_policy"] = __("Privacy Policy", "cookiefox");
+		$data["notice_text_cookies"] = __("Cookies", "cookiefox");
 		$data = apply_filters( 'cookiefox_frontend_prepare_data', $data );
 		
 		return $data;
@@ -157,6 +166,14 @@ class Frontend {
 	
 	private function unmask_scripts($html) {
 		return str_replace("%script%", "script", $html);
+	}
+	
+	public function prepare_scripts($html) {
+		if(defined('COOKIEFOX_UNMASK_SCRIPTS') && COOKIEFOX_UNMASK_SCRIPTS == true) {
+			return $this->unmask_scripts($html);
+		}
+		
+		return $html;
 	}
 	
 	private function privacy_notice_enabled() {

@@ -14,9 +14,35 @@ class Internationalization {
 		add_action("init", array($this, "init"));
 		add_filter("cookiefox_settings_field_desc", array($this, "settings_field_desc"), 10, 3);
 		add_filter("cookiefox_settings_title_desc", array($this, "settings_title_desc"), 10, 3);
+		add_action("cookiefox_internationalization_init", array($this, "rest_init"));
 	}
 	
 	public function init() {
+	}
+	
+	public function rest_init(){
+		if(defined("REST_REQUEST")){
+			if($this->is_multilang_plugin_active()){
+				if($this->is_polylang_active()){
+			    global $polylang;
+					
+					$current_language = pll_default_language();
+					
+			    if (isset($_GET['lang'])) {
+						$current_language = $_GET['lang'];
+				    $default = pll_default_language();
+				    $langs = pll_languages_list();
+							
+				    if (!in_array($current_language, $langs)) {
+				        $cur_lang = $default;
+				    }
+
+			    }
+								
+			    $polylang->curlang = $polylang->model->get_language($current_language);			
+				}
+			}
+		}
 	}
 
 	public function settings_title_desc($value, $field) {

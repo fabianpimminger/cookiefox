@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2021-04-06T11:53:27+00:00\n"
-"PO-Revision-Date: 2021-04-06 13:54+0200\n"
+"POT-Creation-Date: 2022-03-28T14:54:29+00:00\n"
+"PO-Revision-Date: 2022-03-28 16:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Domain: cookiefox\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: cookiefox\n"
 
 #. Plugin Name of the plugin
 msgid "CookieFox"
@@ -43,19 +43,73 @@ msgstr ""
 "externen Inhalten wird nach Zustimmung in den Datenschutz-Einstellungen "
 "aktiviert."
 
-#: includes/class-embeds.php:45 includes/class-settings.php:331
+#: includes/class-embeds.php:45 includes/class-helper.php:20
 msgid "Privacy Settings"
 msgstr "Datenschutz-Einstellungen"
 
+#: includes/class-frontend.php:155
+msgid "Back"
+msgstr "Zurück"
+
+#: includes/class-frontend.php:156
+msgid "Cookie information"
+msgstr "Cookie Informationen"
+
+#: includes/class-frontend.php:157
+msgid "Name"
+msgstr "Name"
+
+#: includes/class-frontend.php:158 includes/class-post_type.php:169
+msgid "Vendor"
+msgstr "Anbieter"
+
+#: includes/class-frontend.php:159
+msgid "Purpose"
+msgstr "Zweck"
+
+#: includes/class-frontend.php:160
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: includes/class-frontend.php:161 includes/class-post_type.php:47
+#: includes/class-post_type.php:48 includes/class-post_type.php:226
+#: includes/class-settings.php:212
+msgid "Cookies"
+msgstr "Cookies"
+
+#: includes/class-helper.php:21
+msgid ""
+"We use cookies to improve your experience on our site. To learn more, view "
+"our privacy policy."
+msgstr ""
+"Wir verwenden Cookies um dir die bestmögliche Erfahrung auf unserer Seite zu "
+"bieten. Um mehr zu erfahren, schau dir die Datenschutzerklärung an."
+
+#: includes/class-helper.php:22
+msgid "Accept"
+msgstr "Akzeptieren"
+
+#: includes/class-helper.php:23
+msgid "Save"
+msgstr "Speichern"
+
+#: includes/class-helper.php:24
+msgid "Manage cookies"
+msgstr "Cookies verwalten"
+
+#: includes/class-helper.php:26
+msgid "Decline"
+msgstr "Ablehnen"
+
 #. translators: %2$s is the closing a tag
-#: includes/class-internationalization.php:32
+#: includes/class-internationalization.php:58
 msgid ""
 "Translation of this section is available via WPML in %1$sString Translation"
 "%2$s."
 msgstr "Übersetze diesen Bereich in WPML unter %1$sString Translation%2$s."
 
 #. translators: %2$s is the closing a tag
-#: includes/class-internationalization.php:41
+#: includes/class-internationalization.php:67
 msgid ""
 "Translation of this section is available via Polylang in %1$sStrings "
 "translations%2$s."
@@ -64,42 +118,356 @@ msgstr ""
 "Zeichenketten%2$s."
 
 #. translators: %2$s is the closing a tag
-#: includes/class-internationalization.php:57
+#: includes/class-internationalization.php:83
 msgid "Translate this field in %1$sString Translation%2$s."
 msgstr "Übersetze dieses Feld in %1$sString Translation%2$s."
 
 #. translators: %2$s is the closing a tag
-#: includes/class-internationalization.php:66
+#: includes/class-internationalization.php:92
 msgid "Translate this field in %1$sStrings translations%2$s."
 msgstr "Übersetze dieses Feld in %1$sÜbersetzungen von Zeichenketten%2$s."
 
-#: includes/class-settings.php:20
+#: includes/class-post_type.php:45
+msgctxt "Post Type General Name"
+msgid "Cookies"
+msgstr "Cookies"
+
+#: includes/class-post_type.php:46
+msgctxt "Post Type Singular Name"
+msgid "Cookie"
+msgstr "Cookie"
+
+#: includes/class-post_type.php:49
+msgid "Cookie Archives"
+msgstr "Cookie Archiv"
+
+#: includes/class-post_type.php:50
+msgid "Cookie Attributes"
+msgstr "Cookie Attribute"
+
+#: includes/class-post_type.php:51
+msgid "Parent Item:"
+msgstr "Eltern Item:"
+
+#: includes/class-post_type.php:52
+msgid "All Cookies"
+msgstr "Alle Cookies"
+
+#: includes/class-post_type.php:53
+msgid "Add New Cookie"
+msgstr "Cookie hinzufügen"
+
+#: includes/class-post_type.php:54
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: includes/class-post_type.php:55
+msgid "New Cookie"
+msgstr "Neuer Cookie"
+
+#: includes/class-post_type.php:56
+msgid "Edit Cookie"
+msgstr "Cookie bearbeiten"
+
+#: includes/class-post_type.php:57
+msgid "Update Cookie"
+msgstr "Cookie aktualisieren"
+
+#: includes/class-post_type.php:58
+msgid "View Cookie"
+msgstr "Cookie ansehen"
+
+#: includes/class-post_type.php:59
+msgid "View Cookies"
+msgstr "Cookies ansehen"
+
+#: includes/class-post_type.php:60
+msgid "Search Cookie"
+msgstr "Cookie suchen"
+
+#: includes/class-post_type.php:61
+msgid "Not found"
+msgstr "Nicht gefunden"
+
+#: includes/class-post_type.php:62
+msgid "Not found in Trash"
+msgstr "Im Papierkorb nicht gefunden"
+
+#: includes/class-post_type.php:63
+msgid "Insert into cookie"
+msgstr "In Cookie einfügen"
+
+#: includes/class-post_type.php:64
+msgid "Uploaded to this cookie"
+msgstr "Zu diesem Cookie hochgeladen"
+
+#: includes/class-post_type.php:65
+msgid "Cookies list"
+msgstr "Cookieliste"
+
+#: includes/class-post_type.php:66
+msgid "Cookies list navigation"
+msgstr "Cookieliste Navigation"
+
+#: includes/class-post_type.php:67
+msgid "Filter cookies list"
+msgstr "Cookieliste filtern"
+
+#: includes/class-post_type.php:68
+msgid "Cookie published."
+msgstr "Cookie veröffentlicht."
+
+#: includes/class-post_type.php:69
+msgid "Cookie updated."
+msgstr "Cookie aktualisiert."
+
+#: includes/class-post_type.php:72
+msgid "Cookie"
+msgstr "Cookie"
+
+#: includes/class-post_type.php:98
+msgctxt "Taxonomy General Name"
+msgid "Categories"
+msgstr "Kategorien"
+
+#: includes/class-post_type.php:99
+msgctxt "Taxonomy Singular Name"
+msgid "Category"
+msgstr "Kategorie"
+
+#: includes/class-post_type.php:100
+msgid "Categories"
+msgstr "Kategorien"
+
+#: includes/class-post_type.php:101
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: includes/class-post_type.php:102
+msgid "Parent Category"
+msgstr "Eltern-Kategorie"
+
+#: includes/class-post_type.php:103
+msgid "Parent Category:"
+msgstr "Eltern-Kategorie:"
+
+#: includes/class-post_type.php:104
+msgid "New Category Name"
+msgstr "Neuer Kategorie Name"
+
+#: includes/class-post_type.php:105
+msgid "Add New Category"
+msgstr "Neue Kategorie hinzufügen"
+
+#: includes/class-post_type.php:106
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+#: includes/class-post_type.php:107
+msgid "Update Category"
+msgstr "Kategorie aktualisieren"
+
+#: includes/class-post_type.php:108
+msgid "View Category"
+msgstr "Kategorie ansehen"
+
+#: includes/class-post_type.php:109
+msgid "Search Categories"
+msgstr "Kategorien suchen"
+
+#: includes/class-post_type.php:110
+msgid "No categories"
+msgstr "Keine Kategorien"
+
+#: includes/class-post_type.php:131
+msgid "Cookie Category"
+msgstr "Cookie Kategorie"
+
+#: includes/class-post_type.php:147
+msgid "There are no categories available."
+msgstr "Es gibt keine Kategorien."
+
+#: includes/class-post_type.php:159
+msgid "Cookie Information"
+msgstr "Cookie Informationen"
+
+#: includes/class-post_type.php:175
+msgid "Description"
+msgstr "Beschreibung"
+
+#: includes/class-post_type.php:181
+msgid "Privacy Policy URL"
+msgstr "Datenschutzerklärung URL"
+
+#: includes/class-post_type.php:188 includes/class-settings.php:176
+msgid "Scripts & Cookies"
+msgstr "Skripte & Cookies"
+
+#: includes/class-post_type.php:205 includes/class-settings.php:183
+msgid "Opt-In Scripts"
+msgstr "Opt-In Skripte"
+
+#: includes/class-post_type.php:206 includes/class-settings.php:184
+msgid ""
+"These scripts will be executed when the user opts in to the use of cookies."
+msgstr ""
+"Diese Skripte werden ausgeführt wenn der User der Nutzung von Cookies "
+"zustimmt."
+
+#: includes/class-post_type.php:212 includes/class-settings.php:194
+msgid "Opt-Out Scripts"
+msgstr "Opt-Out Skripte"
+
+#: includes/class-post_type.php:213 includes/class-settings.php:195
+msgid ""
+"These scripts will be executed when the user declines the use of cookies."
+msgstr ""
+"Diese Skripte werden ausgeführt wenn der User die Nutzung von Cookies "
+"ablehnt."
+
+#: includes/class-post_type.php:219 includes/class-settings.php:205
+msgid "Always-On Scripts"
+msgstr "Always-On Skripte"
+
+#: includes/class-post_type.php:220 includes/class-settings.php:206
+msgid "These scripts will always be executed."
+msgstr "Diese Skripte werden immer ausgeführt."
+
+#: includes/class-post_type.php:227 includes/class-settings.php:213
+msgid ""
+"These cookies will be removed after opt-out. Seperate multiple cookies by a "
+"comma."
+msgstr ""
+"Diese Cookies werden nach einem Opt-Out entfernt. Mehrere Cookies mittels "
+"Komma trennen."
+
+#: includes/class-post_type.php:245
+msgid "Always On"
+msgstr "Always-On"
+
+#: includes/class-post_type.php:246
+msgid "If activated, cookies in this category are always enabled."
+msgstr "Wenn aktiviert, werden Cookies in dieser Kategorie immer aktiviert."
+
+#: includes/class-post_type.php:252 includes/class-post_type.php:263
+#: includes/class-post_type.php:343
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: includes/class-post_type.php:268
+msgid "Integrations"
+msgstr "Integrationen"
+
+#: includes/class-post_type.php:274
+msgid "Unblock Embedded Content"
+msgstr "Eingebettete Inhalte freischalten"
+
+#: includes/class-post_type.php:275
+msgid "If activated, embeds will be unblocked when this category is enabled."
+msgstr ""
+"Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
+
+#: includes/class-sample_content.php:22
+msgid "Functional"
+msgstr "Funktional"
+
+#: includes/class-sample_content.php:24
+msgid "Essential cookies that are required for the website to function."
+msgstr ""
+"Essentielle Cookies, die zum Betrieb und Nutzung der Website notwendig sind."
+
+#: includes/class-sample_content.php:30
+msgid "Statistics"
+msgstr "Statistik"
+
+#: includes/class-sample_content.php:32
+msgid ""
+"Statisticial cookies track user behaviour and are used to collect "
+"information anonymously. This helps us to understand how our visitors use "
+"this website."
+msgstr ""
+"Statistik Cookies zeichnen das Nutzerverhalten auf und werden zur Sammlung "
+"von anonymen Informationen verwendet. Das hilft uns zu verstehe, wie diese "
+"Website genutzt wird."
+
+#: includes/class-sample_content.php:38
+msgid "Marketing"
+msgstr "Marketing"
+
+#: includes/class-sample_content.php:40
+msgid ""
+"Marketing cookies are used by third-party advertisers and publishers to "
+"display personalized ads and support online marketing. They do this by "
+"tracking visitors across websites."
+msgstr ""
+"Marketing Cookies werden von Drittanbietern und Publishern im Online "
+"Marketing verwendet um personalisierte Werbung anzuzeigen. Sie tun dies, "
+"indem sie Besucher über Websites hinweg verfolgen."
+
+#: includes/class-sample_content.php:46
+msgid "External Media"
+msgstr "Externe Medien"
+
+#: includes/class-sample_content.php:48
+msgid ""
+"External content from video and social media platforms can track visitors "
+"across websites when they are embedded."
+msgstr ""
+"Externe Inhalte von Video- und Social Media-Plattformen können Besucher über "
+"Websites hinweg verfolgen, wenn diese eingebettet werden."
+
+#: includes/class-sample_content.php:63
+msgid "This is a sample cookie installed by the CookieFox plugin"
+msgstr "Das ist ein Beispiel-Cookie, der vom CookieFox Plugin erstellt wurde"
+
+#: includes/class-sample_content.php:111
+msgid ""
+"The sample content has been created. Check it out by visiting the Cookies "
+"and Categories sections."
+msgstr ""
+"Beispiel-Inhalte wurden erstellt. Sieh sie dir im Cookie und Kategorien Tab "
+"an."
+
+#: includes/class-settings.php:23
 msgid "CookieFox Settings"
 msgstr "CookieFox Einstellungen"
 
-#: includes/class-settings.php:24
+#: includes/class-settings.php:27
 msgid "Cookie Notice"
 msgstr "Cookie-Hinweis"
 
-#: includes/class-settings.php:30
+#: includes/class-settings.php:33
 msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
 
-#: includes/class-settings.php:36
+#: includes/class-settings.php:39
 msgid "Enable Cookie Notice"
 msgstr "Cookie-Hinweis aktivieren"
 
-#: includes/class-settings.php:38
+#: includes/class-settings.php:41
 msgid "The privacy notice will be displayed when this option is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
-#: includes/class-settings.php:43
+#: includes/class-settings.php:46
+msgid "Consent Type"
+msgstr "Einwilligungsart"
+
+#: includes/class-settings.php:48
+msgid ""
+"Simple consent only provides a general accept/deny option. Category consent "
+"offers separate consent by cookie categories."
+msgstr ""
+"Bei der Option Einfache Einwilligung gibt es nur eine Option zum Annehmen "
+"und Ablehnen der Cookies. Kategorie-Einwilligung bietet separate "
+"Einwilligungen je Cookie-Kategorie."
+
+#: includes/class-settings.php:57
 msgid "Disable on Privacy Page"
 msgstr "Auf Datenschutzerklärung deaktivieren"
 
 #. translators: %2$s is the closing a tag
-#: includes/class-settings.php:48
+#: includes/class-settings.php:62
 msgid ""
 "Hides the privacy notice on the privacy page configured in Settings -> "
 "%1$sPrivacy%2$s."
@@ -107,11 +475,28 @@ msgstr ""
 "Deaktiviert den Datenschutz-Hinweis auf der Datenschutzerklärung, die in "
 "Einstellungen -> %1$sDatenschutz%2$s ausgewählt wurde."
 
-#: includes/class-settings.php:57
+#: includes/class-settings.php:74
+msgid "Sample Content"
+msgstr "Beispiel-Inhalte"
+
+#: includes/class-settings.php:76
+msgid ""
+"Create sample content to get you started faster. Includes a sample cookie "
+"and four categories (Functional, Statistics, Marketing and External Media)."
+msgstr ""
+"Erstellt Beispiel-Inhalte um schneller mit CookieFox starten zu können. Es "
+"werden ein Beispiel-Cookie und vier Kategorien (Funktional, Statistik, "
+"Marketing und Externe Medien) erstellt."
+
+#: includes/class-settings.php:79
+msgid "Install Sample Content"
+msgstr "Beispiel-Inhalte erzeugen"
+
+#: includes/class-settings.php:84
 msgid "Privacy Notice"
 msgstr "Datenschutz-Hinweis"
 
-#: includes/class-settings.php:58
+#: includes/class-settings.php:85
 msgid ""
 "The privacy notice can either be displayed as a modal or banner. Modals "
 "obscure the content while being displayed and require explicit user action "
@@ -123,35 +508,43 @@ msgstr ""
 "Nutzerinteraktion. Banner sind auf der unteren Seite des Browsers fixiert "
 "und Nutzer*innen können die Inhalte auch ohne Interaktion ansehen."
 
-#: includes/class-settings.php:64
+#: includes/class-settings.php:91
 msgid "Display Privacy Notice as"
 msgstr "Anzeigen als"
 
-#: includes/class-settings.php:70
+#: includes/class-settings.php:97
 msgid "Banner"
 msgstr "Banner"
 
-#: includes/class-settings.php:71
+#: includes/class-settings.php:98
 msgid "Modal"
 msgstr "Modal"
 
-#: includes/class-settings.php:76
+#: includes/class-settings.php:103
 msgid "Title"
 msgstr "Überschrift"
 
-#: includes/class-settings.php:83
+#: includes/class-settings.php:110 includes/class-settings.php:153
 msgid "Text"
 msgstr "Text"
 
-#: includes/class-settings.php:90
+#: includes/class-settings.php:117
 msgid "Accept Button Text"
 msgstr "Akzeptieren Button Text"
 
-#: includes/class-settings.php:97
-msgid "Enable Decline Button"
-msgstr "Ablehnen Button aktivieren"
+#: includes/class-settings.php:124
+msgid "Save Button Text"
+msgstr "Speichern Button Text"
 
-#: includes/class-settings.php:98
+#: includes/class-settings.php:135
+msgid "Manage Cookies Button Text"
+msgstr "Cookies Verwalten Button Text"
+
+#: includes/class-settings.php:146
+msgid "Decline Button"
+msgstr "Ablehnen Button"
+
+#: includes/class-settings.php:147
 msgid ""
 "Disabling this option could violate the privacy laws in your country. Use "
 "with caution."
@@ -159,15 +552,19 @@ msgstr ""
 "Vorsicht! Wird diese Option deaktiviert könnte die Seite gegen die "
 "Datenschutz-Gesetze in manchen Ländern verstoßen."
 
-#: includes/class-settings.php:104
+#: includes/class-settings.php:152
+msgid "None"
+msgstr "Keine"
+
+#: includes/class-settings.php:154
+msgid "Button"
+msgstr "Button"
+
+#: includes/class-settings.php:159
 msgid "Decline Button Text"
 msgstr "Ablehnen Button Text"
 
-#: includes/class-settings.php:121
-msgid "Scripts & Cookies"
-msgstr "Skripte & Cookies"
-
-#: includes/class-settings.php:122
+#: includes/class-settings.php:177
 msgid ""
 "You can set the scripts to be executed when the user accepts or declines the "
 "use of cookies. The scripts will be executed directly after consent is given "
@@ -177,53 +574,11 @@ msgstr ""
 "Ablehnen der Cookies ausgeführt werden. Diese werden direkt nach dem Consent "
 "ausgeführt und anschließend bei jedem Seitenzugriff."
 
-#: includes/class-settings.php:128
-msgid "Opt-In Scripts"
-msgstr "Opt-In Skripte"
-
-#: includes/class-settings.php:129
-msgid ""
-"These scripts will be executed when the user opts in to the use of cookies."
-msgstr ""
-"Diese Skripte werden ausgeführt wenn der User der Nutzung von Cookies "
-"zustimmt."
-
-#: includes/class-settings.php:135
-msgid "Opt-Out Scripts"
-msgstr "Opt-Out Skripte"
-
-#: includes/class-settings.php:136
-msgid ""
-"These scripts will be executed when the user declines the use of cookies."
-msgstr ""
-"Diese Skripte werden ausgeführt wenn der User die Nutzung von Cookies "
-"ablehnt."
-
-#: includes/class-settings.php:142
-msgid "Always-On Scripts"
-msgstr "Always-On Skripte"
-
-#: includes/class-settings.php:143
-msgid "These scripts will always be executed."
-msgstr "Diese Skripte werden immer ausgeführt."
-
-#: includes/class-settings.php:149
-msgid "Cookies"
-msgstr "Cookies"
-
-#: includes/class-settings.php:150
-msgid ""
-"These cookies will be removed after opt-out. Seperate multiple cookies by a "
-"comma."
-msgstr ""
-"Diese Cookies werden nach einem Opt-Out entfernt. Mehrere Cookies mittels "
-"Komma trennen."
-
-#: includes/class-settings.php:156
+#: includes/class-settings.php:223
 msgid "Embedded Content"
 msgstr "Eingebettete Inhalte"
 
-#: includes/class-settings.php:157
+#: includes/class-settings.php:224
 msgid ""
 "Embedded content from external sites such as Youtube-Videos and Tweets can "
 "violate your users' privacy. CookieFox allows users to opt-in."
@@ -232,11 +587,19 @@ msgstr ""
 "können die Privatsphäre der Nutzer*innen verletzen. Deswegen bietet "
 "CookieFox eine Möglichkeit zum Opt-In."
 
-#: includes/class-settings.php:163
+#: includes/class-settings.php:232
+msgid ""
+"When using category-based consent, you should activate \"Unblock Embedded "
+"Content\" at least once in the category settings."
+msgstr ""
+"Wenn die Einwilligung basierend auf Kategorien erfolgt, sollte mindestens in "
+"einer Kategorie die Option zum Freischalten der Embeds aktiviert sein."
+
+#: includes/class-settings.php:236
 msgid "Block Auto-Embeds"
 msgstr "Auto-Embeds blockieren"
 
-#: includes/class-settings.php:164
+#: includes/class-settings.php:237
 msgid ""
 "Enable this option to block external content from being automatically "
 "embedded. After accepting the privacy notice, all content will be embedded."
@@ -244,11 +607,11 @@ msgstr ""
 "Aktiviere diese Option um externe Embeds zu blockieren. Nach dem Opt-In "
 "werden die Inhalte eingebettet."
 
-#: includes/class-settings.php:170
+#: includes/class-settings.php:243
 msgid "Design"
 msgstr "Design"
 
-#: includes/class-settings.php:171
+#: includes/class-settings.php:244
 msgid ""
 "Basic design customizations are available in this section. Advanced "
 "customization is available through CSS variables."
@@ -256,78 +619,82 @@ msgstr ""
 "In diesem Bereich können einfache Design-Einstellungen angepasst werden. "
 "Weitere Möglichkeiten gibt es mittels CSS Variablen."
 
-#: includes/class-settings.php:181
+#: includes/class-settings.php:254
 msgid "Font"
 msgstr "Schriftart"
 
-#: includes/class-settings.php:182
+#: includes/class-settings.php:255
 msgid ""
 "Choose \"Theme Font\" to automatically use the font of your active theme."
 msgstr ""
 "Wähle \"Theme-Schriftart“ um automatisch die Schriftart des aktuellen Themes "
 "zu verwenden."
 
-#: includes/class-settings.php:188
+#: includes/class-settings.php:261
 msgid "Theme Font"
 msgstr "Theme-Schriftart"
 
-#: includes/class-settings.php:189
+#: includes/class-settings.php:262
 msgid "Browser/System Font"
 msgstr "Browser/System Schriftart"
 
-#: includes/class-settings.php:202
+#: includes/class-settings.php:275
 msgid "Button Style"
 msgstr "Button-Style"
 
-#: includes/class-settings.php:208
+#: includes/class-settings.php:281
 msgid "Plain"
 msgstr "Gerade Ecken"
 
-#: includes/class-settings.php:209
+#: includes/class-settings.php:282
 msgid "Rounded Corners"
 msgstr "Abgerundete Ecken"
 
-#: includes/class-settings.php:210
+#: includes/class-settings.php:283
 msgid "Round Corners"
 msgstr "Runder Button"
 
-#: includes/class-settings.php:215
+#: includes/class-settings.php:288
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
-#: includes/class-settings.php:226
+#: includes/class-settings.php:299
 msgid "Primary Text Color"
 msgstr "Primäre Textfarbe"
 
-#: includes/class-settings.php:237
+#: includes/class-settings.php:310
 msgid "Secondary Text Color"
 msgstr "Sekundäre Textfarbe"
 
-#: includes/class-settings.php:248
-msgid "Accent Color"
-msgstr "Akzentfarbe"
+#: includes/class-settings.php:321
+msgid "Primary Button Color"
+msgstr "Primäre Buttonfarbe"
 
-#: includes/class-settings.php:259
+#: includes/class-settings.php:332
+msgid "Secondary Button Color"
+msgstr "Sekundäre Buttonfarbe"
+
+#: includes/class-settings.php:343
 msgid "Consent Cookie Settings"
 msgstr "Consent Cookie-Einstellungen"
 
-#: includes/class-settings.php:260
+#: includes/class-settings.php:344
 msgid "CookieFox persists consent information in the browser using a Cookie."
 msgstr "CookieFox speichert die Consent Informationen in einem Browser Cookie."
 
-#: includes/class-settings.php:266
+#: includes/class-settings.php:350
 msgid "Cookie Name"
 msgstr "Cookie Name"
 
-#: includes/class-settings.php:267
+#: includes/class-settings.php:351
 msgid "The name of the consent cookie."
 msgstr "Der Name des Consent Cookies."
 
-#: includes/class-settings.php:273
+#: includes/class-settings.php:357
 msgid "Cookie Domain"
 msgstr "Cookie Domain"
 
-#: includes/class-settings.php:274
+#: includes/class-settings.php:358
 msgid ""
 "The domain that the cookie is available to. Leave empty to use the default "
 "domain of your site."
@@ -335,19 +702,19 @@ msgstr ""
 "Die Domain des Cookies. Leer lassen um die Standard-Domain der Seite zu "
 "verwenden."
 
-#: includes/class-settings.php:280
+#: includes/class-settings.php:364
 msgid "Expiration Time in Days"
 msgstr "Ablaufzeit in Tagen"
 
-#: includes/class-settings.php:281
+#: includes/class-settings.php:365
 msgid "The number of days the consent cookie is stored."
 msgstr "Die Anzahl der Tage nach denen der Consent Cookie abläuft."
 
-#: includes/class-settings.php:288
+#: includes/class-settings.php:372
 msgid "Advanced Settings & Performance"
 msgstr "Fortgeschrittene Einstellungen & Performance"
 
-#: includes/class-settings.php:289
+#: includes/class-settings.php:373
 msgid ""
 "These settings can be used to customize some performance characteristics of "
 "CookieFox."
@@ -355,11 +722,11 @@ msgstr ""
 "Diese Einstellungen können verwendet werden um die Performance von CookieFox "
 "anzupassen."
 
-#: includes/class-settings.php:295
+#: includes/class-settings.php:379
 msgid "Stylesheet"
 msgstr "Stylesheet"
 
-#: includes/class-settings.php:296
+#: includes/class-settings.php:380
 msgid ""
 "CSS can be included via an external stylesheet, an inline style-tag or not "
 "be included at all."
@@ -367,23 +734,23 @@ msgstr ""
 "CSS kann über einen externen Stylesheet, einen inline Style-Tag oder gar "
 "nicht eingebunden werden."
 
-#: includes/class-settings.php:302
+#: includes/class-settings.php:386
 msgid "External Stylesheet"
 msgstr "Externer Stylesheet"
 
-#: includes/class-settings.php:303
+#: includes/class-settings.php:387
 msgid "Inline CSS"
 msgstr "Inline CSS"
 
-#: includes/class-settings.php:304
+#: includes/class-settings.php:388
 msgid "Do not include styles"
 msgstr "Keinen Stylesheet einbinden"
 
-#: includes/class-settings.php:309
+#: includes/class-settings.php:393
 msgid "Javascript"
 msgstr "Javascript"
 
-#: includes/class-settings.php:310
+#: includes/class-settings.php:394
 msgid ""
 "The modern version has a smaller file size and is more performant than the "
 "legacy version. If you need to support legacy browsers such as Internet "
@@ -394,33 +761,35 @@ msgstr ""
 "Browser wie zum Beispiel den Internet Explorer 11 benötigt wird, sollte die "
 "Version für Legacy Browser ausgewählt werden."
 
-#: includes/class-settings.php:316
+#: includes/class-settings.php:400
 msgid "Modern Browsers"
 msgstr "Moderne Browser"
 
-#: includes/class-settings.php:317
+#: includes/class-settings.php:401
 msgid "Legacy (including IE11)"
 msgstr "Legacy (inkl. IE11)"
-
-#: includes/class-settings.php:332
-msgid ""
-"We use cookies to improve your experience on our site. To learn more, view "
-"our privacy policy."
-msgstr ""
-"Wir verwenden Cookies um dir die bestmögliche Erfahrung auf unserer Seite zu "
-"bieten. Um mehr zu erfahren, schau dir die Datenschutzerklärung an."
-
-#: includes/class-settings.php:333
-msgid "Accept"
-msgstr "Akzeptieren"
-
-#: includes/class-settings.php:335
-msgid "Decline"
-msgstr "Ablehnen"
 
 #: includes/class-shortcode.php:28
 msgid "Show Privacy Settings"
 msgstr "Datenschutz-Einstellungen anzeigen"
+
+#~ msgid "functional"
+#~ msgstr "functional"
+
+#~ msgid "statistics"
+#~ msgstr "statistics"
+
+#~ msgid "marketing"
+#~ msgstr "marketing"
+
+#~ msgid "external-media"
+#~ msgstr "external-media"
+
+#~ msgid "Enable Decline Button"
+#~ msgstr "Ablehnen Button aktivieren"
+
+#~ msgid "Accent Color"
+#~ msgstr "Akzentfarbe"
 
 #~ msgid ""
 #~ "The modern version has a smaller file size and should more performant "

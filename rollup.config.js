@@ -5,6 +5,7 @@ import { terser } from "rollup-plugin-terser";
 import { babel } from '@rollup/plugin-babel';
 import sveltePreprocess from 'svelte-preprocess'
 import css from 'rollup-plugin-css-only'
+import csso from 'postcss-csso';
 
 const production = !process.env.ROLLUP_WATCH
 const buildType = typeof process.env.ROLLUP_BUILD_TYPE !== "undefined" ? process.env.ROLLUP_BUILD_TYPE : "modern";
@@ -16,7 +17,10 @@ export default {
     format: 'iife',
 		name: 'app',
     dir: 'assets/frontend',
-  	entryFileNames: (buildType === "modern" ? "js/main.js" : "js/legacy.js")
+  	entryFileNames: (buildType === "modern" ? "js/main.js" : "js/legacy.js"),
+    globals: {
+      'svelte-focus-trap': 'svelteFocusTrap'
+    }
   },
   plugins: [
     svelte({
@@ -28,8 +32,10 @@ export default {
          postcss: {
            plugins: [
               require('autoprefixer')(),
-              require('cssnano')({
-                preset: 'default',
+              csso({
+                restructure: true,
+                forceMediaMerge: true,
+                comments: false
               })
             ]
          }

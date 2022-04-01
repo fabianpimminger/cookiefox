@@ -1,10 +1,18 @@
 <wpml-config>
+  <custom-types>
+      <custom-type translate="1">cookiefox_cookie</custom-type>
+  </custom-types>
+  <taxonomies>
+      <taxonomy translate="1">cookiefox_category</taxonomy>
+  </taxonomies>
 	<admin-texts>
 		<key name="cookiefox">
   		<key name="notice_title" />
   		<key name="notice_text" />
   		<key name="notice_button_accept" />
   		<key name="notice_button_decline" />
+  		<key name="notice_button_save" />
+  		<key name="notice_button_manage" />
 		</key>
 	</admin-texts>
 </wpml-config>

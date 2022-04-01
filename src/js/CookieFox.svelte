@@ -1,51 +1,29 @@
 <script>
 	export let data;
-	import * as Cookies from "js-cookie";
+	import { cookie, forceNotice } from './stores.js';
 	import { onMount } from 'svelte';
-
-	let cookie;
-	let forceNotice = false;
-	$: showNotice = (forceNotice || (cookie === undefined && !data.disabled_on_privacy_page));
+	import { injectElements, getContainer } from './functions.js';
+	import SingleConsent from './SingleConsent.svelte';
+	import CategoryConsent from './CategoryConsent.svelte';
+	import focusTrap from './focus-trap.js';
+	
+	let consentComponent;
+	let handleConsent;
+	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page));
 
 	onMount(() => {
 		alwaysOnScripts();
 		
-		if(isCrawler()){
-			cookie = {consent: false};
-			handleConsentChange();
-			return;
-		}
-		
-		cookie = Cookies.get(data.cookie_name);
-		if(cookie !== undefined){
-			cookie = JSON.parse(cookie);
-			handleConsentChange();
-			setCookie();
+		if(data.consent_type === "category"){
+			consentComponent = CategoryConsent;
+		} else {
+			consentComponent = SingleConsent;
 		}
 		
 		initAPI();
+
 	});
-	
-	function handleAccept() {
-		cookie = {consent: true};
-		forceNotice = false;
-		handleConsentChange();
-		setCookie();
-	}	
-	
-	function handleDecline() {
-		cookie = {consent: false};
-		forceNotice = false;
-		handleConsentChange();
-		setCookie();
-	}	
-	
-	function getContainer() {
-		var container = document.createElement("div");
-		container.style.display = "none"; 
-		return container
-	}
-	
+
 	function alwaysOnScripts() {
 		if(data.scripts_always !== undefined && data.scripts_always !== ""){
 			let container = getContainer();
@@ -53,160 +31,28 @@
 			injectElements(container.children);
 		}
 	}
-	
-	function handleConsentChange() {
-		var scripts = "";
-		
-		if(cookie.consent === true){
-			if(data.scripts_consent !== undefined && data.scripts_consent !== ""){
-				scripts += data.scripts_consent;
-			}
-			embedContent();
-		} else {
-			if(data.scripts_no_consent !== undefined && data.scripts_no_consent !== ""){
-				scripts += data.scripts_no_consent;
-			}
-			removeCookies();
-		}
-
-		if(scripts !== ""){
-			let container = getContainer();
-			container.innerHTML = scripts;
-			injectElements(container.children);
-		}
-	}
-	
-	function removeCookies() {
-		if(data.cookies === undefined || data.cookies === ""){
-			return;
-		}
-		var cookiesToRemove = data.cookies.split(",").map(cookie => cookie.trim());
-		
-		if(cookiesToRemove.length > 0){
-			var cookies = Object.keys(Cookies.get());
-			cookies = cookies.filter(element => cookiesToRemove.indexOf(element) !== -1);
-			if(cookies.length > 0){
-				cookies.forEach(function(name){
-					Cookies.remove(name);
-					Cookies.remove(name, {domain: "."+window.location.hostname});
-				});
-			}
-		}
-	}
-	
-	function embedContent() {
-		let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");
-		
-		if(embeds.length > 0){
-			embeds.forEach(function(embed, index) {
-				if(embed.dataset.embed !== null){
-					embed.classList.remove("is-blocked");
-					let parent = embed.parentNode;
-					let container = getContainer();
-					container.innerHTML = embed.dataset.embed;
-					let elements = container.children;
-					
-					Array.from(elements).forEach(element => {
-						
-						var newElement = cloneElement(element);
-
-						if(!parent.classList.contains("wp-block-embed__wrapper") && element.tagName === "IFRAME"){
-							var pElement = document.createElement("p");
-							pElement.appendChild(newElement);
-							newElement = pElement;
-						}
-						
-						document.body.appendChild(newElement);
-						parent.insertBefore(newElement, embed);
-					});
-					
-					parent.removeChild(embed);
-					
-				}
-			});
 			
-			window.dispatchEvent(new Event('resize'));
-		}
-	}
-		
-	function cloneElement(element){
-		let newElement = document.createElement(element.tagName);
-		newElement.innerHTML = element.innerHTML;
-		let k = -1, attrs = element.attributes, attr;
-		while ( ++k < attrs.length ) {
-			newElement.setAttribute( (attr = attrs[k]).name, attr.value );
-		}
-		return newElement;
-	}
-	
-	function injectElements(elements) {
-		Array.from(elements).forEach(function(element){
-			let newElement = cloneElement(element);
-			document.body.appendChild(newElement);
-		});
-	}
-	
 	function initAPI() {		
 		window.cookiefox.api = {};
 		window.cookiefox.api.show = function(){
-			forceNotice = true;
+			$forceNotice = true;
 		};
-	}
+	}	
 	
-	function isCrawler() {
-		if (/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)){
-			return true;
-		}
-		
-		return false;
+	function consentInit() {
 	}
-	
-	function setCookie() {
-		
-		let name = "cookiefox_consent";
-		if(data.cookie_name !== undefined && data.cookie_name !== ""){
-			name = data.cookie_name;
-		}
 
-		let options = {};
-		if(data.cookie_expiration !== undefined && data.cookie_expiration !== ""){
-			options.expires = parseInt(data.cookie_expiration);
-		}
-
-		if(data.cookie_domain !== undefined && data.cookie_domain !== ""){
-			options.domain = parseInt(data.cookie_expiration);
-		}
-				
-		Cookies.set(data.cookie_name, cookie, options);
-	}
-	
 </script>
 
-<div class="cookiefox cookiefox--notice cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet>
+
+<div class="cookiefox cookiefox--notice cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
+        aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<div class="cookiefox__body">
-			{#if data.notice_title}
-			<h3 class="cookiefox__title">{data.notice_title}</h3>
-			{/if}
-			{#if data.notice_text}
-			<div class="cookiefox__text">{@html data.notice_text}</div>
-			{/if}
-		</div>
-		<footer class="cookiefox__footer">
-			
-			{#if data.notice_button_decline_type !== "none"}
-			<!-- svelte-ignore a11y-positive-tabindex -->
-			<button class="cookiefox__button cookiefox__button--secondary is-{data.notice_button_decline_type}" on:click={handleDecline} tabindex="1">{data.notice_button_decline}</button>
-			{/if}
-			<!-- svelte-ignore a11y-positive-tabindex -->
-			<button class="cookiefox__button cookiefox__button--primary is-button" on:click={handleAccept} tabindex="1">{data.notice_button_accept}</button>
-		</footer>
+		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} bind:handleConsentTest={handleConsent} />
 	</div>
 </div>
 
 <style global lang="scss">
-
-
 .cookiefox{
 	--cookiefox--color-text-primary: #000000;
 	--cookiefox--color-text-secondary: #767676;
@@ -218,11 +64,12 @@
 	--cookiefox--font-size-mobile: 14px;
 	--cookiefox--line-height: 1.5;
 	--cookiefox__notice--box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-	--cookiefox__modal--border-radius: 10px;
+	--cookiefox__modal--border-radius: 6px;
 	--cookiefox__title--font-size: 1.3125em;
 	--cookiefox__title--font-weight: bold;
-	--cookiefox__text--font-size: 1em;
+	--cookiefox__text--font-size: 0.875em;
 	--cookiefox__text--font-weight: normal;
+	--cookiefox__text--text-align: left;
 	--cookiefox__button--font-size: 1.0625em;
 	--cookiefox__button--font-weight: normal;
 	--cookiefox__button--text-transform: none;
@@ -238,6 +85,21 @@
 	line-height: var(--cookiefox--line-height);
 	color: var(--cookiefox--color-text-primary);
 	
+	input[type=checkbox],
+	a,
+	button,
+	input,
+	summary{
+		&:focus{
+			outline-offset: 2px;
+			outline: 1px dotted var(--cookiefox--color-text-primary);
+		}
+		
+		&:focus:not(:focus-visible) { 
+			outline: none 
+		}
+	}
+
 	@media(max-width: 640px){
 		font-size: var(--cookiefox--font-size-mobile);
 	}
@@ -276,6 +138,10 @@
 		}	
 	}
 	
+	.cookiefox__categories, .cookiefox__meta{
+		justify-content: flex-start;
+	}
+	
 	.cookiefox__footer{
 		
 		@media(max-width: 640px){
@@ -298,14 +164,17 @@
 	overflow: auto;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.55);
-	padding: 5px;
-	box-shadow: var(--cookiefox__notice--box-shadow);
+	padding: 10px;
 	
 	.cookiefox__inner{
-		max-width: 600px;
+    overflow: auto;
+		overscroll-behavior: contain;
+    max-height: 100%;
+		max-width: 680px;
 		background: var(--cookiefox--background);
 		border-radius: var(--cookiefox__modal--border-radius);
-		overflow: hidden;
+		box-shadow: var(--cookiefox__notice--box-shadow);
+		scroll-padding-bottom: 65px;
 		
 		.cookiefox__footer{
 			border-top: 1px solid var(--cookiefox__footer--color-border); 
@@ -313,10 +182,25 @@
 			display: flex;
 			justify-content: space-between;
 			padding: 14px 24px;
+			position: sticky;
+			bottom: 0px;
+			left:0px;
+			width: 100%;
 			
 			@media(max-width: 640px){
 				padding: 8px 14px;
 			}	
+			
+			&:after{
+    		content: "";
+    		position: absolute;
+    		left: 0px;
+    		top: 0px;
+    		width: 100%;
+    		height: 100%;
+    		background: var(--cookiefox--background);
+    		z-index: -1;
+			}
 			
 		}	
 		
@@ -328,7 +212,15 @@
 			}	
 		}
 	}
-
+	
+	.cookiefox__title{
+		text-align: center;
+		margin-bottom: 0.75em;
+	}
+	
+	.cookiefox__categories, .cookiefox__meta{
+		justify-content: center;
+	}
 		
 }
 
@@ -343,6 +235,7 @@
 	font-family: var(--cookiefox-font-family);
 	font-size: var(--cookiefox__text--font-size);
 	font-weight: var(--cookiefox__text--font-weight);
+	text-align: var(--cookiefox__text--text-align);
 	
 	a{
 		text-decoration: underline;
@@ -357,6 +250,181 @@
 			color: var(--cookiefox--color-text-primary);
 		}
 	}
+}
+
+.cookiefox__categories{
+  margin-top: 2.25em;
+	margin-left: -0.75em;
+	margin-right: -0.75em;
+	margin-bottom: -1.25em;
+  display: flex;
+  align-items: center;
+	flex-wrap: wrap;
+}
+
+.cookiefox__category{
+	margin: 0 0.75em 1.25em;
+}
+
+.cookiefox__category-label{
+	display: flex;
+	align-items: center;
+	font-size: 1em;
+	line-height: 1;
+	color: var(cookiefox--color-text-primary);
+	font-weight: bold;
+	text-transform: none;
+	margin: 0px;
+	cursor: pointer;
+	
+	&.is-disabled{
+		cursor: not-allowed;
+	}
+}
+
+input[type=checkbox].cookiefox__category-checkbox{
+	-webkit-appearance: none;
+	position: relative;
+	width: 1.325em;
+	height: 1.325em;
+	display: block;
+	margin: 0px 0.45em 0 0;
+	padding: 0px;
+	border: 2px solid currentColor;
+	transition: border-color 0.15s ease-in-out;
+	cursor: inherit;
+	border-radius: 2px;
+	
+	&:after{
+		content: "";
+    opacity: 0;
+    display: block;
+    left: 0.355em;
+    top: 0.085em;
+    position: absolute;
+    width: 0.4em;
+    height: 0.7em;
+    border: 2.25px solid var(--cookiefox--color-button-primary);
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(32deg);
+		transition: opacity 0.1s ease-in-out;
+	}
+	
+	&:checked{
+		border-color: var(--cookiefox--color-button-primary);
+		
+		&:after{
+			opacity: 1;
+		}
+	}
+	
+	&:disabled{
+		opacity: 0.65;
+	}
+}
+
+.cookiefox__meta{
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cookiefox__spinner{
+	text-align: center;
+	margin: 1.5em 0;
+	svg{
+		height: auto;
+		width: 40px;
+		stroke: currentColor;
+	}
+}
+
+.cookiefox__details{
+	margin: 1.5em 0 0;
+}
+
+.cookiefox__details-category{
+	margin: 0 0 1em;
+	border: 1px solid var(--cookiefox__footer--color-border); 
+	background: var(--cookiefox__footer--background);
+  padding: 1em;
+  border-radius: 4px;
+	
+	&:last-child{
+		margin-bottom: 0px;
+	}
+}
+
+.cookiefox__details-description{
+	font-size: 0.875em;
+	margin: 1em 0 0;
+}
+
+.cookiefox__details-more{
+	font-size: 0.875em;
+	margin: 1em 0 0;
+}
+
+.cookiefox__details-summary{
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	
+	&::-webkit-details-marker {
+	  display: none;
+	}
+
+	&:before{
+		display: block;
+		content: "";
+		width: 0.375em;
+		height: 0.375em;
+    border: 2px solid currentColor;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(315deg);
+		margin: 0 0.5em 0 0;
+	}
+}
+
+.cookiefox__details-more[open]{
+	.cookiefox__details-summary:before{
+    transform: rotate(45deg);
+	}
+}
+
+.cookiefox__details-cookies{
+	margin: 0.75em 0 0;
+}
+
+.cookiefox__table{
+  width: 100%;
+  border-collapse: collapse;
+	margin: 0 0 1em;
+	
+	&:last-child{
+		margin-bottom: 0px;
+	}	
+}
+
+.cookiefox__th, .cookiefox__td{
+	padding: 0.35em 0.75em;
+	border: 1px solid currentColor;
+	text-align: left;
+}
+
+.cookiefox__th{
+	font-weight: bold;
+	font-size: 1em;
+	width: 115px;
+}
+
+.cookiefox__td{
+	font-weight: normal;
+	font-size: 1em;
 }
 
 .cookiefox__footer{	
@@ -387,6 +455,10 @@
 	
 	&.is-text{
 		padding: 0.5625em 0em;		
+	}
+	
+	&.is-medium{
+		font-size: 0.875em;	
 	}
 	
 	&:hover{
@@ -423,7 +495,7 @@
 	&.is-text{
 		border: 1px solid transparent !important;
 		background-color: transparent !important;
-		color: var(--cookiefox--color-button-secondary) !important;
+		color: var(--cookiefox--color-text-secondary) !important;
 		background-color: transparent;
 		transition: color 0.15s ease-in-out;
 	

@@ -110,6 +110,15 @@ jQuery(document).ready(function($) {
 	padding-bottom: 0;
 }
 
+
+#side-sortables .cmb2-wrap>.cmb-field-list>.cmb-row{
+	padding: 8px 0 0px;
+}
+
+#side-sortables .cmb2-postbox .inside{
+	padding-bottom: 4px;
+}
+
 input:checked+.knob {
 	background-color: #0073aa;
 }

@@ -13,8 +13,11 @@ class Settings {
 	public function __construct() {
 		add_action('cmb2_admin_init', array($this, 'metabox'));
 	}
+	
 
 	public function metabox() {
+		$consent_type = Helper::get_option("consent_type");		
+		
 		$main_options = new_cmb2_box(array(
 			'id' => 'cookiefox_options_main',
 			'title' => __('CookieFox Settings', 'cookiefox'),
@@ -31,12 +34,23 @@ class Settings {
 			'type' => 'title',
 			'id' => 'title_general'
 		));
-
+		
 		$main_options->add_field(array(
 			'name' => esc_html__('Enable Cookie Notice', 'cookiefox'),
 			'id' => 'cookie_notice_enabled',
 			'desc' => __('The privacy notice will be displayed when this option is enabled.', 'cookiefox'),
 			'type' => 'toggle',
+		));
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Consent Type', 'cookiefox'),
+			'id' => 'consent_type',
+			'desc' => __('Simple consent only provides a general accept/deny option. Category consent offers separate consent by cookie categories.', 'cookiefox'),
+			'type' => 'select',
+			'options' => array(
+				'simple' => 'Simple',
+				'category' => 'Category'
+			)
 		));
 
 		$main_options->add_field(array(
@@ -51,7 +65,20 @@ class Settings {
 			),
 			'type' => 'toggle',
 		));
-
+		
+		if($consent_type == "category"){
+			$sample_url = admin_url("options-general.php?page=cookiefox&action=cookiefox_sample_content");
+			$sample_url = wp_nonce_url($sample_url, 'cookiefox-install-sample-content');
+			
+			$main_options->add_field(array(
+				'name' => esc_html__('Sample Content', 'cookiefox'),
+				'id' => 'sample_content',
+				'desc' => __('Create sample content to get you started faster. Includes a sample cookie and four categories (Functional, Statistics, Marketing and External Media).', 'cookiefox'),
+				'type' => 'button',
+				'url' => $sample_url,
+				'label' => __('Install Sample Content', 'cookiefox'),
+			));
+		}
 
 		$main_options->add_field(array(
 			'name' => __('Privacy Notice', 'cookiefox'),
@@ -92,6 +119,28 @@ class Settings {
 			'type' => 'text',
 			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_accept'),
 		));
+		
+		$main_options->add_field(array(
+			'name' => __('Save Button Text', 'cookiefox'),
+			'id' => 'notice_button_save',
+			'type' => 'text',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_save'),
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('category')),
+			),
+		));
+
+		$main_options->add_field(array(
+			'name' => __('Manage Cookies Button Text', 'cookiefox'),
+			'id' => 'notice_button_manage',
+			'type' => 'text',
+			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_manage'),
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('category')),
+			),
+		));
 
 		$main_options->add_field(array(
 			'name' => esc_html__('Decline Button', 'cookiefox'),
@@ -112,7 +161,7 @@ class Settings {
 			'type' => 'text',
 			'desc' => apply_filters("cookiefox_settings_field_desc", false, 'notice_button_decline'),
 			'attributes' => array(
-				'data-conditional-id' => 'notice_button_decline_style',
+				'data-conditional-id' => 'notice_button_decline_type',
 				'data-conditional-value' => wp_json_encode(array('text', 'button')),
 			),
 		));
@@ -127,35 +176,47 @@ class Settings {
 			'name' => __('Scripts & Cookies', 'cookiefox'),
 			'desc' => __('You can set the scripts to be executed when the user accepts or declines the use of cookies. The scripts will be executed directly after consent is given and at each page view.', 'cookiefox'),
 			'type' => 'title',
-			'id' => 'title_scripts'
+			'id' => 'title_scripts',
 		));
 
 		$main_options->add_field(array(
 			'name' => __('Opt-In Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user opts in to the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_consent',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('simple')),
+			),
 		));
 
 		$main_options->add_field(array(
 			'name' => __('Opt-Out Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user declines the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_no_consent',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('simple')),
+			),
 		));
 
 		$main_options->add_field(array(
 			'name' => __('Always-On Scripts', 'cookiefox'),
 			'desc' => __('These scripts will always be executed.', 'cookiefox'),
 			'id' => 'scripts_always',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
 		));
 
 		$main_options->add_field(array(
 			'name' => __('Cookies', 'cookiefox'),
 			'desc' => __('These cookies will be removed after opt-out. Seperate multiple cookies by a comma.', 'cookiefox'),
 			'id' => 'cookies',
-			'type' => 'text'
+			'type' => 'text',
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('simple')),
+			),
 		));
 		
 		$main_options->add_field(array(
@@ -165,9 +226,15 @@ class Settings {
 			'id' => 'title_embeds',
 		));
 		
+		$category_consent_string = "";
+
+		if($consent_type == "category"){
+			$category_consent_string = " <b>".__('When using category-based consent, you should activate "Unblock Embedded Content" at least once in the category settings.', 'cookiefox')."</b>";
+		}
+		
 		$main_options->add_field(array(
 			'name' => esc_html__('Block Auto-Embeds', 'cookiefox'),
-			'desc' => __('Enable this option to block external content from being automatically embedded. After accepting the privacy notice, all content will be embedded.', 'cookiefox'),
+			'desc' => __('Enable this option to block external content from being automatically embedded. After accepting the privacy notice, all content will be embedded.', 'cookiefox').$category_consent_string,
 			'id' => 'block_embeds',
 			'type' => 'toggle',
 		));		
