@@ -63,14 +63,14 @@
 	--cookiefox--font-size: 16px;
 	--cookiefox--font-size-mobile: 14px;
 	--cookiefox--line-height: 1.5;
-	--cookiefox__notice--box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+	--cookiefox__notice--box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
 	--cookiefox__modal--border-radius: 6px;
-	--cookiefox__title--font-size: 1.3125em;
+	--cookiefox__title--font-size: 1.25em;
 	--cookiefox__title--font-weight: bold;
-	--cookiefox__text--font-size: 0.875em;
+	--cookiefox__text--font-size: 1em;
 	--cookiefox__text--font-weight: normal;
 	--cookiefox__text--text-align: left;
-	--cookiefox__button--font-size: 1.0625em;
+	--cookiefox__button--font-size: 1em;
 	--cookiefox__button--font-weight: normal;
 	--cookiefox__button--text-transform: none;
 	--cookiefox__button--border-radius: 5px;
@@ -84,6 +84,10 @@
 	font-family: var(--cookiefox-font-family);
 	line-height: var(--cookiefox--line-height);
 	color: var(--cookiefox--color-text-primary);
+	
+	*, *::before, *::after {
+    box-sizing: inherit;
+  }
 	
 	input[type=checkbox],
 	a,
@@ -269,9 +273,9 @@
 .cookiefox__category-label{
 	display: flex;
 	align-items: center;
-	font-size: 1em;
+	font-size: var(--cookiefox__text--font-size);
 	line-height: 1;
-	color: var(cookiefox--color-text-primary);
+	color: var(--cookiefox--color-text-primary);
 	font-weight: bold;
 	text-transform: none;
 	margin: 0px;
@@ -450,11 +454,11 @@ input[type=checkbox].cookiefox__category-checkbox{
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 	
 	&.is-button{
-		padding: 0.5625em 1.375em;
+		padding: 0.6em 1.375em;
 	}
 	
 	&.is-text{
-		padding: 0.5625em 0em;		
+		padding: 0.6em 0em;		
 	}
 	
 	&.is-medium{
