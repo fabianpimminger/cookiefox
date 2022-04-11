@@ -15,9 +15,32 @@ class Sample_Content {
 	
 	public function __construct() {
 		add_action("admin_init", array($this, "init"));
-		add_action("admin_notices", array($this, "admin_notices"));
-		
-		$this->terms = array(
+		add_action("admin_notices", array($this, "admin_notices"));			
+	}
+	public function getPosts() {
+		return array(
+			array(
+				"post_status" => "publish",
+				"post_title" => __("Sample Cookie", "cookiefox"),
+				"post_type" => "cookiefox_cookie",
+				"post_name" => "sample-cookie",
+				"meta_input" => array(
+					"vendor" => "Cookiefox",
+					"description" => __("This is a sample cookie installed by the CookieFox plugin", "cookiefox"),
+					"privacy_policy" => "https://sample.org/privacy-policy/",
+					"scripts_prioritize" => "off",
+					"scripts_consent" => "<script>console.log('cookiefox consent');</script>",
+					"scripts_no_consent" => "<script>console.log('cookiefox no consent');</script>",
+					"scripts_always" => "<script>console.log('cookiefox always');</script>",
+					"cookies" => "cookiefox_sample,cookiefox_sample2",
+				),
+				"tax_input" => array("cookiefox_category" => array("marketing")),
+			)
+		);
+	}
+	
+	public function getTerms() {
+		return array(
 			array(
 				"name" => __("Functional", "cookiefox"),
 				"slug" => "functional",
@@ -51,32 +74,14 @@ class Sample_Content {
 				"unblock_embeds" => "on"
 			)
 		);
-		
-		$this->posts = array(
-			array(
-				"post_status" => "publish",
-				"post_title" => "Sample Cookie",
-				"post_type" => "cookiefox_cookie",
-				"post_name" => "sample-cookie",
-				"meta_input" => array(
-					"vendor" => "Cookiefox",
-					"description" => __("This is a sample cookie installed by the CookieFox plugin", "cookiefox"),
-					"privacy_policy" => "https://sample.org/privacy-policy/",
-					"scripts_prioritize" => "off",
-					"scripts_consent" => "<script>console.log('cookiefox consent');</script>",
-					"scripts_no_consent" => "<script>console.log('cookiefox no consent');</script>",
-					"scripts_always" => "<script>console.log('cookiefox always');</script>",
-					"cookies" => "cookiefox_sample,cookiefox_sample2",
-				),
-				"tax_input" => array("cookiefox_category" => array("marketing")),
-			)
-		);
 	}
 	
 	public function init() {
     if (isset($_GET['action']) && isset($_GET['_wpnonce']) && $_GET['action'] === 'cookiefox_sample_content' && wp_verify_nonce($_GET['_wpnonce'], 'cookiefox-install-sample-content' ) ) {
-
-			foreach ($this->terms as $term) {
+			
+			$terms = $this->getTerms();
+			
+			foreach ($terms as $term) {
 				if (term_exists($term["slug"], "cookiefox_category")) {
 					continue;
 				}
@@ -89,7 +94,9 @@ class Sample_Content {
 				}
 			}
 			
-			foreach ($this->posts as $post) {
+			$posts = $this->getPosts();
+			
+			foreach ($posts as $post) {
 				if (post_exists($post["post_title"])) {
 					continue;
 				}
