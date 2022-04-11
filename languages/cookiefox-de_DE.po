@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2022-03-28T14:54:29+00:00\n"
-"PO-Revision-Date: 2022-03-28 16:54+0200\n"
+"POT-Creation-Date: 2022-04-11T18:29:48+00:00\n"
+"PO-Revision-Date: 2022-04-11 20:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -367,20 +367,28 @@ msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
-#: includes/class-sample_content.php:22
+#: includes/class-sample_content.php:24
+msgid "Sample Cookie"
+msgstr "Beispiel-Cookie"
+
+#: includes/class-sample_content.php:29
+msgid "This is a sample cookie installed by the CookieFox plugin"
+msgstr "Das ist ein Beispiel-Cookie, der vom CookieFox Plugin erstellt wurde"
+
+#: includes/class-sample_content.php:45
 msgid "Functional"
 msgstr "Funktional"
 
-#: includes/class-sample_content.php:24
+#: includes/class-sample_content.php:47
 msgid "Essential cookies that are required for the website to function."
 msgstr ""
 "Essentielle Cookies, die zum Betrieb und Nutzung der Website notwendig sind."
 
-#: includes/class-sample_content.php:30
+#: includes/class-sample_content.php:53
 msgid "Statistics"
 msgstr "Statistik"
 
-#: includes/class-sample_content.php:32
+#: includes/class-sample_content.php:55
 msgid ""
 "Statisticial cookies track user behaviour and are used to collect "
 "information anonymously. This helps us to understand how our visitors use "
@@ -390,11 +398,11 @@ msgstr ""
 "von anonymen Informationen verwendet. Das hilft uns zu verstehe, wie diese "
 "Website genutzt wird."
 
-#: includes/class-sample_content.php:38
+#: includes/class-sample_content.php:61
 msgid "Marketing"
 msgstr "Marketing"
 
-#: includes/class-sample_content.php:40
+#: includes/class-sample_content.php:63
 msgid ""
 "Marketing cookies are used by third-party advertisers and publishers to "
 "display personalized ads and support online marketing. They do this by "
@@ -404,11 +412,11 @@ msgstr ""
 "Marketing verwendet um personalisierte Werbung anzuzeigen. Sie tun dies, "
 "indem sie Besucher über Websites hinweg verfolgen."
 
-#: includes/class-sample_content.php:46
+#: includes/class-sample_content.php:69
 msgid "External Media"
 msgstr "Externe Medien"
 
-#: includes/class-sample_content.php:48
+#: includes/class-sample_content.php:71
 msgid ""
 "External content from video and social media platforms can track visitors "
 "across websites when they are embedded."
@@ -416,11 +424,7 @@ msgstr ""
 "Externe Inhalte von Video- und Social Media-Plattformen können Besucher über "
 "Websites hinweg verfolgen, wenn diese eingebettet werden."
 
-#: includes/class-sample_content.php:63
-msgid "This is a sample cookie installed by the CookieFox plugin"
-msgstr "Das ist ein Beispiel-Cookie, der vom CookieFox Plugin erstellt wurde"
-
-#: includes/class-sample_content.php:111
+#: includes/class-sample_content.php:118
 msgid ""
 "The sample content has been created. Check it out by visiting the Cookies "
 "and Categories sections."
