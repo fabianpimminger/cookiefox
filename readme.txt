@@ -19,6 +19,8 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 
 - The cookie notice can either be displayed as a modal or a banner on the bottom of the viewport.
 
+- Two consent types available: Simple consent offers a general accept/deny option. Category consent offers separate consent by cookie categories.
+
 - Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or by providing a custom stylesheet.
 
 - All texts and buttons can be customized to fit your requirements.
@@ -28,6 +30,12 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 - Multi-Language Support: Use WPML or Polylang to easily translate your privacy notice.
 
 - Block Auto-Embedding: Optionally, you can prevent external content from being automatically embedded. The content will be embedded when accepting the privacy notice.
+
+== Performance ==
+
+- Javascript: There's just one 11kb (gzip) Javascript file. No dependencies. No jQuery.
+- CSS: You can either use an external CSS file (2.5kb, gzip), inline all styles, or provide a custom stylesheet. 
+- HTML: CookieFox just injects only a single \<div\> tag in the `wp_footer` hook. It is used as a root tag for initiating the script.
 
 == Frequently Asked Questions ==
 
@@ -41,15 +49,19 @@ Please check in the admin settings if the toggle for "Enable Cookie Notice" is s
 Please note that you are responsible for complying with your local and international laws. CookieFox can help you to be compliant by providing a cookie notice and the possibility for users to opt-in to defined scripts and services, but installation and activation alone (without configuration) are probably not enough to be compliant.
 
 == Screenshots ==
-1. Cookie notice displayed as a banner
-2. Cookie notice displayed as a modal
-3. Configuration of cookie texts
-4. Configuration of opt-in and opt-out scripts
-5. Design section in the admin settings
-6. Consent cookie & Advanced performance settings 
+1. Cookie notice displayed as a modal
+2. Cookie notice displayed as a banner
+3. Configuration of cookies
+4. Configuration of cookie texts
+5. Configuration of opt-in and opt-out scripts
+6. Design section in the admin settings
+7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
 
+= 2.0.0 =
+* Category based cookie consent
+* Fixed accessibility issues concerning tab navigation
 
 = 1.3.1 =
 * Fixed an issue that displayed a wrong primary text color
@@ -111,4 +123,4 @@ Please note that you are responsible for complying with your local and internati
 * First public release of CookieFox.
 
 == Upgrade Notice ==
-This plugin has been tested with WordPress 5.6.1
+This plugin has been tested with WordPress 5.9.3

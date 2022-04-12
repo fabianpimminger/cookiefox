@@ -12,14 +12,15 @@ Documentation and tutorials/samples are avaialable in the [Wiki](https://github.
 
 ## Performance
 
-* **Javascript**: There's just one 4kb (gzip) Javascript file. No dependencies. No jQuery.
-* **CSS**: You can either use an external CSS file (1.6kb, gzip), inline all styles, or provide a custom stylesheet. 
+* **Javascript**: There's just one 11kb (gzip) Javascript file. No dependencies. No jQuery.
+* **CSS**: You can either use an external CSS file (2.5kb, gzip), inline all styles, or provide a custom stylesheet. 
 * **HTML**: CookieFox just injects only a single \<div\> tag in the `wp_footer` hook. It is used as a root tag for initiating the script. 
 
 ## Key Features
 
 * Minimal impact on site loading times. 
 * The cookie notice can either be displayed as a modal or a banner on the bottom of the viewport.
+* Two consent types available: Simple consent offers a general accept/deny option. Category consent offers separate consent by cookie categories.
 * Basic design customizations (fonts, colors, …) are available in the admin settings. Advanced customizations are possible through the use of CSS variables or by providing a custom stylesheet.
 * All texts and buttons can be customized to fit your requirements.
 * Configured scripts and services can be executed when a user accepts or rejects the use of cookies.
