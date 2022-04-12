@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2022-04-11T18:29:48+00:00\n"
-"PO-Revision-Date: 2022-04-11 20:30+0200\n"
+"POT-Creation-Date: 2022-04-11T18:38:43+00:00\n"
+"PO-Revision-Date: 2022-04-11 20:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -235,7 +235,7 @@ msgctxt "Taxonomy Singular Name"
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-post_type.php:100
+#: includes/class-post_type.php:100 includes/class-post_type.php:387
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -367,6 +367,10 @@ msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
+#: includes/class-post_type.php:388
+msgid "Settings"
+msgstr "Einstellungen"
+
 #: includes/class-sample_content.php:24
 msgid "Sample Cookie"
 msgstr "Beispiel-Cookie"
@@ -465,6 +469,14 @@ msgstr ""
 "Bei der Option Einfache Einwilligung gibt es nur eine Option zum Annehmen "
 "und Ablehnen der Cookies. Kategorie-Einwilligung bietet separate "
 "Einwilligungen je Cookie-Kategorie."
+
+#: includes/class-settings.php:51
+msgid "Simple"
+msgstr "Einfach"
+
+#: includes/class-settings.php:52
+msgid "Category"
+msgstr "Kategorie"
 
 #: includes/class-settings.php:57
 msgid "Disable on Privacy Page"

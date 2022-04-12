@@ -4,6 +4,8 @@
  * Description: A performant and accessible cookie and consent solution for WordPress.
  * Version: 2.0.0
  * Requires at least: 5.0
+ * Tested up to: 5.9.3
+ * Requires PHP: 5.6
  * Author: Fabian Pimminger
  * Author URI: https://fabianpimminger.com/work/
  * License: GPL2

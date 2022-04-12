@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-04-11T18:29:48+00:00\n"
+"POT-Creation-Date: 2022-04-11T18:39:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: cookiefox\n"
@@ -221,6 +221,7 @@ msgid "Category"
 msgstr ""
 
 #: includes/class-post_type.php:100
+#: includes/class-post_type.php:387
 msgid "Categories"
 msgstr ""
 
@@ -350,6 +351,10 @@ msgstr ""
 msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 
+#: includes/class-post_type.php:388
+msgid "Settings"
+msgstr ""
+
 #: includes/class-sample_content.php:24
 msgid "Sample Cookie"
 msgstr ""
@@ -420,6 +425,14 @@ msgstr ""
 
 #: includes/class-settings.php:48
 msgid "Simple consent only provides a general accept/deny option. Category consent offers separate consent by cookie categories."
+msgstr ""
+
+#: includes/class-settings.php:51
+msgid "Simple"
+msgstr ""
+
+#: includes/class-settings.php:52
+msgid "Category"
 msgstr ""
 
 #: includes/class-settings.php:57

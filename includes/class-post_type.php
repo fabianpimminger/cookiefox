@@ -384,8 +384,8 @@ class Post_Type {
 	<div class="wrap cmb2-options-page">
 		<h2 class="nav-tab-wrapper">
 				<a class="nav-tab <?php if($screen->id == "edit-cookiefox_cookie" || $screen->id == "cookiefox_cookie"): ?>nav-tab-active<?php endif; ?>" href="<?php echo admin_url("edit.php?post_type=cookiefox_cookie"); ?>">Cookies</a>
-				<a class="nav-tab <?php if($screen->id == "edit-cookiefox_category"): ?>nav-tab-active<?php endif; ?>" href="<?php echo admin_url("edit-tags.php?taxonomy=cookiefox_category&post_type=cookiefox_cookie"); ?>">Categories</a>
-				<a class="nav-tab <?php if($screen->id == "settings_page_cookiefox"): ?>nav-tab-active<?php endif; ?> " href="<?php echo admin_url("options-general.php?page=cookiefox"); ?>">Settings</a>
+				<a class="nav-tab <?php if($screen->id == "edit-cookiefox_category"): ?>nav-tab-active<?php endif; ?>" href="<?php echo admin_url("edit-tags.php?taxonomy=cookiefox_category&post_type=cookiefox_cookie"); ?>"><?php _e("Categories", "cookiefox"); ?></a>
+				<a class="nav-tab <?php if($screen->id == "settings_page_cookiefox"): ?>nav-tab-active<?php endif; ?> " href="<?php echo admin_url("options-general.php?page=cookiefox"); ?>"><?php _e("Settings", "cookiefox"); ?></a>
 		</h2>
 	</div>
 

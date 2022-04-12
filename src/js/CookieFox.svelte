@@ -48,7 +48,7 @@
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} bind:handleConsentTest={handleConsent} />
+		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} />
 	</div>
 </div>
 
@@ -75,7 +75,7 @@
 	--cookiefox__button--text-transform: none;
 	--cookiefox__button--border-radius: 5px;
 	--cookiefox__footer--background: rgba(0,0,0,0.025);
-	--cookiefox__footer--color-border: rgba(0,0,0,0.05);
+	--cookiefox__footer--color-border: rgba(0,0,0,0.1);
 	--cookiefox__embed--background: #f0f0f0;
 	--cookiefox__embed--border-color: #e8e8e8;
 	
@@ -119,39 +119,56 @@
 	bottom: 0px;
 	left: 0px;
 	width: 100%;	
+	max-height: 100%;
+	overflow: auto;
+	overscroll-behavior: contain;
 	background: var(--cookiefox--background);
-	padding: 28px 24px;
 	box-shadow: var(--cookiefox__notice--box-shadow);
-	
-	@media(max-width: 640px){
-		padding: 18px 14px 14px;
-	}
-	
+		
 	.cookiefox__inner{
 		width: 100%;
 		
-		@media(min-width: 640px){
+		@media(min-width: 1024px){
 			display: flex;
 			align-items: flex-end;
 			
 			.cookiefox__body{
 				flex: 1;
 				align-self: center;
-				margin-right: 40px;
 			}
 		}	
 	}
 	
 	.cookiefox__categories, .cookiefox__meta{
 		justify-content: flex-start;
+
+		@media(max-width: 1024px){
+			justify-content: center;	
+		}
+
+	}
+	
+	.cookiefox__body{
+		padding: 28px 24px;
+		
+		@media(max-width: 1024px){
+			padding: 18px 14px 7px;
+		}
 	}
 	
 	.cookiefox__footer{
+		padding: 28px 24px;
 		
-		@media(max-width: 640px){
-			margin-top: 0.75em;
+		@media(max-width: 1024px){
+			padding: 7px 14px 18px;
 			display: flex;
 			justify-content: space-between;
+		}
+	}
+	
+	.cookiefox__title{
+		@media(max-width: 1024px){
+			text-align: center;	
 		}
 	}
 }
@@ -181,8 +198,6 @@
 		scroll-padding-bottom: 65px;
 		
 		.cookiefox__footer{
-			border-top: 1px solid var(--cookiefox__footer--color-border); 
-			background: var(--cookiefox__footer--background);
 			display: flex;
 			justify-content: space-between;
 			padding: 14px 24px;
@@ -190,6 +205,7 @@
 			bottom: 0px;
 			left:0px;
 			width: 100%;
+			background: var(--cookiefox--background);
 			
 			@media(max-width: 640px){
 				padding: 8px 14px;
@@ -202,7 +218,8 @@
     		top: 0px;
     		width: 100%;
     		height: 100%;
-    		background: var(--cookiefox--background);
+				border-top: 1px solid var(--cookiefox__footer--color-border); 
+    		background: var(--cookiefox__footer--background);
     		z-index: -1;
 			}
 			

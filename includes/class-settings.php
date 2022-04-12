@@ -48,8 +48,8 @@ class Settings {
 			'desc' => __('Simple consent only provides a general accept/deny option. Category consent offers separate consent by cookie categories.', 'cookiefox'),
 			'type' => 'select',
 			'options' => array(
-				'simple' => 'Simple',
-				'category' => 'Category'
+				'simple' => __('Simple', "cookiefox"),
+				'category' => __('Category', "cookiefox")
 			)
 		));
 
@@ -153,6 +153,10 @@ class Settings {
 				'text' => __('Text', 'cookiefox'),
 				'button' => __('Button', 'cookiefox'),
 			),
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('simple')),
+			),
 		));
 		
 		$main_options->add_field(array(
@@ -163,6 +167,10 @@ class Settings {
 			'attributes' => array(
 				'data-conditional-id' => 'notice_button_decline_type',
 				'data-conditional-value' => wp_json_encode(array('text', 'button')),
+			),
+			'attributes' => array(
+				'data-conditional-id' => 'consent_type',
+				'data-conditional-value' => wp_json_encode(array('simple')),
 			),
 		));
 
