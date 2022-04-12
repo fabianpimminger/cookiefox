@@ -74,6 +74,7 @@
 	--cookiefox__button--font-weight: normal;
 	--cookiefox__button--text-transform: none;
 	--cookiefox__button--border-radius: 5px;
+	--cookiefox__button--letter-spacing: 0px;
 	--cookiefox__footer--background: rgba(0,0,0,0.025);
 	--cookiefox__footer--color-border: rgba(0,0,0,0.1);
 	--cookiefox__embed--background: #f0f0f0;
@@ -312,9 +313,13 @@ input[type=checkbox].cookiefox__category-checkbox{
 	margin: 0px 0.45em 0 0;
 	padding: 0px;
 	border: 2px solid currentColor;
+	background: var(--cookiefox--background);
 	transition: border-color 0.15s ease-in-out;
 	cursor: inherit;
 	border-radius: 2px;
+	box-shadow: none;
+	top: 0px;
+	left: 0px;
 	
 	&:after{
 		content: "";
@@ -330,6 +335,10 @@ input[type=checkbox].cookiefox__category-checkbox{
     border-left: 0;
     transform: rotate(32deg);
 		transition: opacity 0.1s ease-in-out;
+	}
+	
+	&:before{
+		content: none;
 	}
 	
 	&:checked{
@@ -466,6 +475,7 @@ input[type=checkbox].cookiefox__category-checkbox{
 	text-transform: var(--cookiefox__button--text-transform);
 	cursor: pointer;	
 	border-radius: var(--cookiefox__button--border-radius);
+	letter-spacing: var(--cookiefox__button--letter-spacing);
 	line-height: 1;
 	box-shadow: none;
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
