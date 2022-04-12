@@ -37,6 +37,11 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 - CSS: You can either use an external CSS file (2.5kb, gzip), inline all styles, or provide a custom stylesheet. 
 - HTML: CookieFox just injects only a single \<div\> tag in the `wp_footer` hook. It is used as a root tag for initiating the script.
 
+== Documentation & How-Tos ==
+
+Documentation and tutorials/samples are available in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).
+
+
 == Frequently Asked Questions ==
 
 = Does CookieFox block cookies? =

@@ -8,7 +8,7 @@ Install CookieFox directly in your WordPress Dashboard or download the plugin in
 
 ## Documentation & How-Tos
 
-Documentation and tutorials/samples are avaialable in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).
+Documentation and tutorials/samples are available in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).
 
 ## Performance
 
