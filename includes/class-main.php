@@ -49,6 +49,7 @@ class Main {
 		include_once COOKIEFOX_ABSPATH . 'includes/class-sample_content.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-shortcode.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-embeds.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-integrations.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-internationalization.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-rest_api.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/cmb2/class-cmb2-toggle.php';
