@@ -57,7 +57,7 @@ export const setCookie = function(cookie, data) {
 		name = data.cookie_name;
 	}
 
-	let options = {};
+	let options = {sameSite: "strict"};
 	if(data.cookie_expiration !== undefined && data.cookie_expiration !== ""){
 		options.expires = parseInt(data.cookie_expiration);
 	}
@@ -65,7 +65,7 @@ export const setCookie = function(cookie, data) {
 	if(data.cookie_domain !== undefined && data.cookie_domain !== ""){
 		options.domain = parseInt(data.cookie_expiration);
 	}
-			
+
 	Cookies.set(name, cookie, options);
 }
 
