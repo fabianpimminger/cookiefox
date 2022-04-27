@@ -18,6 +18,7 @@ class Integrations {
 			"ga-google-analytics" => "class-ga-google-analytics.php",
 			"google-site-kit" => "class-google-site-kit.php",
 			//"jetpack" => "class-jetpack.php",
+			"google-analytics-for-wordpress" => "class-monsterinsights.php",
 		);
 		
 		$active_plugins = get_option('active_plugins');
