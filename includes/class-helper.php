@@ -82,7 +82,7 @@ class Helper {
 		}
 		
 		$locale = get_locale();
-	    $locale_parts = explode( '_', $lang );
+	    $locale_parts = explode( '_', $locale );
 		if(count($locale_parts) > 1){
 			return $locale_parts[0];
 		} else {
