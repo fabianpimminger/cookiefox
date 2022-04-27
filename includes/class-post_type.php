@@ -200,26 +200,61 @@ class Post_Type {
 		// 	'id' => 'scripts_prioritize',
 		// 	'type' => 'toggle',
 		// ));		
+
+		$post_type_cookie_metabox->add_field(array(
+			'name' => esc_html__('Type', 'cookiefox'),
+			'id' => 'type',
+			'type' => 'radio_inline',
+			'default' => 'script',
+			'options' => array(
+				'script' => __("Custom Scripts & HTML", "cookiefox"),
+				'integration' => __("Plugins & Integrations", "cookiefox")
+			)
+		));
 		
 		$post_type_cookie_metabox->add_field(array(
 			'name' => __('Opt-In Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user opts in to the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_consent',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
+			'attributes' => array(
+				'data-conditional-id' => 'type',
+				'data-conditional-value' => 'script',
+			),
 		));
 
 		$post_type_cookie_metabox->add_field(array(
 			'name' => __('Opt-Out Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user declines the use of cookies.', 'cookiefox'),
 			'id' => 'scripts_no_consent',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
+			'attributes' => array(
+				'data-conditional-id' => 'type',
+				'data-conditional-value' => 'script',
+			),
 		));
 
 		$post_type_cookie_metabox->add_field(array(
 			'name' => __('Always-On Scripts', 'cookiefox'),
 			'desc' => __('These scripts will always be executed.', 'cookiefox'),
 			'id' => 'scripts_always',
-			'type' => 'textarea_code'
+			'type' => 'textarea_code',
+			'attributes' => array(
+				'data-conditional-id' => 'type',
+				'data-conditional-value' => 'script',
+			),
+		));
+		
+		$post_type_cookie_metabox->add_field(array(
+			'name' => esc_html__('Plugin/Integration', 'cookiefox'),
+			'id' => 'integration',
+			'type' => 'select',
+			'options_cb' => array($this, 'integrations'),
+			'show_option_none' => __("Select Integration", "cookiefox"),
+			'attributes' => array(
+				'data-conditional-id' => 'type',
+				'data-conditional-value' => 'integration',
+			),
 		));
 
 		$post_type_cookie_metabox->add_field(array(
@@ -352,6 +387,10 @@ class Post_Type {
 	public function manage_sortable_columns($columns) {	
 	  $columns['menu_order'] = 'menu_order';
 	  return $columns;
+	}
+	
+	public function integrations() {
+		return apply_filters("cookiefox_integrations", array());
 	}
 
 	public function menu_highlight($parent_file) {

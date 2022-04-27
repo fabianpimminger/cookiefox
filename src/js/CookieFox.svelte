@@ -2,7 +2,7 @@
 	export let data;
 	import { cookie, forceNotice } from './stores.js';
 	import { onMount } from 'svelte';
-	import { injectElements, getContainer } from './functions.js';
+	import { cloneElement, injectElements, getContainer } from './functions.js';
 	import SingleConsent from './SingleConsent.svelte';
 	import CategoryConsent from './CategoryConsent.svelte';
 	import focusTrap from './focus-trap.js';
@@ -37,6 +37,7 @@
 		window.cookiefox.api.show = function(){
 			$forceNotice = true;
 		};
+		window.cookiefox.api.cloneElement = cloneElement;
 	}	
 	
 	function consentInit() {

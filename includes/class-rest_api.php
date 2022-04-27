@@ -73,8 +73,19 @@ class Rest_API {
 					"slug" => get_post_field( 'post_name', get_post()),
 				);
 				
+				$type = get_post_meta(get_the_ID(), "type", true);
 				$meta_data = get_post_meta(get_the_ID());
-				$include_meta_keys = array("vendor", "description", "privacy_policy", "scripts_consent", "scripts_no_consent", "scripts_always", "cookies");
+				$include_meta_keys = array("vendor", "description", "privacy_policy", "cookies");
+				
+				if($type == "script"){
+					$include_meta_keys = array_merge($include_meta_keys, array("scripts_consent", "scripts_no_consent", "scripts_always"));
+				}else if($type == "integration"){
+					$integration = get_post_meta(get_the_ID(), "integration", true);
+					if(!empty($integration)){
+						$meta_data["scripts_consent"] = array(apply_filters("cookiefox_consent_{$integration}", ""));
+						$include_meta_keys[] = "scripts_consent";
+					}
+				}
 				
 				foreach($include_meta_keys as $meta_key){
 					if(!empty($meta_data[$meta_key])){

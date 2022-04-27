@@ -75,7 +75,7 @@ export const getContainer = function() {
 	return container
 }
 		
-const cloneElement = function(element){
+export const cloneElement = function(element){
 	let newElement = document.createElement(element.tagName);
 	newElement.innerHTML = element.innerHTML;
 	let k = -1, attrs = element.attributes, attr;
