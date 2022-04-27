@@ -16,6 +16,7 @@ class Integrations {
 	public function __construct() {
 		$plugin_integrations = array(
 			"ga-google-analytics" => "class-ga-google-analytics.php",
+			"google-site-kit" => "class-google-site-kit.php",
 		);
 		
 		$active_plugins = get_option('active_plugins');
