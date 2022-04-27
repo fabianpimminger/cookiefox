@@ -23,6 +23,11 @@ class CMB2 {
 	public function admin_head() {
 		?>
 		<style>
+		
+		.field_is_hidden{
+			display: none;
+		}
+		
 		#cmb2-metabox-cookiefox_options_main .cmb2-metabox-description{
 			display: block;
 			padding-top: .5em;
