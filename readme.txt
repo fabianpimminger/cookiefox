@@ -4,7 +4,7 @@ Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
 Tested up to: 5.9.3
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,10 @@ Please note that you are responsible for complying with your local and internati
 7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 2.0.2 =
+* Consent cookie now uses sameSite=strict
+* Fixed an error in language detection
 
 = 2.0.1 =
 * Category based cookie consent
