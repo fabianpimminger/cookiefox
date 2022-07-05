@@ -186,7 +186,23 @@ class Settings {
 			'type' => 'title',
 			'id' => 'title_scripts',
 		));
+		
+		if(!empty($this->integrations())){
+			$main_options->add_field(array(
+				'name' => esc_html__('Plugins & Integrations', 'cookiefox'),
+				'desc' => __('When checked, these plugins will only be allowed to add scripts when the user opts in.', 'cookiefox'),
+				'id' => 'integrations',
+				'type' => 'multicheck',
+				'options_cb' => array($this, 'integrations'),
+				'select_all_button' => false,
+				'attributes' => array(
+					'data-conditional-id' => 'consent_type',
+					'data-conditional-value' => wp_json_encode(array('simple')),
+				),
+			));
+		}
 
+		
 		$main_options->add_field(array(
 			'name' => __('Opt-In Scripts', 'cookiefox'),
 			'desc' => __('These scripts will be executed when the user opts in to the use of cookies.', 'cookiefox'),
@@ -411,7 +427,11 @@ class Settings {
 		));
 
 	}
-	
+
+	public function integrations() {
+		return apply_filters("cookiefox_integrations", array());
+	}
+		
 	public static function register_defaults(){
 		
 		$settings = get_option("cookiefox", array());

@@ -42,7 +42,15 @@ class Google_Site_Kit extends Integration {
 		ob_start();
 		?>
 		<script>
-			// TODO
+			var scripts = document.querySelectorAll("script[data-block-on-consent][src*=pagead2\\.googlesyndication\\.com]");
+			scripts.forEach(function(script){
+				var el = window.cookiefox.api.cloneElement(script);
+				el.removeAttribute("data-block-on-consent");
+				el.removeAttribute("type");
+				script.parentNode.insertBefore(el, script);
+				script.remove();
+			});
+			
 		</script>
 		<?php
 		return ob_get_clean();
@@ -97,8 +105,21 @@ class Google_Site_Kit extends Integration {
 		ob_start();
 		?>
 		<script>
-			// TODO
+			var scripts = document.querySelectorAll("script[data-block-on-consent]");
+			scripts.forEach(function(script){
+				if(!script.innerText.includes("https://www.googletagmanager.com")){
+					return;
+				}
+				
+				var el = window.cookiefox.api.cloneElement(script);
+				el.removeAttribute("data-block-on-consent");
+				el.removeAttribute("type");
+				script.parentNode.insertBefore(el, script);
+				script.remove();
+			});
+			
 		</script>
+
 		<?php
 		return ob_get_clean();
 	}

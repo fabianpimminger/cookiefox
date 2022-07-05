@@ -4,7 +4,7 @@
 	import { cookie, forceNotice } from './stores.js';
 	import * as Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
-	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
+	import { isCrawler, removeCookie, setCookie, injectElements, embedContent, getContainer } from './functions.js';
 	
   const dispatch = createEventDispatcher();
 	let config;
@@ -32,8 +32,12 @@
 			$cookie = JSON.parse(cookieData);
 			if($cookie.consent !== undefined && $cookie.consent.categories !== undefined){
 				consents = $cookie.consent.categories;
+				setCookie($cookie, data);
+			} else {
+				removeCookie(data);
+				$cookie = null;
+				firstRun = true;
 			}
-			setCookie($cookie, data);
 		} else {
 			firstRun = true;
 		}
@@ -74,7 +78,7 @@
 	}
 	
 	function setupCookie() {
-		if($cookie === undefined){
+		if($cookie === null){
 			$cookie = {
 				consent: {
 					categories: {}

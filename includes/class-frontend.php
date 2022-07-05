@@ -159,7 +159,21 @@ class Frontend {
 		$data["notice_text_purpose"] = __("Purpose", "cookiefox");
 		$data["notice_text_privacy_policy"] = __("Privacy Policy", "cookiefox");
 		$data["notice_text_cookies"] = __("Cookies", "cookiefox");
+				
+		if($data["consent_type"] == "simple"){
+			if(!isset($data["scripts_consent"])){
+				$data["scripts_consent"] = "";
+			}
+			if(!isset($data["scripts_no_consent"])){
+				$data["scripts_no_consent"] = "";
+			}
+			if(!isset($data["scripts_always"])){
+				$data["scripts_always"] = "";
+			}
+		}
+
 		$data = apply_filters( 'cookiefox_frontend_prepare_data', $data );
+		unset($data["integrations"]);
 		
 		return $data;
 	}

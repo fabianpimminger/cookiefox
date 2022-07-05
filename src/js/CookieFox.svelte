@@ -9,7 +9,7 @@
 	
 	let consentComponent;
 	let handleConsent;
-	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page));
+	$: showNotice = ($forceNotice || ($cookie === null && !data.disabled_on_privacy_page));
 
 	onMount(() => {
 		alwaysOnScripts();

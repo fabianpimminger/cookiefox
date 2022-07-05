@@ -57,7 +57,7 @@ export const setCookie = function(cookie, data) {
 		name = data.cookie_name;
 	}
 
-	let options = {sameSite: "strict"};
+	let options = {path: '', sameSite: "strict"};
 	if(data.cookie_expiration !== undefined && data.cookie_expiration !== ""){
 		options.expires = parseInt(data.cookie_expiration);
 	}
@@ -67,6 +67,21 @@ export const setCookie = function(cookie, data) {
 	}
 
 	Cookies.set(name, cookie, options);
+}
+
+export const removeCookie = function(data) {
+	let options = {path: '', sameSite: "strict"};
+
+	let name = "cookiefox_consent";
+	if(data.cookie_name !== undefined && data.cookie_name !== ""){
+		name = data.cookie_name;
+	}
+	
+	if(data.cookie_domain !== undefined && data.cookie_domain !== ""){
+		options.domain = parseInt(data.cookie_expiration);
+	}	
+	
+	Cookies.remove(name, options);
 }
 
 export const getContainer = function() {
