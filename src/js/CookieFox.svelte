@@ -45,7 +45,7 @@
 </script>
 
 
-<div class="cookiefox cookiefox--notice cookiefox--{data.notice_display}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
+<div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
 		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} />
@@ -129,16 +129,14 @@
 	.cookiefox__inner{
 		width: 100%;
 		
-		@media(min-width: 1024px){
-			display: flex;
-			align-items: flex-end;
-			
+		@media(min-width: 1024px){			
 			.cookiefox__body{
 				flex: 1;
 				align-self: center;
 			}
 		}	
 	}
+
 	
 	.cookiefox__categories, .cookiefox__meta{
 		justify-content: flex-start;
@@ -146,11 +144,10 @@
 		@media(max-width: 1024px){
 			justify-content: center;	
 		}
-
 	}
 	
 	.cookiefox__body{
-		padding: 28px 24px;
+		padding: 28px 24px 7px;
 		
 		@media(max-width: 1024px){
 			padding: 18px 14px 7px;
@@ -158,13 +155,24 @@
 	}
 	
 	.cookiefox__footer{
-		padding: 28px 24px;
-		
+		padding: 7px 24px 28px;
+		display: flex;
+		justify-content: flex-end;
+			
 		@media(max-width: 1024px){
 			padding: 7px 14px 18px;
-			display: flex;
-			justify-content: space-between;
 		}
+	}
+	
+	&.cookiefox--simple{
+		.cookiefox__spacer{
+			display: none;
+		}
+	}
+	
+	.cookiefox__spacer{
+		display: block;
+		flex: 1;
 	}
 	
 	.cookiefox__title{
@@ -200,7 +208,7 @@
 		
 		.cookiefox__footer{
 			display: flex;
-			justify-content: space-between;
+			justify-content: flex-start;
 			padding: 14px 24px;
 			position: sticky;
 			bottom: 0px;
@@ -225,6 +233,11 @@
 			}
 			
 		}	
+		
+		.cookiefox__spacer{
+			flex: 1;
+			height: 1px;
+		}
 		
 		.cookiefox__body{
 			padding: 26px 24px 22px;

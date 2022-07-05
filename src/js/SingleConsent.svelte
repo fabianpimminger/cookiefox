@@ -104,5 +104,6 @@
 	{#if data.notice_button_decline_type !== "none"}
 	<button class="cookiefox__button cookiefox__button--secondary is-{data.notice_button_decline_type}" on:click={handleDecline} >{data.notice_button_decline}</button>
 	{/if}
+	<div class="cookiefox__spacer"></div>
 	<button class="cookiefox__button cookiefox__button--primary is-button" on:click={handleAccept}>{data.notice_button_accept}</button>
 </footer>

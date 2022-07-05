@@ -153,10 +153,6 @@ class Settings {
 				'text' => __('Text', 'cookiefox'),
 				'button' => __('Button', 'cookiefox'),
 			),
-			'attributes' => array(
-				'data-conditional-id' => 'consent_type',
-				'data-conditional-value' => wp_json_encode(array('simple')),
-			),
 		));
 		
 		$main_options->add_field(array(
@@ -167,10 +163,6 @@ class Settings {
 			'attributes' => array(
 				'data-conditional-id' => 'notice_button_decline_type',
 				'data-conditional-value' => wp_json_encode(array('text', 'button')),
-			),
-			'attributes' => array(
-				'data-conditional-id' => 'consent_type',
-				'data-conditional-value' => wp_json_encode(array('simple')),
 			),
 		));
 
