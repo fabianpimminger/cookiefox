@@ -85,7 +85,7 @@
 		$cookie.consent.categories = consents;
 	}
 	
-	function handleConsentChange() {
+	export const handleConsentChange = function() {
 		let scripts = "";
 
 		

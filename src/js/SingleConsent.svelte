@@ -41,7 +41,7 @@
 		setCookie($cookie, data);
 	}	
 	
-	function handleConsentChange() {
+	export const handleConsentChange = function() {
 		var scripts = "";
 		
 		if($cookie.consent === true){

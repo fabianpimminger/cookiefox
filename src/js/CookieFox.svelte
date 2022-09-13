@@ -8,7 +8,7 @@
 	import focusTrap from './focus-trap.js';
 	
 	let consentComponent;
-	let handleConsent;
+	let handleConsentChange;
 	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page));
 
 	onMount(() => {
@@ -37,6 +37,10 @@
 		window.cookiefox.api.show = function(){
 			$forceNotice = true;
 		};
+		
+		window.cookiefox.api.updateConsent = function(){
+			handleConsentChange();
+		}
 	}	
 	
 	function consentInit() {
@@ -48,7 +52,7 @@
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} />
+		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} bind:handleConsentChange={handleConsentChange} />
 	</div>
 </div>
 
