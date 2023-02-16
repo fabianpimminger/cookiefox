@@ -365,7 +365,13 @@ class Settings {
 			'desc' => __('The number of days the consent cookie is stored.', 'cookiefox'),
 			'default' => '90',
 			'id' => 'cookie_expiration',
-			'type' => 'text_small'
+			'type' => 'text_small',
+			'attributes' => array(
+				'type' => 'number',
+				'pattern' => '\d*',
+			),
+			'sanitization_cb' => 'absint',
+      'escape_cb'       => 'absint',
 		));
 		
 		$main_options->add_field(array(
