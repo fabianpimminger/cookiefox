@@ -37,7 +37,7 @@ CookieFox helps you to make your WordPress site compliant with privacy laws such
 - CSS: You can either use an external CSS file (2.5kb, gzip), inline all styles, or provide a custom stylesheet. 
 - HTML: CookieFox just injects only a single \<div\> tag in the `wp_footer` hook. It is used as a root tag for initiating the script.
 
-== Documentation & How-Tos ==
+== Documentation, API & How-Tos ==
 
 Documentation and tutorials/samples are available in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).
 
@@ -63,6 +63,12 @@ Please note that you are responsible for complying with your local and internati
 7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 2.0.5 =
+* Added setting for delaying the cookie notice
+* Added API to get the current consent status
+* Added API to subscribe to consent change events
+* Added API to subscribe to the init event
 
 = 2.0.4 =
 * Added API for handling consent changes for dynamically inserted content/embeds.
