@@ -61,6 +61,7 @@
 
 			if(!firstRun){
 				handleConsentChange();
+				dispatch("consentChanged");		
 				firstRun = false;
 			}
 			
@@ -162,9 +163,7 @@
 				consents[category.slug] = false;
 			}
 		});
-		
-		console.log(config.categories);
-		
+				
 		handleSave();
 	}	
 
@@ -173,6 +172,7 @@
 		handleConsentChange();
 		setupCookie();
 		setCookie($cookie, data);
+		dispatch("consentChanged");		
 	}	
 	
 	function handleManage() {

@@ -32,6 +32,7 @@
 		$forceNotice = false;
 		handleConsentChange();
 		setCookie($cookie, data);
+		dispatch("consentChanged");		
 	}	
 	
 	function handleDecline() {
@@ -39,6 +40,7 @@
 		$forceNotice = false;
 		handleConsentChange();
 		setCookie($cookie, data);
+		dispatch("consentChanged");		
 	}	
 	
 	export const handleConsentChange = function() {

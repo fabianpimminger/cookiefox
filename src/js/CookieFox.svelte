@@ -1,6 +1,7 @@
 <script>
 	export let data;
 	import { cookie, forceNotice } from './stores.js';
+	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
 	import { injectElements, getContainer } from './functions.js';
 	import SingleConsent from './SingleConsent.svelte';
@@ -50,18 +51,35 @@
 		window.cookiefox.api.updateConsent = function(){
 			handleConsentChange();
 		}
+		
+		window.cookiefox.api.getConsent = function(){
+			if($cookie && $cookie.consent){
+				return $cookie.consent
+			}
+			
+			return null;
+		}
 	}	
 	
-	function consentInit() {
+	function consentInitHandler() {
+		triggerInit();
 	}
 
+	function consentChangedHandler() {
+		if($cookie && $cookie.consent){
+			triggerConsentChanged($cookie.consent);
+		} else {
+			triggerConsentChanged();
+		}
+	}
+	
 </script>
 
 
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInit} bind:handleConsentChange={handleConsentChange} />
+		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
 	</div>
 </div>
 
