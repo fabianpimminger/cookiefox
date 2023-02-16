@@ -408,6 +408,20 @@ class Settings {
 			),
 		));
 
+		$main_options->add_field(array(
+			'name' => __('Cookie Notice Delay', 'cookiefox'),
+			'desc' => __('Opening the cookie notice will be delayed by x seconds.', 'cookiefox'),
+			'default' => '0',
+			'id' => 'notice_delay',
+			'type' => 'text_small',
+			'attributes' => array(
+				'type' => 'number',
+				'pattern' => '\d*',
+			),
+			'sanitization_cb' => 'absint',
+      'escape_cb'       => 'absint',
+		));
+
 	}
 	
 	public static function register_defaults(){

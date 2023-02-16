@@ -8,11 +8,20 @@
 	import focusTrap from './focus-trap.js';
 	
 	let consentComponent;
+	let forceDelay = false;
 	let handleConsentChange;
-	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page));
+	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page && !forceDelay));
 
 	onMount(() => {
 		alwaysOnScripts();
+				
+		if(data.notice_delay && data.notice_delay > 0){
+			forceDelay = true;
+			
+			setTimeout(() => {
+  			forceDelay = false;
+			}, parseInt(data.notice_delay) * 1000)
+		}
 		
 		if(data.consent_type === "category"){
 			consentComponent = CategoryConsent;

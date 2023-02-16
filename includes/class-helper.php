@@ -17,6 +17,7 @@ class Helper {
 			'cookie_notice_enabled' => 'on',
 			'cookie_notice_hide_on_privacy_page' => 'on',
 			'notice_display' => 'banner',
+			'notice_delay' => 0,
 			'notice_title' => __('Privacy Settings', 'cookiefox'),
 			'notice_text' => __('We use cookies to improve your experience on our site. To learn more, view our privacy policy.', 'cookiefox'),
 			'notice_button_accept' => __('Accept', 'cookiefox'),
