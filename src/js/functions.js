@@ -25,6 +25,15 @@ export const embedContent = function() {
 					document.body.appendChild(newElement);
 					parent.insertBefore(newElement, embed);
 				});
+	
+				let nestedScripts = container.querySelectorAll("* script");
+				
+				if(nestedScripts.length > 0){
+					nestedScripts.forEach(function(script) {
+						var newElement = cloneElement(script);
+						parent.insertBefore(newElement, embed);
+					});
+				}
 				
 				parent.removeChild(embed);
 				
