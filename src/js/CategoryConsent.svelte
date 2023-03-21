@@ -154,7 +154,7 @@
 			consents[category.slug] = true;
 		});
 		
-		handleSave();
+		handleSave(true);
 	}	
 	
 	function handleDecline() {
@@ -164,16 +164,28 @@
 			}
 		});
 				
-		handleSave();
+		handleSave(true);
 	}	
 
-	function handleSave() {
-		$forceNotice = false;
+	function handleSave(forceClose) {
+		if(forceClose){
+			$forceNotice = false;
+		}
 		handleConsentChange();
 		setupCookie();
 		setCookie($cookie, data);
 		dispatch("consentChanged");		
 	}	
+
+	export function setConsent(consent, category) {
+		console.log(consent, category, consents);
+		if (typeof consent == "boolean" && consents[category] !== undefined) {
+			consents[category] = consent;
+			handleSave(false);
+		} else {
+			console.warn("consent argument not boolean or category does not exist");
+		}
+	}
 	
 	function handleManage() {
 		if(view == "overview"){
@@ -187,7 +199,7 @@
 		if (showNotice && event.key === 'Escape') {
 			event.preventDefault();
 			event.stopPropagation();
-			handleSave();
+			handleSave(true);
 		}
 	}
 </script>

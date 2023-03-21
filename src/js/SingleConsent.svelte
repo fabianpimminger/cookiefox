@@ -1,6 +1,6 @@
 <script>
 	export let data, showNotice;
-	
+
 	import { cookie, forceNotice } from './stores.js';
 	import * as Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
@@ -34,6 +34,17 @@
 		setCookie($cookie, data);
 		dispatch("consentChanged");		
 	}	
+	
+	export function setConsent(consent) {
+		if (typeof consent == "boolean") {
+			$cookie = {consent: consent};
+			handleConsentChange();
+			setCookie($cookie, data);
+			dispatch("consentChanged");		
+		} else {
+			console.warn("consent argument not boolean");
+		}
+	}
 	
 	function handleDecline() {
 		$cookie = {consent: false};

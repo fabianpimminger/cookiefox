@@ -11,6 +11,7 @@
 	let consentComponent;
 	let forceDelay = false;
 	let handleConsentChange;
+	let setConsent;
 	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page && !forceDelay));
 
 	onMount(() => {
@@ -59,6 +60,15 @@
 			
 			return null;
 		}
+		
+		window.cookiefox.api.setConsent = function(consent, category){
+			if(data.consent_type == "category") {
+				setConsent(consent, category);
+			} else {
+				setConsent(consent);
+			}
+		}
+		
 	}	
 	
 	function consentInitHandler() {
@@ -79,7 +89,7 @@
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<svelte:component this={consentComponent} data={data} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
+		<svelte:component this={consentComponent} data={data} bind:setConsent={setConsent} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
 	</div>
 </div>
 
