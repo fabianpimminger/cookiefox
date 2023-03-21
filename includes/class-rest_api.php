@@ -90,6 +90,10 @@ class Rest_API {
 							$meta_value = apply_filters( "cookiefox_prepare_scripts", $meta_value);
 						}
 						
+						if($meta_key == "description"){
+							$meta_value = wp_kses_post(wpautop($meta_value));
+						}
+						
 						$cookie[$meta_key] = $meta_value;
 					} else {
 						$cookie[$meta_key] = null;

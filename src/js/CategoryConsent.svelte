@@ -260,7 +260,7 @@
 						{#if cookie.description}
 						<tr>
 							<th class="cookiefox__th">{data.notice_text_purpose}</th>
-							<td class="cookiefox__td">{cookie.description}</td>
+							<td class="cookiefox__td cookiefox__text">{@html cookie.description}</td>
 						</tr>
 						{/if}
 						{#if cookie.privacy_policy}
