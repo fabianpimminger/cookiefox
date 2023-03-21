@@ -224,8 +224,8 @@
 				<input class="cookiefox__category-checkbox" type="checkbox" disabled={category.always_on} name="consents[{category.slug}]" value={category.slug} bind:checked={consents[category.slug]}>
 				{category.name}
 			</label>
-			<div class="cookiefox__details-description">
-				{category.description}
+			<div class="cookiefox__details-description cookiefox__text">
+				{@html category.description}
 			</div>
 			{#if category.cookies && category.cookies.length > 0}
 			<details class="cookiefox__details-more">

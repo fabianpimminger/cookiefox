@@ -42,7 +42,7 @@ class Rest_API {
 			$category = array(
 				"name" => $cat->name,
 				"slug" => $cat->slug,
-				"description" => $cat->description,
+				"description" => wp_kses_post(wpautop($cat->description)),
 				"order" => $i,
 				"cookies" => array(),
 				"always_on" => false,

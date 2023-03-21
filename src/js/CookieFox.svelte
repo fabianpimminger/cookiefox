@@ -511,6 +511,16 @@ input[type=checkbox].cookiefox__category-checkbox{
 	}
 }
 
+.cookiefox__text{
+	ul, ol, p, table, h1, h2, h3, h4, h5, h6{
+		margin: 0 0 1.25em;
+		
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+}
+
 .cookiefox__button {
 	font-family: inherit;
 	text-decoration: none;
