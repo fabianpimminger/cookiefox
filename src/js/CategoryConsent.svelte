@@ -241,7 +241,7 @@
 			</div>
 			{#if category.cookies && category.cookies.length > 0}
 			<details class="cookiefox__details-more">
-				<summary class="cookiefox__details-summary">Cookie information</summary>
+				<summary class="cookiefox__details-summary">{data.notice_button_cookie_information}</summary>
 				<div class="cookiefox__details-cookies">
 					{#each category.cookies as cookie}
 					<table class="cookiefox__table">
