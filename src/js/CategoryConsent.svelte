@@ -266,7 +266,7 @@
 						{#if cookie.privacy_policy}
 						<tr>
 							<th class="cookiefox__th">{data.notice_text_privacy_policy}</th>
-							<td class="cookiefox__td">{cookie.privacy_policy}</td>
+							<td class="cookiefox__td">{@html cookie.privacy_policy}</td>
 						</tr>
 						{/if}
 						{#if cookie.cookies}
