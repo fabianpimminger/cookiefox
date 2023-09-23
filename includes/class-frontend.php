@@ -159,6 +159,7 @@ class Frontend {
 		$data["notice_text_purpose"] = __("Purpose", "cookiefox");
 		$data["notice_text_privacy_policy"] = __("Privacy Policy", "cookiefox");
 		$data["notice_text_cookies"] = __("Cookies", "cookiefox");
+		$data["notice_text_duration"] = __("Duration", "cookiefox");
 		$data = apply_filters( 'cookiefox_frontend_prepare_data', $data );
 		
 		return $data;

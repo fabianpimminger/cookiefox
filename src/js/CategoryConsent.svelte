@@ -275,6 +275,12 @@
 							<td class="cookiefox__td">{cookie.cookies}</td>
 						</tr>
 						{/if}
+						{#if cookie.duration}
+						<tr>
+							<th class="cookiefox__th">{data.notice_text_duration}</th>
+							<td class="cookiefox__td">{cookie.duration}</td>
+						</tr>
+						{/if}
 					</table>
 					{/each}
 				</div>

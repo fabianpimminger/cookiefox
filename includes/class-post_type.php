@@ -229,6 +229,13 @@ class Post_Type {
 			'type' => 'text'
 		));
 		
+		$post_type_cookie_metabox->add_field(array(
+			'name' => __('Cookie Duration', 'cookiefox'),
+			'desc' => __('The duration will be displayed in the detail view.', 'cookiefox'),
+			'id' => 'duration',
+			'type' => 'text',
+		));
+
 		$taxonomy_metabox = new_cmb2_box( array(
 			'id' => 'cookiefox_category',
 			'title' => esc_html__( 'Category Metabox', 'cmb2' ),

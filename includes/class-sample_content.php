@@ -33,6 +33,7 @@ class Sample_Content {
 					"scripts_no_consent" => "<script>console.log('cookiefox no consent');</script>",
 					"scripts_always" => "<script>console.log('cookiefox always');</script>",
 					"cookies" => "cookiefox_sample,cookiefox_sample2",
+					"duration" => "1 year",
 				),
 				"tax_input" => array("cookiefox_category" => array("marketing")),
 			)

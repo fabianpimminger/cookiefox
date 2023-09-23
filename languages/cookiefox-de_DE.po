@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2022-04-11T18:38:43+00:00\n"
-"PO-Revision-Date: 2022-04-11 20:38+0200\n"
+"POT-Creation-Date: 2023-09-23T07:55:11+00:00\n"
+"PO-Revision-Date: 2023-09-23 09:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Domain: cookiefox\n"
 
 #. Plugin Name of the plugin
@@ -43,7 +43,7 @@ msgstr ""
 "externen Inhalten wird nach Zustimmung in den Datenschutz-Einstellungen "
 "aktiviert."
 
-#: includes/class-embeds.php:45 includes/class-helper.php:20
+#: includes/class-embeds.php:45 includes/class-helper.php:21
 msgid "Privacy Settings"
 msgstr "Datenschutz-Einstellungen"
 
@@ -77,7 +77,11 @@ msgstr "Datenschutzerklärung"
 msgid "Cookies"
 msgstr "Cookies"
 
-#: includes/class-helper.php:21
+#: includes/class-frontend.php:162
+msgid "Duration"
+msgstr "Laufzeit"
+
+#: includes/class-helper.php:22
 msgid ""
 "We use cookies to improve your experience on our site. To learn more, view "
 "our privacy policy."
@@ -85,27 +89,27 @@ msgstr ""
 "Wir verwenden Cookies um dir die bestmögliche Erfahrung auf unserer Seite zu "
 "bieten. Um mehr zu erfahren, schau dir die Datenschutzerklärung an."
 
-#: includes/class-helper.php:22
+#: includes/class-helper.php:23
 msgid "Accept"
 msgstr "Akzeptieren"
 
-#: includes/class-helper.php:23
+#: includes/class-helper.php:24
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/class-helper.php:24
+#: includes/class-helper.php:25
 msgid "Manage cookies"
 msgstr "Cookies verwalten"
 
-#: includes/class-helper.php:26
+#: includes/class-helper.php:27
 msgid "Decline"
 msgstr "Ablehnen"
 
 #. translators: %2$s is the closing a tag
 #: includes/class-internationalization.php:58
 msgid ""
-"Translation of this section is available via WPML in %1$sString Translation"
-"%2$s."
+"Translation of this section is available via WPML in %1$sString "
+"Translation%2$s."
 msgstr "Übersetze diesen Bereich in WPML unter %1$sString Translation%2$s."
 
 #. translators: %2$s is the closing a tag
@@ -235,7 +239,7 @@ msgctxt "Taxonomy Singular Name"
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-post_type.php:100 includes/class-post_type.php:387
+#: includes/class-post_type.php:100 includes/class-post_type.php:394
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -341,33 +345,41 @@ msgstr ""
 "Diese Cookies werden nach einem Opt-Out entfernt. Mehrere Cookies mittels "
 "Komma trennen."
 
-#: includes/class-post_type.php:245
+#: includes/class-post_type.php:233
+msgid "Cookie Duration"
+msgstr "Cookie-Laufzeit"
+
+#: includes/class-post_type.php:234
+msgid "The duration will be displayed in the detail view."
+msgstr "Die Cookie-Laufzeit wird in der Detail-Ansicht angezeigt."
+
+#: includes/class-post_type.php:252
 msgid "Always On"
 msgstr "Always-On"
 
-#: includes/class-post_type.php:246
+#: includes/class-post_type.php:253
 msgid "If activated, cookies in this category are always enabled."
 msgstr "Wenn aktiviert, werden Cookies in dieser Kategorie immer aktiviert."
 
-#: includes/class-post_type.php:252 includes/class-post_type.php:263
-#: includes/class-post_type.php:343
+#: includes/class-post_type.php:259 includes/class-post_type.php:270
+#: includes/class-post_type.php:350
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: includes/class-post_type.php:268
+#: includes/class-post_type.php:275
 msgid "Integrations"
 msgstr "Integrationen"
 
-#: includes/class-post_type.php:274
+#: includes/class-post_type.php:281
 msgid "Unblock Embedded Content"
 msgstr "Eingebettete Inhalte freischalten"
 
-#: includes/class-post_type.php:275
+#: includes/class-post_type.php:282
 msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
-#: includes/class-post_type.php:388
+#: includes/class-post_type.php:395
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -379,20 +391,20 @@ msgstr "Beispiel-Cookie"
 msgid "This is a sample cookie installed by the CookieFox plugin"
 msgstr "Das ist ein Beispiel-Cookie, der vom CookieFox Plugin erstellt wurde"
 
-#: includes/class-sample_content.php:45
+#: includes/class-sample_content.php:46
 msgid "Functional"
 msgstr "Funktional"
 
-#: includes/class-sample_content.php:47
+#: includes/class-sample_content.php:48
 msgid "Essential cookies that are required for the website to function."
 msgstr ""
 "Essentielle Cookies, die zum Betrieb und Nutzung der Website notwendig sind."
 
-#: includes/class-sample_content.php:53
+#: includes/class-sample_content.php:54
 msgid "Statistics"
 msgstr "Statistik"
 
-#: includes/class-sample_content.php:55
+#: includes/class-sample_content.php:56
 msgid ""
 "Statisticial cookies track user behaviour and are used to collect "
 "information anonymously. This helps us to understand how our visitors use "
@@ -402,11 +414,11 @@ msgstr ""
 "von anonymen Informationen verwendet. Das hilft uns zu verstehe, wie diese "
 "Website genutzt wird."
 
-#: includes/class-sample_content.php:61
+#: includes/class-sample_content.php:62
 msgid "Marketing"
 msgstr "Marketing"
 
-#: includes/class-sample_content.php:63
+#: includes/class-sample_content.php:64
 msgid ""
 "Marketing cookies are used by third-party advertisers and publishers to "
 "display personalized ads and support online marketing. They do this by "
@@ -416,11 +428,11 @@ msgstr ""
 "Marketing verwendet um personalisierte Werbung anzuzeigen. Sie tun dies, "
 "indem sie Besucher über Websites hinweg verfolgen."
 
-#: includes/class-sample_content.php:69
+#: includes/class-sample_content.php:70
 msgid "External Media"
 msgstr "Externe Medien"
 
-#: includes/class-sample_content.php:71
+#: includes/class-sample_content.php:72
 msgid ""
 "External content from video and social media platforms can track visitors "
 "across websites when they are embedded."
@@ -428,7 +440,7 @@ msgstr ""
 "Externe Inhalte von Video- und Social Media-Plattformen können Besucher über "
 "Websites hinweg verfolgen, wenn diese eingebettet werden."
 
-#: includes/class-sample_content.php:118
+#: includes/class-sample_content.php:119
 msgid ""
 "The sample content has been created. Check it out by visiting the Cookies "
 "and Categories sections."
@@ -726,11 +738,11 @@ msgstr "Ablaufzeit in Tagen"
 msgid "The number of days the consent cookie is stored."
 msgstr "Die Anzahl der Tage nach denen der Consent Cookie abläuft."
 
-#: includes/class-settings.php:372
+#: includes/class-settings.php:378
 msgid "Advanced Settings & Performance"
 msgstr "Fortgeschrittene Einstellungen & Performance"
 
-#: includes/class-settings.php:373
+#: includes/class-settings.php:379
 msgid ""
 "These settings can be used to customize some performance characteristics of "
 "CookieFox."
@@ -738,11 +750,11 @@ msgstr ""
 "Diese Einstellungen können verwendet werden um die Performance von CookieFox "
 "anzupassen."
 
-#: includes/class-settings.php:379
+#: includes/class-settings.php:385
 msgid "Stylesheet"
 msgstr "Stylesheet"
 
-#: includes/class-settings.php:380
+#: includes/class-settings.php:386
 msgid ""
 "CSS can be included via an external stylesheet, an inline style-tag or not "
 "be included at all."
@@ -750,23 +762,23 @@ msgstr ""
 "CSS kann über einen externen Stylesheet, einen inline Style-Tag oder gar "
 "nicht eingebunden werden."
 
-#: includes/class-settings.php:386
+#: includes/class-settings.php:392
 msgid "External Stylesheet"
 msgstr "Externer Stylesheet"
 
-#: includes/class-settings.php:387
+#: includes/class-settings.php:393
 msgid "Inline CSS"
 msgstr "Inline CSS"
 
-#: includes/class-settings.php:388
+#: includes/class-settings.php:394
 msgid "Do not include styles"
 msgstr "Keinen Stylesheet einbinden"
 
-#: includes/class-settings.php:393
+#: includes/class-settings.php:399
 msgid "Javascript"
 msgstr "Javascript"
 
-#: includes/class-settings.php:394
+#: includes/class-settings.php:400
 msgid ""
 "The modern version has a smaller file size and is more performant than the "
 "legacy version. If you need to support legacy browsers such as Internet "
@@ -777,13 +789,21 @@ msgstr ""
 "Browser wie zum Beispiel den Internet Explorer 11 benötigt wird, sollte die "
 "Version für Legacy Browser ausgewählt werden."
 
-#: includes/class-settings.php:400
+#: includes/class-settings.php:406
 msgid "Modern Browsers"
 msgstr "Moderne Browser"
 
-#: includes/class-settings.php:401
+#: includes/class-settings.php:407
 msgid "Legacy (including IE11)"
 msgstr "Legacy (inkl. IE11)"
+
+#: includes/class-settings.php:412
+msgid "Cookie Notice Delay"
+msgstr "Cookie-Hinweis Verzögerung"
+
+#: includes/class-settings.php:413
+msgid "Opening the cookie notice will be delayed by x seconds."
+msgstr "Das Öffnen des Cookie-Hinweises wird um x Sekunden verzögert."
 
 #: includes/class-shortcode.php:28
 msgid "Show Privacy Settings"
