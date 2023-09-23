@@ -2,7 +2,7 @@
 /**
  * Plugin Name: CookieFox
  * Description: A performant and accessible cookie and consent solution for WordPress.
- * Version: 2.0.7
+ * Version: 2.0.8
  * Requires at least: 5.0
  * Tested up to: 6.3.1
  * Requires PHP: 7.3
