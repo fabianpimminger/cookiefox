@@ -3,8 +3,8 @@ Contributors: fabianpimminger
 Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
-Tested up to: 6.3.1
-Stable tag: 2.0.8
+Tested up to: 6.4.3
+Stable tag: 2.0.9
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,9 @@ Please note that you are responsible for complying with your local and internati
 7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 2.0.9 =
+* Fixed a compatibility issue with Rank Math SEO
 
 = 2.0.8 =
 * Made Cookie Information string translatable
