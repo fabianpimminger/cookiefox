@@ -44,7 +44,9 @@
 	});
 	
 	function loadConfig() {
-	  fetch(data.api_base + "cookiefox/v1/cookies")
+		let url = data.api_base + "cookiefox/v1/cookies" + (data.api_base.includes("?") ? "&" : "?") + "lang=" + data.lang;
+		
+	  fetch(url)
 	  .then(response => response.json())
 	  .then(data => {
 	    config = data;
