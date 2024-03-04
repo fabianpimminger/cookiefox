@@ -482,6 +482,7 @@ input[type=checkbox].cookiefox__category-checkbox{
 
 .cookiefox__details-cookies{
 	margin: 0.75em 0 0;
+	overflow:scroll;
 }
 
 .cookiefox__table{

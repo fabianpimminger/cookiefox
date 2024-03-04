@@ -6,7 +6,7 @@
  * Requires at least: 5.0
  * Tested up to: 6.3.1
  * Requires PHP: 7.3
- * Author: Fabian Pimminger
+ * Author: Fabian Pimminger / Patrick Schäfer
  * Author URI: https://fabianpimminger.com/work/
  * License: GPL2
  * Text Domain: cookiefox
