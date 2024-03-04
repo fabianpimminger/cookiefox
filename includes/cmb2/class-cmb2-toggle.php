@@ -39,7 +39,7 @@ class Toggle {
 			$args['checked'] = '';
 		}
 
-		echo '<label class="cmb2-toggle">
+		echo '<label class="cmb2-switch">
 				    <input type="checkbox" name="' . esc_attr($args['name']) . '" id="' . esc_attr($args['id']) . '" value="' . esc_attr($active_value) . '" data-inactive-value="' . esc_attr($inactive_value) . '" ' . $args['checked'] . ' />
 				    <span class="knob"></span>
 			      </label>';
@@ -51,7 +51,7 @@ class Toggle {
 		?>
 <script>
 jQuery(document).ready(function($) {
-	$('.cmb2-toggle').each(function() {
+	$('.cmb2-switch').each(function() {
 		var checkbox = $(this).find('input[type="checkbox"]');
 		var inactiveValue = checkbox.data('inactive-value');
 		var activeValue = checkbox.val();
@@ -66,7 +66,7 @@ jQuery(document).ready(function($) {
 });
 </script>
 <style>
-.cmb2-toggle {
+.cmb2-switch {
 	position: relative;
 	display: inline-block;
 	width: 34px;
@@ -75,11 +75,11 @@ jQuery(document).ready(function($) {
 	position: relative;
 }
 
-.cmb2-toggle input {
+.cmb2-switch input {
 	display: none;
 }
 
-.cmb2-toggle .knob {
+.cmb2-switch .knob {
 	position: absolute;
 	cursor: pointer;
 	top: 0;
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
 	border-radius: 34px;
 }
 
-.cmb2-toggle .knob:before {
+.cmb2-switch .knob:before {
 	position: absolute;
 	content: "";
 	height: 16px;
@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
 }
 
 
-#side-sortables .cmb-row .cmb2-toggle+.cmb2-metabox-description {
+#side-sortables .cmb-row .cmb2-switch+.cmb2-metabox-description {
 	padding-bottom: 0;
 }
 
