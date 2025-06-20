@@ -32,6 +32,7 @@
 		}
 		
 		initAPI();
+		initEvents();
 
 	});
 
@@ -70,6 +71,16 @@
 		}
 		
 	}	
+	
+	function initEvents() {
+		const openLinks = document.querySelectorAll(".open-cookiefox");
+		openLinks.forEach(link => {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				$forceNotice = true;
+			});
+		});
+	}
 	
 	function consentInitHandler() {
 		triggerInit();
