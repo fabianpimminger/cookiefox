@@ -1,5 +1,5 @@
 <script>
-	export let data;
+	export let data, config;
 	import { cookie, forceNotice } from './stores.js';
 	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
@@ -89,7 +89,7 @@
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
-		<svelte:component this={consentComponent} data={data} bind:setConsent={setConsent} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
+		<svelte:component this={consentComponent} data={data} config={config} bind:setConsent={setConsent} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
 	</div>
 </div>
 

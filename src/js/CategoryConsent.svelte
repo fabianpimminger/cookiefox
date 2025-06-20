@@ -1,5 +1,5 @@
 <script>
-	export let data, showNotice;
+	export let data, config, showNotice;
 	
 	import { cookie, forceNotice } from './stores.js';
 	import * as Cookies from "js-cookie";
@@ -7,7 +7,6 @@
 	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
 	
   const dispatch = createEventDispatcher();
-	let config;
 	let loaded = false;
 	let consents = {};
 	let processedConsents = [];
@@ -44,29 +43,21 @@
 	});
 	
 	function loadConfig() {
-		let url = data.api_base + "cookiefox/v1/cookies" + (data.api_base.includes("?") ? "&" : "?") + "lang=" + data.lang;
+		if(config !== null && config.categories !== null){
+			setupCategories();
+			loaded = true;
+			return;
+		}
+
+		let url = data.api_base + "cookiefox/v1/cookies" + (data.api_base.includes("?") ? "&" : "?") + "lang=" + data.lang;		
 		
 	  fetch(url)
 	  .then(response => response.json())
 	  .then(data => {
 	    config = data;
 			
-			config.categories.forEach(category => {
-				if(category.always_on){
-					consents[category.slug] = true;
-				} else if(consents[category.slug] === undefined){
-					consents[category.slug] = false;
-				}
-			});
-			
-			handleAlwaysOnCookies();
-
-			if(!firstRun){
-				handleConsentChange();
-				dispatch("consentChanged");		
-				firstRun = false;
-			}
-			
+			setupCategories();
+						
 			loaded = true;
 	  })
 		.catch(error => {
@@ -74,6 +65,24 @@
 			loaded = true;
 	    return [];
 	  });
+	}
+	
+	function setupCategories() {
+		config.categories.forEach(category => {
+			if(category.always_on){
+				consents[category.slug] = true;
+			} else if(consents[category.slug] === undefined){
+				consents[category.slug] = false;
+			}
+		});
+		
+		handleAlwaysOnCookies();
+
+		if(!firstRun){
+			handleConsentChange();
+			dispatch("consentChanged");		
+			firstRun = false;
+		}
 	}
 	
 	function setupCookie() {

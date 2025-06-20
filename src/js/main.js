@@ -12,7 +12,8 @@ const replaceContainer = function ( Component, options ) {
 const app = replaceContainer( CookieFox, {
   target: document.getElementById("cookiefox"),
 	props: {
-		data: window.cookiefox.data
+		data: window.cookiefox.data,
+		config: window.cookiefox.config ?? null
 	}
 });
 
