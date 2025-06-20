@@ -219,7 +219,7 @@
 
 <div class="cookiefox__body">
 	{#if data.notice_title}
-	<h3 class="cookiefox__title" id="cookiefox__title">{data.notice_title}</h3>
+	<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="1">{data.notice_title}</div>
 	{/if}
 	{#if data.notice_text}
 	<div class="cookiefox__text">{@html data.notice_text}</div>

@@ -106,6 +106,7 @@
 	--cookiefox--line-height: 1.5;
 	--cookiefox__notice--box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
 	--cookiefox__modal--border-radius: 6px;
+	--cookiefox__title--font-family: var(--cookiefox--font-family);
 	--cookiefox__title--font-size: 1.25em;
 	--cookiefox__title--font-weight: bold;
 	--cookiefox__text--font-size: 1em;
@@ -291,7 +292,7 @@
 	
 	.cookiefox__title{
 		text-align: center;
-		margin-bottom: 0.75em;
+		margin-bottom: 0.6875em;
 	}
 	
 	.cookiefox__categories, .cookiefox__meta{
@@ -301,7 +302,7 @@
 }
 
 .cookiefox__title{
-	font-family: var(--cookiefox-font-family);
+	font-family: var(--cookiefox__title--font-family);
 	font-size: var(--cookiefox__title--font-size);
 	font-weight: var(--cookiefox__title--font-weight);
 	margin: 0 0 0.5em;
