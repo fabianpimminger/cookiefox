@@ -74,7 +74,7 @@ class Rest_API {
 				);
 				
 				$meta_data = get_post_meta(get_the_ID());
-				$include_meta_keys = array("vendor", "description", "privacy_policy", "scripts_consent", "scripts_no_consent", "scripts_always", "cookies", "duration");
+				$include_meta_keys = array("vendor", "description", "privacy_policy", "scripts_consent", "scripts_no_consent", "scripts_always", "cookies", "duration","hosts");
 				
 				foreach($include_meta_keys as $meta_key){
 					if(!empty($meta_data[$meta_key])){

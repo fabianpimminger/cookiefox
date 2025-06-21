@@ -292,6 +292,12 @@
 							<td class="cookiefox__td">{cookie.duration}</td>
 						</tr>
 						{/if}
+						{#if cookie.hosts}
+						<tr>
+							<th class="cookiefox__th">{data.notice_text_hosts}</th>
+							<td class="cookiefox__td">{cookie.hosts}</td>
+						</tr>
+						{/if}
 					</table>
 					{/each}
 				</div>

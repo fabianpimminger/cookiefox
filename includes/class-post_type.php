@@ -235,6 +235,13 @@ class Post_Type {
 			'id' => 'duration',
 			'type' => 'text',
 		));
+		
+		$post_type_cookie_metabox->add_field(array(
+			'name' => __('Hosts', 'cookiefox'),
+			'desc' => __('The hosts will be displayed in the detail view.', 'cookiefox'),
+			'id' => 'hosts',
+			'type' => 'text',
+		));
 
 		$taxonomy_metabox = new_cmb2_box( array(
 			'id' => 'cookiefox_category',

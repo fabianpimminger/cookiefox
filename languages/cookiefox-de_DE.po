@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CookieFox 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
-"POT-Creation-Date: 2023-09-23T07:55:11+00:00\n"
-"PO-Revision-Date: 2023-09-23 09:56+0200\n"
+"POT-Creation-Date: 2025-06-20T12:45:35+00:00\n"
+"PO-Revision-Date: 2025-06-20 14:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -13,24 +13,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 "X-Domain: cookiefox\n"
 
 #. Plugin Name of the plugin
+#: cookiefox.php
 msgid "CookieFox"
 msgstr "CookieFox"
 
 #. Description of the plugin
+#: cookiefox.php
 msgid "A performant and accessible cookie and consent solution for WordPress."
 msgstr ""
 "Eine performante und barrierefreie Lösung für Cookie-Hinweise und Consent-"
 "Abfragen für Wordpress."
 
 #. Author of the plugin
+#: cookiefox.php
 msgid "Fabian Pimminger"
 msgstr "Fabian Pimminger"
 
 #. Author URI of the plugin
+#: cookiefox.php
 msgid "https://fabianpimminger.com/work/"
 msgstr "https://fabianpimminger.com/work/"
 
@@ -107,6 +111,7 @@ msgstr "Ablehnen"
 
 #. translators: %2$s is the closing a tag
 #: includes/class-internationalization.php:58
+#, php-format
 msgid ""
 "Translation of this section is available via WPML in %1$sString "
 "Translation%2$s."
@@ -114,6 +119,7 @@ msgstr "Übersetze diesen Bereich in WPML unter %1$sString Translation%2$s."
 
 #. translators: %2$s is the closing a tag
 #: includes/class-internationalization.php:67
+#, php-format
 msgid ""
 "Translation of this section is available via Polylang in %1$sStrings "
 "translations%2$s."
@@ -123,11 +129,13 @@ msgstr ""
 
 #. translators: %2$s is the closing a tag
 #: includes/class-internationalization.php:83
+#, php-format
 msgid "Translate this field in %1$sString Translation%2$s."
 msgstr "Übersetze dieses Feld in %1$sString Translation%2$s."
 
 #. translators: %2$s is the closing a tag
 #: includes/class-internationalization.php:92
+#, php-format
 msgid "Translate this field in %1$sStrings translations%2$s."
 msgstr "Übersetze dieses Feld in %1$sÜbersetzungen von Zeichenketten%2$s."
 
@@ -239,7 +247,7 @@ msgctxt "Taxonomy Singular Name"
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-post_type.php:100 includes/class-post_type.php:394
+#: includes/class-post_type.php:100 includes/class-post_type.php:401
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -353,33 +361,41 @@ msgstr "Cookie-Laufzeit"
 msgid "The duration will be displayed in the detail view."
 msgstr "Die Cookie-Laufzeit wird in der Detail-Ansicht angezeigt."
 
-#: includes/class-post_type.php:252
+#: includes/class-post_type.php:240
+msgid "Hosts"
+msgstr "Hosts"
+
+#: includes/class-post_type.php:241
+msgid "The hosts will be displayed in the detail view."
+msgstr "Die Hosts wird in der Detail-Ansicht angezeigt."
+
+#: includes/class-post_type.php:259
 msgid "Always On"
 msgstr "Always-On"
 
-#: includes/class-post_type.php:253
+#: includes/class-post_type.php:260
 msgid "If activated, cookies in this category are always enabled."
 msgstr "Wenn aktiviert, werden Cookies in dieser Kategorie immer aktiviert."
 
-#: includes/class-post_type.php:259 includes/class-post_type.php:270
-#: includes/class-post_type.php:350
+#: includes/class-post_type.php:266 includes/class-post_type.php:277
+#: includes/class-post_type.php:357
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: includes/class-post_type.php:275
+#: includes/class-post_type.php:282
 msgid "Integrations"
 msgstr "Integrationen"
 
-#: includes/class-post_type.php:281
+#: includes/class-post_type.php:288
 msgid "Unblock Embedded Content"
 msgstr "Eingebettete Inhalte freischalten"
 
-#: includes/class-post_type.php:282
+#: includes/class-post_type.php:289
 msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
-#: includes/class-post_type.php:395
+#: includes/class-post_type.php:402
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -496,6 +512,7 @@ msgstr "Auf Datenschutzerklärung deaktivieren"
 
 #. translators: %2$s is the closing a tag
 #: includes/class-settings.php:62
+#, php-format
 msgid ""
 "Hides the privacy notice on the privacy page configured in Settings -> "
 "%1$sPrivacy%2$s."
