@@ -4,7 +4,7 @@ Donate link: http://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
 Tested up to: 6.4.3
-Stable tag: 2.0.10
+Stable tag: 2.0.11
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,11 @@ Please note that you are responsible for complying with your local and internati
 7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 2.0.11 =
+* Removed H3 tag from title for SEO; style with --cookiefox__title--font-family, --cookiefox__title--font-size, --cookiefox__title--font-weight CSS variables.
+* Added click trigger for open-cookiefox class to open consent notice from menus.
+* Added hosts field to cookie infos.
 
 = 2.0.10 =
 * Fixed an error that occurred when a site doesn't use permalink rewrites.
