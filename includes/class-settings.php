@@ -396,19 +396,6 @@ class Settings {
 		));
 		
 		$main_options->add_field(array(
-			'name' => __('Javascript', 'cookiefox'),
-			'desc' => __('The modern version has a smaller file size and is more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option.', 'cookiefox'),
-			'id' => 'javascript',
-			'type' => 'select',
-			'show_option_none' => false,
-			'default' => 'modern',
-			'options' => array(
-				'modern' => __('Modern Browsers', 'cookiefox'),
-				'legacy' => __('Legacy (including IE11)', 'cookiefox'),
-			),
-		));
-
-		$main_options->add_field(array(
 			'name' => __('Cookie Notice Delay', 'cookiefox'),
 			'desc' => __('Opening the cookie notice will be delayed by x seconds.', 'cookiefox'),
 			'default' => '0',

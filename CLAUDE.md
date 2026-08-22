@@ -8,9 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 # Development
 npm run watch        # Watch mode for development with hot reload
-npm run build        # Build both modern and legacy versions for production
-npm run build:modern # Build modern ES2017+ bundle only
-npm run build:legacy # Build legacy ES5 bundle with polyfills only
+npm run build        # Production frontend bundle (assets/frontend)
 
 # Dependencies
 npm install          # Install Node.js dependencies
@@ -22,16 +20,17 @@ npm run release:zip  # Create distribution ZIP file for WordPress.org
 npm run release:test # Deploy to test environment
 ```
 
-### No Testing Framework
-This codebase does not have automated tests. Development relies on manual testing in WordPress environments.
+### Tests
+```bash
+npm run playground   # WordPress Playground at http://127.0.0.1:9400
+npm run test:e2e     # Playwright consent/embed tests (starts Playground)
+```
 
 ## Architecture Overview
 
-### Dual Build System
-The plugin uses a sophisticated build system targeting both modern and legacy browsers:
-- **Modern build**: ES2017+ features for modern browsers (main.js)
-- **Legacy build**: ES5 with polyfills for IE11+ support (legacy.js)
-- Frontend built with Svelte and Rollup, using PostCSS for styling
+### Build System
+- Frontend built with Svelte and Rollup (ES2017+), using PostCSS for styling
+- Single production bundle: `assets/frontend/js/main.js`
 
 ### PHP Backend Architecture
 - **Singleton pattern**: Main class uses singleton (`class-main.php`)
@@ -64,10 +63,8 @@ The plugin uses a sophisticated build system targeting both modern and legacy br
 - **CSS delivery options**: External, inline, or custom CSS loading strategies
 - **Version hashing**: Asset versioning for cache busting
 
-### Browser Support Strategy
-- Modern browsers receive optimized ES2017+ code
-- Legacy browsers (IE11+) receive transpiled code with polyfills
-- Graceful degradation ensures functionality across all supported browsers
+### Browser Support
+- Modern evergreen browsers (ES2017+). Internet Explorer is not supported.
 
 ## Development Notes
 
@@ -78,13 +75,13 @@ The plugin uses a sophisticated build system targeting both modern and legacy br
 - **js-cookie**: Cookie manipulation library
 
 ### Build Configuration
-- **Rollup**: Module bundler with Babel for legacy support
+- **Rollup**: Module bundler
 - **PostCSS**: CSS processing and optimization
 - **Terser**: JavaScript minification for production builds
 
 ### Release Process
-The plugin uses a manual release process:
-1. Build production assets with `npm run build`
-2. Generate release files with `npm run release`
-3. Create distribution ZIP with `npm run release:zip`
-4. No automated CI/CD - relies on manual QA testing
+```bash
+npm run build
+npm run release:wporg:dry
+npm run release:wporg
+```

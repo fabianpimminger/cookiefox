@@ -36,7 +36,6 @@ function cookiefox_e2e_marker_settings($settings) {
 	$settings['cookie_notice_enabled'] = 'on';
 	$settings['notice_display'] = 'banner';
 	$settings['notice_delay'] = 0;
-	$settings['javascript'] = 'modern';
 	$settings['block_embeds'] = 'on';
 	$settings['scripts_always'] = '<script>window.__cookiefoxAlways = true;</script>';
 	$settings['scripts_consent'] = '<script>window.__cookiefoxConsent = "accept";</script>';

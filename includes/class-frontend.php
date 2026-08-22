@@ -37,18 +37,10 @@ class Frontend {
 			add_action('wp_head', array($this, "inline_style"), 100);
 		}
 
-		$javascript = Helper::get_option("javascript", "modern");
-		$script_args = array(
+		wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/main.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/main.js'), array(
 			'in_footer' => true,
 			'strategy' => 'defer',
-		);
-
-		if($javascript == "modern"){
-			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/main.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/main.js'), $script_args);
-		} elseif ($javascript == "legacy"){
-			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/legacy.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/legacy.js'), $script_args);
-		}
-
+		));
 		wp_enqueue_script("cookiefox");
 
 	}
