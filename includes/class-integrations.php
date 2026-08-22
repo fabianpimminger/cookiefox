@@ -111,6 +111,7 @@ class Integrations {
 			'google-analytics-premium' => 'class-monsterinsights.php',
 			'google-analytics-dashboard-for-wp' => 'class-exactmetrics.php',
 			'exactmetrics-premium' => 'class-exactmetrics.php',
+			'google-site-kit' => 'class-google-site-kit.php',
 		);
 
 		$files = array();

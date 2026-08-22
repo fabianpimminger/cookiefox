@@ -4,7 +4,7 @@
 	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
 	import Cookies from "js-cookie";
-	import { injectElements, getContainer, isCrawler, parseStoredConsent, cloneElement, activateIntegration } from './functions.js';
+	import { injectElements, getContainer, isCrawler, parseStoredConsent, cloneElement, activateIntegration, activateBlockedScripts } from './functions.js';
 	import { loadConfig, isConfigReady } from './config.js';
 	import SingleConsent from './SingleConsent.svelte';
 	import CategoryConsent from './CategoryConsent.svelte';
@@ -20,6 +20,7 @@
 		window.cookiefox.api = window.cookiefox.api || {};
 		window.cookiefox.api.cloneElement = cloneElement;
 		window.cookiefox.api.activateIntegration = activateIntegration;
+		window.cookiefox.api.activateBlockedScripts = activateBlockedScripts;
 	}
 
 	if (isCrawler()) {
@@ -74,6 +75,7 @@
 		window.cookiefox.api = window.cookiefox.api || {};
 		window.cookiefox.api.cloneElement = cloneElement;
 		window.cookiefox.api.activateIntegration = activateIntegration;
+		window.cookiefox.api.activateBlockedScripts = activateBlockedScripts;
 		window.cookiefox.api.show = function(){
 			$forceNotice = true;
 		};

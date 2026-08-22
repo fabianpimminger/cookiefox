@@ -143,19 +143,30 @@ export const cloneElement = function(element){
 	return newElement;
 }
 
-export const activateIntegration = function(slug) {
-	if (!slug) {
+export const activateBlockedScripts = function(selector) {
+	if (!selector) {
 		return;
 	}
 
-	document.querySelectorAll('script[data-cookiefox-integration="' + slug + '"]').forEach(function(script) {
+	document.querySelectorAll(selector).forEach(function(script) {
 		var el = cloneElement(script);
 		el.removeAttribute("data-cookiefox-integration");
-		el.removeAttribute("type");
+		el.removeAttribute("data-block-on-consent");
+		if (el.getAttribute("type") === "text/plain") {
+			el.removeAttribute("type");
+		}
 		if (script.parentNode) {
 			script.parentNode.insertBefore(el, script);
 			script.remove();
 		}
 	});
+}
+
+export const activateIntegration = function(slug) {
+	if (!slug) {
+		return;
+	}
+
+	activateBlockedScripts('script[data-cookiefox-integration="' + slug + '"]');
 }
 	
