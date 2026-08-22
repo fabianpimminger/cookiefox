@@ -39,7 +39,9 @@
     "watch": "rollup -w -c",
     "release:zip": "bestzip release/zip/cookiefox.zip assets/* cookiefox.php includes/* vendor/* languages/* readme.txt wpml-config.xml uninstall.php",
     "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php release/files/cookiefox",
-    "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox"
+    "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox",
+    "release:wporg": "bash scripts/release-wporg.sh",
+    "release:wporg:dry": "bash scripts/release-wporg.sh --dry-run"
   },
   "author": "",
   "license": "GPL-2.0-or-later"
