@@ -20,6 +20,8 @@ add_action('template_redirect', function () {
 	$settings['consent_type'] = ($mode === 'category') ? 'category' : 'simple';
 	$rest = isset($_GET['cookiefox_e2e_rest']) ? sanitize_key(wp_unslash($_GET['cookiefox_e2e_rest'])) : '';
 	$settings['config_via_rest'] = ($rest === '1' || $rest === 'on') ? 'on' : 'off';
+	$integration = isset($_GET['cookiefox_e2e_integration']) ? sanitize_key(wp_unslash($_GET['cookiefox_e2e_integration'])) : '';
+	$settings['integrations'] = ($integration === '1' || $integration === 'on') ? array('e2e-fake') : array();
 
 	update_option('cookiefox', $settings, true);
 	wp_safe_redirect(home_url('/'));
@@ -29,6 +31,24 @@ add_action('template_redirect', function () {
 add_action('init', 'cookiefox_e2e_ensure_options', 5);
 add_action('init', 'cookiefox_e2e_seed_content', 20);
 add_action('wp_footer', 'cookiefox_e2e_footer', 5);
+
+add_filter('cookiefox_integrations', function ($integrations) {
+	if (!is_array($integrations)) {
+		$integrations = array();
+	}
+	$integrations['e2e-fake'] = 'E2E Fake';
+	return $integrations;
+});
+
+add_action('cookiefox_integration_e2e-fake', function () {
+	add_action('wp_footer', function () {
+		echo '<script type="text/plain" data-cookiefox-integration="e2e-fake">window.__cookiefoxIntegration = true;</script>';
+	}, 30);
+});
+
+add_filter('cookiefox_consent_e2e-fake', function () {
+	return '<script>if(window.cookiefox&&window.cookiefox.api&&window.cookiefox.api.activateIntegration){window.cookiefox.api.activateIntegration("e2e-fake");}</script>';
+});
 
 function cookiefox_e2e_marker_settings($settings) {
 	if (!is_array($settings)) {
@@ -149,6 +169,31 @@ function cookiefox_e2e_insert_seed_content() {
 	update_post_meta($post_id, 'scripts_consent', '<script>window.__cookiefoxMarketing = true;</script>');
 	update_post_meta($post_id, 'scripts_no_consent', '<script>window.__cookiefoxMarketing = false;</script>');
 	wp_set_object_terms($post_id, array((int) $term_ids['marketing']), 'cookiefox_category');
+
+	$existing_integration = get_posts(array(
+		'post_type' => 'cookiefox_cookie',
+		'name' => 'e2e-fake-integration',
+		'post_status' => 'any',
+		'posts_per_page' => 1,
+	));
+
+	if (!empty($existing_integration)) {
+		$integration_id = $existing_integration[0]->ID;
+	} else {
+		$integration_id = wp_insert_post(array(
+			'post_type' => 'cookiefox_cookie',
+			'post_status' => 'publish',
+			'post_title' => 'E2E Fake Integration',
+			'post_name' => 'e2e-fake-integration',
+		), true);
+		if (is_wp_error($integration_id)) {
+			return;
+		}
+	}
+
+	update_post_meta($integration_id, 'type', 'integration');
+	update_post_meta($integration_id, 'integration', 'e2e-fake');
+	wp_set_object_terms($integration_id, array((int) $term_ids['marketing']), 'cookiefox_category');
 }
 
 function cookiefox_e2e_footer() {

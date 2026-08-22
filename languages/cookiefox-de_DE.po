@@ -799,6 +799,26 @@ msgstr ""
 "CSS kann über einen externen Stylesheet, einen inline Style-Tag oder gar "
 "nicht eingebunden werden."
 
+#: includes/class-settings.php:187
+msgid "Plugins & Integrations"
+msgstr "Plugins & Integrationen"
+
+#: includes/class-settings.php:188
+msgid "When checked, these plugins will only be allowed to add scripts when the user opts in."
+msgstr "Wenn aktiviert, dürfen diese Plugins erst nach der Einwilligung Skripte laden."
+
+#: includes/class-post_type.php:209
+msgid "Type"
+msgstr "Typ"
+
+#: includes/class-post_type.php:214
+msgid "Custom Scripts & HTML"
+msgstr "Eigene Skripte & HTML"
+
+#: includes/class-post_type.php:258
+msgid "Select Integration"
+msgstr "Integration wählen"
+
 #: includes/class-settings.php:392
 msgid "External Stylesheet"
 msgstr "Externer Stylesheet"

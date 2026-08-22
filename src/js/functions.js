@@ -133,7 +133,7 @@ export const getContainer = function() {
 	return container
 }
 		
-const cloneElement = function(element){
+export const cloneElement = function(element){
 	let newElement = document.createElement(element.tagName);
 	newElement.innerHTML = element.innerHTML;
 	let k = -1, attrs = element.attributes, attr;
@@ -141,5 +141,21 @@ const cloneElement = function(element){
 		newElement.setAttribute( (attr = attrs[k]).name, attr.value );
 	}
 	return newElement;
+}
+
+export const activateIntegration = function(slug) {
+	if (!slug) {
+		return;
+	}
+
+	document.querySelectorAll('script[data-cookiefox-integration="' + slug + '"]').forEach(function(script) {
+		var el = cloneElement(script);
+		el.removeAttribute("data-cookiefox-integration");
+		el.removeAttribute("type");
+		if (script.parentNode) {
+			script.parentNode.insertBefore(el, script);
+			script.remove();
+		}
+	});
 }
 	

@@ -38,6 +38,7 @@ class Helper {
 			'cookie_expiration' => '90',
 			'stylesheet' => 'external',
 			'config_via_rest' => 'off',
+			'integrations' => array(),
 		);
 	}
 	

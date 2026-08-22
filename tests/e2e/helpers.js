@@ -1,11 +1,14 @@
 async function waitForCookieFox(page) {
-	await page.waitForFunction(() => window.cookiefox && window.cookiefox.api);
+	await page.waitForFunction(() => window.cookiefox && window.cookiefox.api && typeof window.cookiefox.api.show === 'function');
 }
 
 async function loadMode(page, mode, options = {}) {
 	let url = '/?cookiefox_e2e_mode=' + mode;
 	if (options.rest) {
 		url += '&cookiefox_e2e_rest=1';
+	}
+	if (options.integration) {
+		url += '&cookiefox_e2e_integration=1';
 	}
 	await page.goto(url);
 	await waitForCookieFox(page);

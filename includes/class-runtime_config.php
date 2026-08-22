@@ -68,9 +68,14 @@ class Runtime_Config {
 			$settings = array();
 		}
 
+		$scripts_consent = isset($settings['scripts_consent']) ? $settings['scripts_consent'] : '';
+		if (!isset($settings['consent_type']) || $settings['consent_type'] !== 'category') {
+			$scripts_consent .= self::simple_integration_scripts($settings);
+		}
+
 		$config = array(
 			'scripts_always' => self::prepare_script(isset($settings['scripts_always']) ? $settings['scripts_always'] : ''),
-			'scripts_consent' => self::prepare_script(isset($settings['scripts_consent']) ? $settings['scripts_consent'] : ''),
+			'scripts_consent' => self::prepare_script($scripts_consent),
 			'scripts_no_consent' => self::prepare_script(isset($settings['scripts_no_consent']) ? $settings['scripts_no_consent'] : ''),
 			'cookies' => isset($settings['cookies']) ? $settings['cookies'] : '',
 			'categories' => self::build_categories(),
@@ -80,7 +85,7 @@ class Runtime_Config {
 	}
 
 	public static function strip_scripts_from_data($data) {
-		unset($data['scripts_always'], $data['scripts_consent'], $data['scripts_no_consent']);
+		unset($data['scripts_always'], $data['scripts_consent'], $data['scripts_no_consent'], $data['integrations']);
 		return $data;
 	}
 
@@ -265,7 +270,17 @@ class Runtime_Config {
 				);
 
 				$meta_data = get_post_meta(get_the_ID());
-				$include_meta_keys = array('vendor', 'description', 'privacy_policy', 'scripts_consent', 'scripts_no_consent', 'scripts_always', 'cookies', 'duration', 'hosts');
+				$type = (!empty($meta_data['type'][0]) && $meta_data['type'][0] === 'integration') ? 'integration' : 'script';
+				$include_meta_keys = array('vendor', 'description', 'privacy_policy', 'cookies', 'duration', 'hosts');
+
+				if ($type === 'integration') {
+					$integration = !empty($meta_data['integration'][0]) ? $meta_data['integration'][0] : '';
+					$cookie['scripts_consent'] = self::prepare_script(Integrations::consent_script($integration));
+					$cookie['scripts_no_consent'] = null;
+					$cookie['scripts_always'] = null;
+				} else {
+					$include_meta_keys = array_merge($include_meta_keys, array('scripts_consent', 'scripts_no_consent', 'scripts_always'));
+				}
 
 				foreach ($include_meta_keys as $meta_key) {
 					if (!empty($meta_data[$meta_key])) {
@@ -309,6 +324,17 @@ class Runtime_Config {
 		}
 
 		return $categories;
+	}
+
+	private static function simple_integration_scripts($settings) {
+		$scripts = '';
+		$integrations = (isset($settings['integrations']) && is_array($settings['integrations'])) ? $settings['integrations'] : array();
+
+		foreach ($integrations as $slug) {
+			$scripts .= Integrations::consent_script($slug);
+		}
+
+		return $scripts;
 	}
 
 	private static function prepare_script($html) {

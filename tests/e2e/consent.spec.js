@@ -33,7 +33,7 @@ test.describe('simple consent', () => {
 		await expect(page.locator('.cookiefox--notice')).toBeHidden();
 
 		await page.reload();
-		await page.waitForFunction(() => window.cookiefox && window.cookiefox.api);
+		await page.waitForFunction(() => window.cookiefox && window.cookiefox.api && typeof window.cookiefox.api.show === 'function');
 
 		await expect(page.locator('.cookiefox--notice')).toBeHidden();
 		expect(await page.evaluate(() => window.__cookiefoxAlways)).toBe(true);

@@ -22,6 +22,7 @@ class CMB2 {
 		}
 
 		wp_enqueue_script('cmb2_conditional_logic', Main::plugin_url() . '/assets/admin/js/cmb2-conditional-logic.min.js', array('jquery'), "1.0.0", true);
+		wp_add_inline_script('cmb2_conditional_logic', 'jQuery(function($){$(".cmb2-wrap").on("change","input,select",function(){window.setTimeout(function(){$(".CodeMirror").each(function(){if(this.CodeMirror){this.CodeMirror.refresh();}});},50);});});');
 	}
 
 	private function is_cookiefox_admin_screen() {

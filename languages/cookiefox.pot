@@ -699,6 +699,26 @@ msgstr ""
 msgid "CSS can be included via an external stylesheet, an inline style-tag or not be included at all."
 msgstr ""
 
+#: includes/class-settings.php:187
+msgid "Plugins & Integrations"
+msgstr ""
+
+#: includes/class-settings.php:188
+msgid "When checked, these plugins will only be allowed to add scripts when the user opts in."
+msgstr ""
+
+#: includes/class-post_type.php:209
+msgid "Type"
+msgstr ""
+
+#: includes/class-post_type.php:214
+msgid "Custom Scripts & HTML"
+msgstr ""
+
+#: includes/class-post_type.php:258
+msgid "Select Integration"
+msgstr ""
+
 #: includes/class-settings.php:392
 msgid "External Stylesheet"
 msgstr ""

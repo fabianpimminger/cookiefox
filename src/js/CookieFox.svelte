@@ -4,7 +4,7 @@
 	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
 	import Cookies from "js-cookie";
-	import { injectElements, getContainer, isCrawler, parseStoredConsent } from './functions.js';
+	import { injectElements, getContainer, isCrawler, parseStoredConsent, cloneElement, activateIntegration } from './functions.js';
 	import { loadConfig, isConfigReady } from './config.js';
 	import SingleConsent from './SingleConsent.svelte';
 	import CategoryConsent from './CategoryConsent.svelte';
@@ -14,6 +14,13 @@
 	let forceDelay = false;
 	let handleConsentChange;
 	let setConsent;
+
+	if (typeof window !== "undefined") {
+		window.cookiefox = window.cookiefox || {};
+		window.cookiefox.api = window.cookiefox.api || {};
+		window.cookiefox.api.cloneElement = cloneElement;
+		window.cookiefox.api.activateIntegration = activateIntegration;
+	}
 
 	if (isCrawler()) {
 		$cookie = data.consent_type === "category" ? {consent: {categories: {}}} : {consent: false};
@@ -64,7 +71,9 @@
 	}
 			
 	function initAPI() {		
-		window.cookiefox.api = {};
+		window.cookiefox.api = window.cookiefox.api || {};
+		window.cookiefox.api.cloneElement = cloneElement;
+		window.cookiefox.api.activateIntegration = activateIntegration;
 		window.cookiefox.api.show = function(){
 			$forceNotice = true;
 		};
