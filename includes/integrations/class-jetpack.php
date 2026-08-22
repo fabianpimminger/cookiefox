@@ -42,33 +42,64 @@ class Jetpack extends Integration {
 			return;
 		}
 
-		add_filter('script_loader_tag', array($this, 'script_loader_tag'), 10, 2);
+		add_filter('script_loader_tag', array($this, 'script_loader_tag'), 10, 3);
+		add_filter('wp_script_attributes', array($this, 'script_attributes'));
 		add_filter('wp_inline_script_attributes', array($this, 'inline_script_attributes'), 10, 2);
 		$this->done_stats = true;
 	}
 
-	public function script_loader_tag($tag, $handle) {
+	public function script_attributes($attributes) {
+		if (!is_array($attributes) || !$this->is_stats_src_attributes($attributes)) {
+			return $attributes;
+		}
+
+		$attributes['type'] = 'text/plain';
+		$attributes['data-cookiefox-integration'] = $this->slug . '--stats';
+		return $attributes;
+	}
+
+	public function script_loader_tag($tag, $handle, $src = '') {
 		if (!is_string($tag)) {
 			return $tag;
 		}
 
-		if (strpos($tag, 'data-cookiefox-integration') !== false) {
-			return $tag;
-		}
-
 		$is_handle = ($handle === 'jetpack-stats');
-		$is_src = (strpos($tag, 'stats.wp.com/e-') !== false);
+		$is_src = (is_string($src) && strpos($src, 'stats.wp.com') !== false) || strpos($tag, 'stats.wp.com') !== false;
 
 		if (!$is_handle && !$is_src) {
 			return $tag;
 		}
 
-		if (!$is_src && strpos($tag, 'src=') === false) {
-			return $tag;
+		return preg_replace_callback('/<script\b([^>]*)>/i', array($this, 'block_script_open_tag'), $tag);
+	}
+
+	public function block_script_open_tag($matches) {
+		$attrs = $matches[1];
+
+		if (strpos($attrs, 'data-cookiefox-integration') !== false) {
+			return $matches[0];
 		}
 
-		$tag = preg_replace('/\s+type=(["\']).*?\1/i', '', $tag);
-		return preg_replace('/<script\b/i', '<script type="text/plain" data-cookiefox-integration="' . esc_attr($this->slug . '--stats') . '"', $tag, 1);
+		$has_stats_src = (strpos($attrs, 'stats.wp.com') !== false);
+		$has_stats_id = (bool) preg_match('/\bid=(["\'])jetpack-stats-js\1/', $attrs);
+
+		if (!$has_stats_src && !$has_stats_id) {
+			return $matches[0];
+		}
+
+		$attrs = preg_replace('/\s+type=(["\']).*?\1/i', '', $attrs);
+		return '<script type="text/plain" data-cookiefox-integration="' . esc_attr($this->slug . '--stats') . '"' . $attrs . '>';
+	}
+
+	private function is_stats_src_attributes($attributes) {
+		$id = isset($attributes['id']) ? $attributes['id'] : '';
+		$src = isset($attributes['src']) ? $attributes['src'] : '';
+
+		if ($id === 'jetpack-stats-js') {
+			return true;
+		}
+
+		return is_string($src) && strpos($src, 'stats.wp.com') !== false;
 	}
 
 	public function inline_script_attributes($attributes, $data = '') {

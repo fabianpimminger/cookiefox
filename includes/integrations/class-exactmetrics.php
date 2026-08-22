@@ -11,6 +11,7 @@ defined('ABSPATH') || exit;
 
 class Exactmetrics extends Integration {
 	private $slug = 'exactmetrics';
+	private $script_handle = 'exactmetrics-frontend-script';
 	private $done = false;
 
 	public function __construct() {
@@ -37,7 +38,48 @@ class Exactmetrics extends Integration {
 		}
 
 		add_filter('exactmetrics_tracking_analytics_script_attributes', array($this, 'script_atts'));
+		add_filter('script_loader_tag', array($this, 'script_loader_tag'), 10, 3);
+		add_filter('wp_script_attributes', array($this, 'enqueue_script_attributes'));
 		$this->done = true;
+	}
+
+	public function enqueue_script_attributes($attributes) {
+		if (!is_array($attributes)) {
+			return $attributes;
+		}
+
+		$id = isset($attributes['id']) ? $attributes['id'] : '';
+		if ($id !== $this->script_handle . '-js') {
+			return $attributes;
+		}
+
+		$attributes['type'] = 'text/plain';
+		$attributes['data-cookiefox-integration'] = $this->slug;
+		return $attributes;
+	}
+
+	public function script_loader_tag($tag, $handle, $src = '') {
+		if (!is_string($tag) || $handle !== $this->script_handle) {
+			return $tag;
+		}
+
+		return preg_replace_callback('/<script\b([^>]*)>/i', array($this, 'block_script_open_tag'), $tag);
+	}
+
+	public function block_script_open_tag($matches) {
+		$attrs = $matches[1];
+		if (strpos($attrs, 'data-cookiefox-integration') !== false) {
+			return $matches[0];
+		}
+
+		$has_src = (strpos($attrs, 'frontend-gtag') !== false);
+		$has_id = (bool) preg_match('/\bid=(["\'])' . preg_quote($this->script_handle . '-js', '/') . '\1/', $attrs);
+		if (!$has_src && !$has_id) {
+			return $matches[0];
+		}
+
+		$attrs = preg_replace('/\s+type=(["\']).*?\1/i', '', $attrs);
+		return '<script type="text/plain" data-cookiefox-integration="' . esc_attr($this->slug) . '"' . $attrs . '>';
 	}
 
 	public function script_atts($atts) {
