@@ -9,3 +9,4 @@ assets/frontend/css/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/messages.mo

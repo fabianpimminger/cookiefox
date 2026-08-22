@@ -77,6 +77,39 @@ export const getCookieOptions = function(data) {
 	return options;
 }
 
+export const consentVersion = function(data) {
+	const version = parseInt(data && data.consent_version, 10);
+	return Number.isFinite(version) ? version : 0;
+}
+
+export const parseStoredConsent = function(raw, data) {
+	if (raw === undefined || raw === null || raw === "") {
+		return undefined;
+	}
+
+	try {
+		const parsed = JSON.parse(raw);
+		if (!parsed || typeof parsed !== "object") {
+			return undefined;
+		}
+
+		const stored = parsed.v != null ? parseInt(parsed.v, 10) : 0;
+		if ((Number.isFinite(stored) ? stored : 0) !== consentVersion(data)) {
+			return undefined;
+		}
+
+		return parsed;
+	} catch (e) {
+		return undefined;
+	}
+}
+
+export const stampConsentVersion = function(cookie, data) {
+	return Object.assign({}, cookie, {
+		v: consentVersion(data)
+	});
+}
+
 export const setCookie = function(cookie, data) {
 	
 	let name = "cookiefox_consent";

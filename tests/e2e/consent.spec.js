@@ -25,6 +25,7 @@ test.describe('simple consent', () => {
 		const payload = await parseConsentCookie(page.context());
 		expect(payload.consent).toBe(true);
 		expect(typeof payload.ts).toBe('number');
+		expect(payload.v).toBe(0);
 	});
 
 	test('runs opt-in scripts again on the next page view', async ({ page }) => {

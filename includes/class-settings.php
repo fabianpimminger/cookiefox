@@ -12,6 +12,8 @@ defined('ABSPATH') || exit;
 class Settings {
 	public function __construct() {
 		add_action('cmb2_admin_init', array($this, 'metabox'));
+		add_action('admin_init', array($this, 'handle_reprompt'));
+		add_action('admin_notices', array($this, 'reprompt_notice'));
 	}
 	
 
@@ -373,6 +375,19 @@ class Settings {
 			'sanitization_cb' => 'absint',
       'escape_cb'       => 'absint',
 		));
+
+		$reprompt_url = admin_url('options-general.php?page=cookiefox&action=cookiefox_reprompt_consent');
+		$reprompt_url = wp_nonce_url($reprompt_url, 'cookiefox-reprompt-consent');
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Ask Visitors for Consent Again', 'cookiefox'),
+			'id' => 'reprompt_consent',
+			'desc' => __('Use this after you change cookies or categories and need a new choice. This does not run automatically.', 'cookiefox'),
+			'type' => 'button',
+			'url' => $reprompt_url,
+			'label' => __('Ask again', 'cookiefox'),
+			'confirm' => __('Visitors will see the cookie notice again on their next visit. Existing choices will no longer count. This cannot be undone.', 'cookiefox'),
+		));
 		
 		$main_options->add_field(array(
 			'name' => __('Advanced Settings & Performance', 'cookiefox'),
@@ -418,6 +433,38 @@ class Settings {
 
 	}
 	
+	public function handle_reprompt() {
+		if (!isset($_GET['action']) || $_GET['action'] !== 'cookiefox_reprompt_consent') {
+			return;
+		}
+
+		if (!current_user_can('manage_options')) {
+			return;
+		}
+
+		if (!isset($_GET['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'cookiefox-reprompt-consent')) {
+			return;
+		}
+
+		$version = (int) get_option('cookiefox_consent_version', 0);
+		update_option('cookiefox_consent_version', $version + 1, false);
+		Runtime_Config::invalidate();
+
+		wp_safe_redirect(admin_url('options-general.php?page=cookiefox&cookiefox_consent_reprompted=1'));
+		exit;
+	}
+
+	public function reprompt_notice() {
+		if (!isset($_GET['cookiefox_consent_reprompted'])) {
+			return;
+		}
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e('Visitors will be asked for consent again.', 'cookiefox'); ?></p>
+		</div>
+		<?php
+	}
+
 	public static function register_defaults(){
 		
 		$settings = get_option("cookiefox", array());

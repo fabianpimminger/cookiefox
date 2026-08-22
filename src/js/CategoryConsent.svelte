@@ -4,7 +4,7 @@
 	import { cookie, forceNotice } from './stores.js';
 	import Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
-	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
+	import { isCrawler, setCookie, injectElements, embedContent, getContainer, parseStoredConsent, stampConsentVersion } from './functions.js';
 	
   const dispatch = createEventDispatcher();
 	let loaded = !!(config && Array.isArray(config.categories));
@@ -26,18 +26,12 @@
 			return;
 		}
 		
-		let cookieData = Cookies.get(data.cookie_name);
-		if(cookieData !== undefined){
-			try {
-				$cookie = JSON.parse(cookieData);
-				if($cookie.consent !== undefined && $cookie.consent.categories !== undefined){
-					consents = $cookie.consent.categories;
-				}
-				setCookie($cookie, data);
-			} catch (e) {
-				$cookie = undefined;
-				firstRun = true;
+		$cookie = parseStoredConsent(Cookies.get(data.cookie_name), data);
+		if($cookie !== undefined){
+			if($cookie.consent !== undefined && $cookie.consent.categories !== undefined){
+				consents = $cookie.consent.categories;
 			}
+			setCookie($cookie, data);
 		} else {
 			firstRun = true;
 		}
@@ -87,6 +81,7 @@
 		}
 		
 		$cookie.consent.categories = consents;
+		$cookie = stampConsentVersion($cookie, data);
 	}
 	
 	export const handleConsentChange = function() {

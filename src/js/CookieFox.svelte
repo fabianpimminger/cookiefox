@@ -4,7 +4,7 @@
 	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
 	import Cookies from "js-cookie";
-	import { injectElements, getContainer, isCrawler } from './functions.js';
+	import { injectElements, getContainer, isCrawler, parseStoredConsent } from './functions.js';
 	import { loadConfig, isConfigReady } from './config.js';
 	import SingleConsent from './SingleConsent.svelte';
 	import CategoryConsent from './CategoryConsent.svelte';
@@ -18,14 +18,7 @@
 	if (isCrawler()) {
 		$cookie = data.consent_type === "category" ? {consent: {categories: {}}} : {consent: false};
 	} else {
-		const cookieData = Cookies.get(data.cookie_name);
-		if (cookieData !== undefined) {
-			try {
-				$cookie = JSON.parse(cookieData);
-			} catch (e) {
-				$cookie = undefined;
-			}
-		}
+		$cookie = parseStoredConsent(Cookies.get(data.cookie_name), data);
 	}
 
 	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page && !forceDelay));

@@ -663,6 +663,26 @@ msgstr ""
 msgid "The number of days the consent cookie is stored."
 msgstr ""
 
+#: includes/class-settings.php:381
+msgid "Ask Visitors for Consent Again"
+msgstr ""
+
+#: includes/class-settings.php:383
+msgid "Use this after you change cookies or categories and need a new choice. This does not run automatically."
+msgstr ""
+
+#: includes/class-settings.php:386
+msgid "Ask again"
+msgstr ""
+
+#: includes/class-settings.php:387
+msgid "Visitors will see the cookie notice again on their next visit. Existing choices will no longer count. This cannot be undone."
+msgstr ""
+
+#: includes/class-settings.php:441
+msgid "Visitors will be asked for consent again."
+msgstr ""
+
 #: includes/class-settings.php:378
 msgid "Advanced Settings & Performance"
 msgstr ""

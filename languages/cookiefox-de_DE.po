@@ -755,6 +755,26 @@ msgstr "Ablaufzeit in Tagen"
 msgid "The number of days the consent cookie is stored."
 msgstr "Die Anzahl der Tage nach denen der Consent Cookie abläuft."
 
+#: includes/class-settings.php:381
+msgid "Ask Visitors for Consent Again"
+msgstr "Besucher erneut um Einwilligung bitten"
+
+#: includes/class-settings.php:383
+msgid "Use this after you change cookies or categories and need a new choice. This does not run automatically."
+msgstr "Nutze diese Option, wenn du Cookies oder Kategorien geändert hast und eine neue Entscheidung brauchst. Läuft nicht automatisch."
+
+#: includes/class-settings.php:386
+msgid "Ask again"
+msgstr "Erneut fragen"
+
+#: includes/class-settings.php:387
+msgid "Visitors will see the cookie notice again on their next visit. Existing choices will no longer count. This cannot be undone."
+msgstr "Besucher sehen den Cookie-Hinweis beim nächsten Besuch erneut. Bestehende Einwilligungen zählen dann nicht mehr. Dieser Schritt kann nicht rückgängig gemacht werden."
+
+#: includes/class-settings.php:441
+msgid "Visitors will be asked for consent again."
+msgstr "Besucher werden erneut um Einwilligung gebeten."
+
 #: includes/class-settings.php:378
 msgid "Advanced Settings & Performance"
 msgstr "Fortgeschrittene Einstellungen & Performance"

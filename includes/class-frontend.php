@@ -154,6 +154,7 @@ class Frontend {
 		
 		$data["api_base"] = get_rest_url();
 		$data["lang"] = Helper::get_language();
+		$data["consent_version"] = (int) get_option('cookiefox_consent_version', 0);
 		$data["notice_button_back"] = __("Back", "cookiefox");
 		$data["notice_button_cookie_information"] = __("Cookie information", "cookiefox");
 		$data["notice_text_name"] = __("Name", "cookiefox");

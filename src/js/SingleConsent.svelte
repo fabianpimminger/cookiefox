@@ -4,7 +4,7 @@
 	import { cookie, forceNotice } from './stores.js';
 	import Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
-	import { isCrawler, setCookie, injectElements, embedContent, getContainer, getCookieOptions } from './functions.js';
+	import { isCrawler, setCookie, injectElements, embedContent, getContainer, getCookieOptions, parseStoredConsent, stampConsentVersion } from './functions.js';
 	
   const dispatch = createEventDispatcher();
 
@@ -16,15 +16,10 @@
 			return;
 		}
 		
-		let cookieData = Cookies.get(data.cookie_name);
-		if(cookieData !== undefined){
-			try {
-				$cookie = JSON.parse(cookieData);
-				handleConsentChange();
-				setCookie($cookie, data);
-			} catch (e) {
-				$cookie = undefined;
-			}
+		$cookie = parseStoredConsent(Cookies.get(data.cookie_name), data);
+		if($cookie !== undefined){
+			handleConsentChange();
+			setCookie($cookie, data);
 		}
 		
 		dispatch("ready");
@@ -32,7 +27,7 @@
 	});
 		
 	function handleAccept() {
-		$cookie = {consent: true};
+		$cookie = stampConsentVersion({consent: true}, data);
 		$forceNotice = false;
 		handleConsentChange();
 		setCookie($cookie, data);
@@ -41,7 +36,7 @@
 	
 	export function setConsent(consent) {
 		if (typeof consent == "boolean") {
-			$cookie = {consent: consent};
+			$cookie = stampConsentVersion({consent: consent}, data);
 			handleConsentChange();
 			setCookie($cookie, data);
 			dispatch("consentChanged");		
@@ -51,7 +46,7 @@
 	}
 	
 	function handleDecline() {
-		$cookie = {consent: false};
+		$cookie = stampConsentVersion({consent: false}, data);
 		$forceNotice = false;
 		handleConsentChange();
 		setCookie($cookie, data);

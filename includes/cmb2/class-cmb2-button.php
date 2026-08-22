@@ -20,8 +20,13 @@ class Button {
 	}
 	
 	public function render($field, $escaped_value, $object_id, $object_type, $field_type_object) {
-		
-		echo '<a href="'.esc_url($field->args('url')).'" class="button">'.esc_html($field->args('label')).'</a>';
+		$confirm = $field->args('confirm');
+		$onclick = '';
+		if (is_string($confirm) && $confirm !== '') {
+			$onclick = ' onclick="' . esc_attr('return confirm(' . wp_json_encode($confirm) . ');') . '"';
+		}
+
+		echo '<a href="'.esc_url($field->args('url')).'" class="button"'.$onclick.'>'.esc_html($field->args('label')).'</a>';
 
 		$field_type_object->_desc(true, true);
 	}
