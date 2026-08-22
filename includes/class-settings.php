@@ -387,7 +387,7 @@ class Settings {
 			'id' => 'stylesheet',
 			'type' => 'select',
 			'show_option_none' => false,
-			'default' => 'theme',
+			'default' => 'external',
 			'options' => array(
 				'external' => __('External Stylesheet', 'cookiefox'),
 				'inline' => __('Inline CSS', 'cookiefox'),

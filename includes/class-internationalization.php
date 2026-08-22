@@ -34,7 +34,7 @@ class Internationalization {
 				    $langs = pll_languages_list();
 							
 				    if (!in_array($current_language, $langs)) {
-				        $cur_lang = $default;
+				        $current_language = $default;
 				    }
 
 			    }

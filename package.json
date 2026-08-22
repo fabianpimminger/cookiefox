@@ -1,12 +1,12 @@
 {
   "name": "cookiefox",
-  "version": "1.0.0",
+  "version": "2.0.12",
   "description": "",
   "main": "assets/js/main.js",
   "dependencies": {
     "core-js": "3",
     "focus-trap": "^6.7.3",
-    "js-cookie": "^2.2.1"
+    "js-cookie": "^3.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -37,10 +37,10 @@
     "build:legacy": "env ROLLUP_BUILD_TYPE=\"legacy\" rollup -c",
     "build:modern": "env ROLLUP_BUILD_TYPE=\"modern\" rollup -c",
     "watch": "rollup -w -c",
-    "release:zip": "bestzip release/zip/cookiefox.zip assets/* cookiefox.php includes/* vendor/* languages/* readme.txt wpml-config.xml",
-    "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml release/files/cookiefox",
-    "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox"
+    "release:zip": "bestzip release/zip/cookiefox.zip assets/* cookiefox.php includes/* vendor/* languages/* readme.txt wpml-config.xml uninstall.php",
+    "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php release/files/cookiefox",
+    "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox"
   },
   "author": "",
-  "license": "ISC"
+  "license": "GPL-2.0-or-later"
 }

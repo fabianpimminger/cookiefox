@@ -21,7 +21,7 @@ class Button {
 	
 	public function render($field, $escaped_value, $object_id, $object_type, $field_type_object) {
 		
-		echo '<a href="'.$field->args('url').'" class="button">'.$field->args('label').'</a>';
+		echo '<a href="'.esc_url($field->args('url')).'" class="button">'.esc_html($field->args('label')).'</a>';
 
 		$field_type_object->_desc(true, true);
 	}

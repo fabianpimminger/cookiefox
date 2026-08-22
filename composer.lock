@@ -4,31 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ec613ccc67eb75938ab87d549c0f279",
+    "content-hash": "18d85cd93d7562352f4338f6bfbf4f18",
     "packages": [
         {
             "name": "cmb2/cmb2",
-            "version": "v2.10.1",
+            "version": "v2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CMB2/CMB2.git",
-                "reference": "4afc4bb7b92ab6d93aac2247c9a84af773e42532"
+                "reference": "9a3686d42539ee3c1113bd09623f4ffbbee94397"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/4afc4bb7b92ab6d93aac2247c9a84af773e42532",
-                "reference": "4afc4bb7b92ab6d93aac2247c9a84af773e42532",
+                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/9a3686d42539ee3c1113bd09623f4ffbbee94397",
+                "reference": "9a3686d42539ee3c1113bd09623f4ffbbee94397",
                 "shasum": ""
             },
             "require": {
-                "php": ">5.2.4"
+                "php": ">7.4"
             },
             "require-dev": {
-                "apigen/apigen": "4.1.2",
-                "awesomemotive/am-cli-tools": ">=1.3.1",
-                "nette/utils": "2.5.3",
-                "phpunit/phpunit": "^6.5",
-                "yoast/phpunit-polyfills": "^1.0"
+                "phpunit/phpunit": "^9.6",
+                "yoast/phpunit-polyfills": "^1.1"
             },
             "suggest": {
                 "composer/installers": "~1.0"
@@ -63,16 +60,18 @@
                 "issues": "https://github.com/CMB2/CMB2/issues",
                 "source": "http://wordpress.org/support/plugin/cmb2"
             },
-            "time": "2022-02-22T14:15:16+00:00"
+            "time": "2026-05-31T02:21:57+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "platform": {
+        "php": ">=7.4"
+    },
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

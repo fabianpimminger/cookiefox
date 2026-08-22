@@ -1,11 +1,11 @@
 === CookieFox - Cookie Notice ===
 Contributors: fabianpimminger
-Donate link: http://paypal.me/fabianpimminger
+Donate link: https://paypal.me/fabianpimminger
 Tags: privacy, cookie, cookie notice, cookie banner, cookie consent, GDPR, CCPA
 Requires at least: 5.0
-Tested up to: 6.4.3
-Stable tag: 2.0.11
-Requires PHP: 7.3
+Tested up to: 7.1
+Stable tag: 2.0.12
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -63,6 +63,25 @@ Please note that you are responsible for complying with your local and internati
 7. Consent cookie & Advanced performance settings 
 
 == Changelog ==
+
+= 2.0.12 =
+* Fixed consent cookie domain being set to the expiration value instead of the configured domain.
+* Fixed category mode only loading 10 cookies per category.
+* Fixed custom font CSS variable not applying to notice body text.
+* Fixed invalid default for the stylesheet setting.
+* Fixed a crash when the consent cookie was malformed or the cookies REST request failed.
+* Fixed sample content installer missing a capability check.
+* Fixed Polylang REST language fallback.
+* Consent cookie is marked Secure on HTTPS.
+* Updated CMB2 to 2.12 and js-cookie to 3.0.8.
+* Added uninstall cleanup for settings, cookies, and categories.
+* Sanitize notice text and color values before output.
+* Load admin scripts and styles only on CookieFox screens.
+* Load frontend JavaScript with defer.
+* Shortcode and embed privacy buttons no longer use javascript: or inline onclick.
+* Consent cookie now stores a Unix timestamp.
+* Notice title uses heading level 2.
+* Tested up to WordPress 7.1. Requires PHP 7.4.
 
 = 2.0.11 =
 * Removed H3 tag from title for SEO; style with --cookiefox__title--font-family, --cookiefox__title--font-size, --cookiefox__title--font-weight CSS variables.
@@ -168,4 +187,4 @@ Please note that you are responsible for complying with your local and internati
 * First public release of CookieFox.
 
 == Upgrade Notice ==
-This plugin has been tested with WordPress 5.9.3
+This plugin has been tested with WordPress 7.1. Requires PHP 7.4.

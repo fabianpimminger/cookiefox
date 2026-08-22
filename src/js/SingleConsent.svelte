@@ -2,9 +2,9 @@
 	export let data, showNotice;
 
 	import { cookie, forceNotice } from './stores.js';
-	import * as Cookies from "js-cookie";
+	import Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
-	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
+	import { isCrawler, setCookie, injectElements, embedContent, getContainer, getCookieOptions } from './functions.js';
 	
   const dispatch = createEventDispatcher();
 
@@ -18,9 +18,13 @@
 		
 		let cookieData = Cookies.get(data.cookie_name);
 		if(cookieData !== undefined){
-			$cookie = JSON.parse(cookieData);
-			handleConsentChange();
-			setCookie($cookie, data);
+			try {
+				$cookie = JSON.parse(cookieData);
+				handleConsentChange();
+				setCookie($cookie, data);
+			} catch (e) {
+				$cookie = undefined;
+			}
 		}
 		
 		dispatch("ready");
@@ -86,9 +90,15 @@
 			var cookies = Object.keys(Cookies.get());
 			cookies = cookies.filter(element => cookiesToRemove.indexOf(element) !== -1);
 			if(cookies.length > 0){
+				let options = getCookieOptions(data);
+				let removeOptions = {path: options.path || "/"};
+				if(options.domain){
+					removeOptions.domain = options.domain;
+				}
 				cookies.forEach(function(name){
-					Cookies.remove(name);
-					Cookies.remove(name, {domain: "."+window.location.hostname});
+					Cookies.remove(name, removeOptions);
+					Cookies.remove(name, {path: "/"});
+					Cookies.remove(name, {path: "/", domain: "."+window.location.hostname});
 				});
 			}
 		}
@@ -107,7 +117,7 @@
 
 <div class="cookiefox__body">
 	{#if data.notice_title}
-	<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="1">{data.notice_title}</div>
+	<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="2">{data.notice_title}</div>
 	{/if}
 	{#if data.notice_text}
 	<div class="cookiefox__text">{@html data.notice_text}</div>

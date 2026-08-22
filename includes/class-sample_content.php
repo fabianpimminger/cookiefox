@@ -78,7 +78,7 @@ class Sample_Content {
 	}
 	
 	public function init() {
-    if (isset($_GET['action']) && isset($_GET['_wpnonce']) && $_GET['action'] === 'cookiefox_sample_content' && wp_verify_nonce($_GET['_wpnonce'], 'cookiefox-install-sample-content' ) ) {
+    if (isset($_GET['action']) && isset($_GET['_wpnonce']) && $_GET['action'] === 'cookiefox_sample_content' && current_user_can('manage_options') && wp_verify_nonce($_GET['_wpnonce'], 'cookiefox-install-sample-content' ) ) {
 			
 			$terms = $this->getTerms();
 			
@@ -98,7 +98,7 @@ class Sample_Content {
 			$posts = $this->getPosts();
 			
 			foreach ($posts as $post) {
-				if (post_exists($post["post_title"])) {
+				if (post_exists($post["post_title"], '', '', 'cookiefox_cookie')) {
 					continue;
 				}
 		

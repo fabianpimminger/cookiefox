@@ -73,12 +73,13 @@
 	}	
 	
 	function initEvents() {
-		const openLinks = document.querySelectorAll(".open-cookiefox");
-		openLinks.forEach(link => {
-			link.addEventListener('click', function(e) {
-				e.preventDefault();
-				$forceNotice = true;
-			});
+		document.addEventListener('click', function(e) {
+			const trigger = e.target.closest('.open-cookiefox');
+			if (!trigger) {
+				return;
+			}
+			e.preventDefault();
+			$forceNotice = true;
 		});
 	}
 	
@@ -135,7 +136,7 @@
 	
 	box-sizing: border-box;
 	font-size: var(--cookiefox--font-size);
-	font-family: var(--cookiefox-font-family);
+	font-family: var(--cookiefox--font-family);
 	line-height: var(--cookiefox--line-height);
 	color: var(--cookiefox--color-text-primary);
 	
@@ -320,7 +321,7 @@
 }
 
 .cookiefox__text{
-	font-family: var(--cookiefox-font-family);
+	font-family: var(--cookiefox--font-family);
 	font-size: var(--cookiefox__text--font-size);
 	font-weight: var(--cookiefox__text--font-weight);
 	text-align: var(--cookiefox__text--text-align);

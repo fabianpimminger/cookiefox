@@ -28,7 +28,7 @@ class Main {
 	}
 
 	private function constants() {
-		define('COOKIEFOX_VERSION', '1.0.0');
+		define('COOKIEFOX_VERSION', '2.0.12');
 		define('COOKIEFOX_ABSPATH', dirname(COOKIEFOX_PLUGIN_FILE) . '/');
 		if (! defined('COOKIEFOX_COMPOSER_ABSPATH')) {
 			define('COOKIEFOX_COMPOSER_ABSPATH', dirname(COOKIEFOX_PLUGIN_FILE) . '/vendor/');

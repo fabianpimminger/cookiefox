@@ -32,9 +32,9 @@ class Shortcode {
 		$element = "";
 		
 		if($attributes["type"] == "link"){
-			$element = '<a href="javascript:void(0)" onclick="cookiefox.api.show()">%s</a>';
+			$element = '<a href="#" class="open-cookiefox">%s</a>';
 		} else {
-			$element = '<button onclick="cookiefox.api.show()">%s</button>';
+			$element = '<button type="button" class="open-cookiefox">%s</button>';
 		}
 		
 		$output = sprintf($element, esc_html($attributes["text"]));

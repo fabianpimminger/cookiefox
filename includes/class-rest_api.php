@@ -37,6 +37,10 @@ class Rest_API {
       'orderby' => 'meta_value_num',
 			'meta_key' => 'order',
 		));
+
+		if (is_wp_error($categories) || empty($categories)) {
+			return $response;
+		}
 		
 		foreach($categories as $i => $cat){
 			$category = array(
@@ -51,6 +55,7 @@ class Rest_API {
 			
 			$query_vars = array(
 				"post_type" => "cookiefox_cookie",
+				"posts_per_page" => -1,
 				"tax_query" => array(
 					array(
 						"taxonomy" => "cookiefox_category",
@@ -102,6 +107,7 @@ class Rest_API {
 				
 				$category["cookies"][] = $cookie;
 			}
+			wp_reset_postdata();
 			$always_on = get_term_meta( $cat->term_id, "always_on", true );
 			if(!empty($always_on) && $always_on == "on"){
 				$category["always_on"] = true;

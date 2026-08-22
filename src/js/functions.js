@@ -1,4 +1,4 @@
-import * as Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 export const embedContent = function() {
 	let embeds = document.querySelectorAll(".cookiefox__embed.is-blocked");
@@ -59,6 +59,24 @@ export const isCrawler = function() {
 	return false;
 }
 
+export const getCookieOptions = function(data) {
+	let options = {sameSite: "strict", path: "/"};
+
+	if(data.cookie_expiration !== undefined && data.cookie_expiration !== ""){
+		options.expires = parseInt(data.cookie_expiration, 10);
+	}
+
+	if(data.cookie_domain !== undefined && data.cookie_domain !== ""){
+		options.domain = data.cookie_domain;
+	}
+
+	if(typeof location !== "undefined" && location.protocol === "https:"){
+		options.secure = true;
+	}
+
+	return options;
+}
+
 export const setCookie = function(cookie, data) {
 	
 	let name = "cookiefox_consent";
@@ -66,16 +84,14 @@ export const setCookie = function(cookie, data) {
 		name = data.cookie_name;
 	}
 
-	let options = {sameSite: "strict"};
-	if(data.cookie_expiration !== undefined && data.cookie_expiration !== ""){
-		options.expires = parseInt(data.cookie_expiration);
+	let value = cookie;
+	if (typeof cookie !== "string") {
+		value = JSON.stringify(Object.assign({}, cookie, {
+			ts: Math.floor(Date.now() / 1000)
+		}));
 	}
 
-	if(data.cookie_domain !== undefined && data.cookie_domain !== ""){
-		options.domain = parseInt(data.cookie_expiration);
-	}
-
-	Cookies.set(name, cookie, options);
+	Cookies.set(name, value, getCookieOptions(data));
 }
 
 export const getContainer = function() {

@@ -2,7 +2,7 @@
 	export let data, config, showNotice;
 	
 	import { cookie, forceNotice } from './stores.js';
-	import * as Cookies from "js-cookie";
+	import Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
 	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
 	
@@ -21,18 +21,23 @@
 					categories: {}
 				}
 			};
-			
-			handleConsentChange();
+			loadConfig();
+			dispatch("ready");
 			return;
 		}
 		
 		let cookieData = Cookies.get(data.cookie_name);
 		if(cookieData !== undefined){
-			$cookie = JSON.parse(cookieData);
-			if($cookie.consent !== undefined && $cookie.consent.categories !== undefined){
-				consents = $cookie.consent.categories;
+			try {
+				$cookie = JSON.parse(cookieData);
+				if($cookie.consent !== undefined && $cookie.consent.categories !== undefined){
+					consents = $cookie.consent.categories;
+				}
+				setCookie($cookie, data);
+			} catch (e) {
+				$cookie = undefined;
+				firstRun = true;
 			}
-			setCookie($cookie, data);
 		} else {
 			firstRun = true;
 		}
@@ -43,7 +48,7 @@
 	});
 	
 	function loadConfig() {
-		if(config !== null && config.categories !== null){
+		if(config && config.categories){
 			setupCategories();
 			loaded = true;
 			return;
@@ -52,18 +57,24 @@
 		let url = data.api_base + "cookiefox/v1/cookies" + (data.api_base.includes("?") ? "&" : "?") + "lang=" + data.lang;		
 		
 	  fetch(url)
-	  .then(response => response.json())
-	  .then(data => {
-	    config = data;
+	  .then(response => {
+			if(!response.ok){
+				throw new Error("Failed to load cookie config");
+			}
+			return response.json();
+		})
+	  .then(payload => {
+			if(!payload || !Array.isArray(payload.categories)){
+				return;
+			}
+	    config = payload;
 			
 			setupCategories();
 						
 			loaded = true;
 	  })
-		.catch(error => {
-	    // console.log(error);
-			loaded = true;
-	    return [];
+		.catch(() => {
+			loaded = false;
 	  });
 	}
 	
@@ -98,6 +109,10 @@
 	}
 	
 	export const handleConsentChange = function() {
+		if(!config || !config.categories){
+			return;
+		}
+
 		let scripts = "";
 
 		
@@ -189,7 +204,6 @@
 	}	
 
 	export function setConsent(consent, category) {
-		console.log(consent, category, consents);
 		if (typeof consent == "boolean" && consents[category] !== undefined) {
 			consents[category] = consent;
 			handleSave(false);
@@ -219,7 +233,7 @@
 
 <div class="cookiefox__body">
 	{#if data.notice_title}
-	<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="1">{data.notice_title}</div>
+	<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="2">{data.notice_title}</div>
 	{/if}
 	{#if data.notice_text}
 	<div class="cookiefox__text">{@html data.notice_text}</div>
@@ -315,7 +329,7 @@
 		<svg viewBox="0 0 64 64"><g><circle stroke-width="4" stroke-dasharray="128" stroke-dashoffset="82" r="26" cx="32" cy="32" fill="none"><animateTransform values="0,32,32;360,32,32" attributeName="transform" type="rotate" repeatCount="indefinite" dur="750ms"></animateTransform></circle></g></svg>	</div>	
 	{/if}
 </div>
-{#if loaded}
+{#if loaded && config && config.categories}
 <footer class="cookiefox__footer">
 	{#if data.notice_button_decline_type !== "none"}
 	<button class="cookiefox__button cookiefox__button--secondary is-{data.notice_button_decline_type}" on:click={handleDecline} >{data.notice_button_decline}</button>

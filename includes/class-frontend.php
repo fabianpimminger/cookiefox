@@ -38,11 +38,15 @@ class Frontend {
 		}
 
 		$javascript = Helper::get_option("javascript", "modern");
-		
+		$script_args = array(
+			'in_footer' => true,
+			'strategy' => 'defer',
+		);
+
 		if($javascript == "modern"){
-			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/main.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/main.js'), true);
+			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/main.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/main.js'), $script_args);
 		} elseif ($javascript == "legacy"){
-			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/legacy.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/legacy.js'), true);
+			wp_register_script("cookiefox", Main::plugin_url() . '/assets/frontend/js/legacy.js', array(), filemtime(dirname(COOKIEFOX_PLUGIN_FILE) . '/assets/frontend/js/legacy.js'), $script_args);
 		}
 
 		wp_enqueue_script("cookiefox");
@@ -99,11 +103,11 @@ class Frontend {
 			}			
 		}
 
-		$color_background = Helper::get_option("color_background", "#ffffff");
-		$color_text_primary = Helper::get_option("color_text_primary", "#000000");
-		$color_text_secondary = Helper::get_option("color_text_secondary", "#767676");
-		$color_button_primary = Helper::get_option("color_button_primary", "#3D854F");
-		$color_button_secondary = Helper::get_option("color_button_secondary", "#767676");
+		$color_background = $this->sanitize_color(Helper::get_option("color_background", "#ffffff"), "#ffffff");
+		$color_text_primary = $this->sanitize_color(Helper::get_option("color_text_primary", "#000000"), "#000000");
+		$color_text_secondary = $this->sanitize_color(Helper::get_option("color_text_secondary", "#767676"), "#767676");
+		$color_button_primary = $this->sanitize_color(Helper::get_option("color_button_primary", "#3D854F"), "#3D854F");
+		$color_button_secondary = $this->sanitize_color(Helper::get_option("color_button_secondary", "#767676"), "#767676");
 
 		?>
 		<style>
@@ -149,6 +153,10 @@ class Frontend {
 		}
 		
 		$data = Helper::merge_default_settings($data);
+
+		if (!empty($data["notice_text"])) {
+			$data["notice_text"] = wp_kses_post($data["notice_text"]);
+		}
 		
 		$data["api_base"] = get_rest_url();
 		$data["lang"] = Helper::get_language();
@@ -214,6 +222,16 @@ class Frontend {
 		}
 		
 		return false;
+	}
+
+	private function sanitize_color($value, $default) {
+		$color = sanitize_hex_color($value);
+
+		if (empty($color)) {
+			return $default;
+		}
+
+		return $color;
 	}
 }
 new Frontend();

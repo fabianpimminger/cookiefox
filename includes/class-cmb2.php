@@ -17,10 +17,34 @@ class CMB2 {
 	}
 
 	public function enqueue_scripts() {
+		if (!$this->is_cookiefox_admin_screen()) {
+			return;
+		}
+
 		wp_enqueue_script('cmb2_conditional_logic', Main::plugin_url() . '/assets/admin/js/cmb2-conditional-logic.min.js', array('jquery'), "1.0.0", true);
+	}
+
+	private function is_cookiefox_admin_screen() {
+		$screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+		if (empty($screen) || empty($screen->id)) {
+			return false;
+		}
+
+		$allowed = array(
+			'cookiefox_cookie',
+			'edit-cookiefox_cookie',
+			'edit-cookiefox_category',
+			'settings_page_cookiefox',
+		);
+
+		return in_array($screen->id, $allowed, true);
 	}
 	
 	public function admin_head() {
+		if (!$this->is_cookiefox_admin_screen()) {
+			return;
+		}
 		?>
 		<style>
 		#cmb2-metabox-cookiefox_options_main .cmb2-metabox-description{
