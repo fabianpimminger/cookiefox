@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Fabian Pimminger
+# Copyright (C) 2026 Fabian Pimminger
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: CookieFox 2.0.11\n"
+"Project-Id-Version: CookieFox 2.0.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cookiefox\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-20T12:52:18+00:00\n"
+"POT-Creation-Date: 2026-08-22T14:09:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cookiefox\n"
@@ -43,32 +43,32 @@ msgstr ""
 msgid "Privacy Settings"
 msgstr ""
 
-#: includes/class-frontend.php:155
+#: includes/class-frontend.php:157
 msgid "Back"
 msgstr ""
 
-#: includes/class-frontend.php:156
+#: includes/class-frontend.php:158
 msgid "Cookie information"
 msgstr ""
 
-#: includes/class-frontend.php:157
+#: includes/class-frontend.php:159
 msgid "Name"
 msgstr ""
 
-#: includes/class-frontend.php:158
+#: includes/class-frontend.php:160
 #: includes/class-post_type.php:169
 msgid "Vendor"
 msgstr ""
 
-#: includes/class-frontend.php:159
+#: includes/class-frontend.php:161
 msgid "Purpose"
 msgstr ""
 
-#: includes/class-frontend.php:160
+#: includes/class-frontend.php:162
 msgid "Privacy Policy"
 msgstr ""
 
-#: includes/class-frontend.php:161
+#: includes/class-frontend.php:163
 #: includes/class-post_type.php:47
 #: includes/class-post_type.php:48
 #: includes/class-post_type.php:226
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Cookies"
 msgstr ""
 
-#: includes/class-frontend.php:162
+#: includes/class-frontend.php:164
 msgid "Duration"
 msgstr ""
 
-#: includes/class-frontend.php:163
+#: includes/class-frontend.php:165
 #: includes/class-post_type.php:240
 msgid "Hosts"
 msgstr ""
@@ -692,26 +692,18 @@ msgid "Do not include styles"
 msgstr ""
 
 #: includes/class-settings.php:399
-msgid "Javascript"
+msgid "Load Cookie Data asynchronously"
 msgstr ""
 
-#: includes/class-settings.php:400
-msgid "The modern version has a smaller file size and is more performant than the legacy version. If you need to support legacy browsers such as Internet Explorer 11, please choose the legacy option."
+#: includes/class-settings.php:401
+msgid "By default CookieFox embeds cookie data in the page and clears known WordPress page caches when that config changes. Enable this if HTML is cached at a CDN (Cloudflare, Akamai, …) that you cannot purge, or if you experience any issues with caching, so the config is loaded from the REST API instead."
 msgstr ""
 
 #: includes/class-settings.php:406
-msgid "Modern Browsers"
-msgstr ""
-
-#: includes/class-settings.php:407
-msgid "Legacy (including IE11)"
-msgstr ""
-
-#: includes/class-settings.php:412
 msgid "Cookie Notice Delay"
 msgstr ""
 
-#: includes/class-settings.php:413
+#: includes/class-settings.php:407
 msgid "Opening the cookie notice will be delayed by x seconds."
 msgstr ""
 

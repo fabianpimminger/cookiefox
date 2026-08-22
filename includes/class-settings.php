@@ -396,6 +396,13 @@ class Settings {
 		));
 		
 		$main_options->add_field(array(
+			'name' => esc_html__('Load Cookie Data asynchronously', 'cookiefox'),
+			'id' => 'config_via_rest',
+			'desc' => __('By default CookieFox embeds cookie data in the page and clears known WordPress page caches when that config changes. Enable this if HTML is cached at a CDN (Cloudflare, Akamai, …) that you cannot purge, or if you experience any issues with caching, so the config is loaded from the REST API instead.', 'cookiefox'),
+			'type' => 'toggle',
+		));
+
+		$main_options->add_field(array(
 			'name' => __('Cookie Notice Delay', 'cookiefox'),
 			'desc' => __('Opening the cookie notice will be delayed by x seconds.', 'cookiefox'),
 			'default' => '0',

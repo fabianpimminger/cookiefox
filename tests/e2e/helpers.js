@@ -2,8 +2,12 @@ async function waitForCookieFox(page) {
 	await page.waitForFunction(() => window.cookiefox && window.cookiefox.api);
 }
 
-async function loadMode(page, mode) {
-	await page.goto('/?cookiefox_e2e_mode=' + mode);
+async function loadMode(page, mode, options = {}) {
+	let url = '/?cookiefox_e2e_mode=' + mode;
+	if (options.rest) {
+		url += '&cookiefox_e2e_rest=1';
+	}
+	await page.goto(url);
 	await waitForCookieFox(page);
 }
 

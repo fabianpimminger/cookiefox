@@ -8,6 +8,7 @@
 defined('WP_UNINSTALL_PLUGIN') || exit;
 
 delete_option('cookiefox');
+delete_option('cookiefox_config_langs');
 
 register_post_type('cookiefox_cookie', array(
 	'public' => false,

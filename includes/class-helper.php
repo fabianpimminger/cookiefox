@@ -37,6 +37,7 @@ class Helper {
 			'cookie_name' => 'cookiefox_consent',
 			'cookie_expiration' => '90',
 			'stylesheet' => 'external',
+			'config_via_rest' => 'off',
 		);
 	}
 	

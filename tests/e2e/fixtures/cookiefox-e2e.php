@@ -18,6 +18,8 @@ add_action('template_redirect', function () {
 
 	$settings = cookiefox_e2e_marker_settings($settings);
 	$settings['consent_type'] = ($mode === 'category') ? 'category' : 'simple';
+	$rest = isset($_GET['cookiefox_e2e_rest']) ? sanitize_key(wp_unslash($_GET['cookiefox_e2e_rest'])) : '';
+	$settings['config_via_rest'] = ($rest === '1' || $rest === 'on') ? 'on' : 'off';
 
 	update_option('cookiefox', $settings, true);
 	wp_safe_redirect(home_url('/'));

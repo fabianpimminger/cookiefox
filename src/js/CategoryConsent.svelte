@@ -7,7 +7,7 @@
 	import { isCrawler, setCookie, injectElements, embedContent, getContainer } from './functions.js';
 	
   const dispatch = createEventDispatcher();
-	let loaded = false;
+	let loaded = !!(config && Array.isArray(config.categories));
 	let consents = {};
 	let processedConsents = [];
 	let firstRun = false;
@@ -48,34 +48,15 @@
 	});
 	
 	function loadConfig() {
-		if(config && config.categories){
-			setupCategories();
-			loaded = true;
-			return;
+		if(!config){
+			config = { categories: [] };
+		}
+		if(!Array.isArray(config.categories)){
+			config.categories = [];
 		}
 
-		let url = data.api_base + "cookiefox/v1/cookies" + (data.api_base.includes("?") ? "&" : "?") + "lang=" + data.lang;		
-		
-	  fetch(url)
-	  .then(response => {
-			if(!response.ok){
-				throw new Error("Failed to load cookie config");
-			}
-			return response.json();
-		})
-	  .then(payload => {
-			if(!payload || !Array.isArray(payload.categories)){
-				return;
-			}
-	    config = payload;
-			
-			setupCategories();
-						
-			loaded = true;
-	  })
-		.catch(() => {
-			loaded = false;
-	  });
+		setupCategories();
+		loaded = true;
 	}
 	
 	function setupCategories() {
@@ -138,7 +119,7 @@
 					}
 				});
 				
-				if(consents[category.slug] && category.integrations.unblock_embeds !== undefined){
+				if(consents[category.slug] && category.integrations && category.integrations.unblock_embeds !== undefined){
 					// console.log("category integration", "unblock media"); 
 					embedContent();
 				}

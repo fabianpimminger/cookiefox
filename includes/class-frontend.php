@@ -123,9 +123,10 @@ class Frontend {
 		$data["privacy_type"] = "basic";
 		$data["disabled_on_privacy_page"] = $this->is_disabled_on_privacy_page();
 		$data = $this->prepare_data($data);
+		$config = Runtime_Config::uses_rest() ? null : Runtime_Config::get();
 		?>
 		<script>
-			var cookiefox = {data: <?php echo wp_json_encode($data); ?>};
+			var cookiefox = {data: <?php echo wp_json_encode($data); ?>, config: <?php echo wp_json_encode($config); ?>};
 		</script>
 		<div id="cookiefox" data-nosnippet></div>
 		
@@ -145,6 +146,7 @@ class Frontend {
 		}
 		
 		$data = Helper::merge_default_settings($data);
+		$data = Runtime_Config::strip_scripts_from_data($data);
 
 		if (!empty($data["notice_text"])) {
 			$data["notice_text"] = wp_kses_post($data["notice_text"]);

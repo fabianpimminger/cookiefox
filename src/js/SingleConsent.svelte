@@ -1,5 +1,5 @@
 <script>
-	export let data, showNotice;
+	export let data, config, showNotice;
 
 	import { cookie, forceNotice } from './stores.js';
 	import Cookies from "js-cookie";
@@ -62,13 +62,13 @@
 		var scripts = "";
 		
 		if($cookie.consent === true){
-			if(data.scripts_consent !== undefined && data.scripts_consent !== ""){
-				scripts += data.scripts_consent;
+			if(config && config.scripts_consent !== undefined && config.scripts_consent !== ""){
+				scripts += config.scripts_consent;
 			}
 			embedContent();
 		} else {
-			if(data.scripts_no_consent !== undefined && data.scripts_no_consent !== ""){
-				scripts += data.scripts_no_consent;
+			if(config && config.scripts_no_consent !== undefined && config.scripts_no_consent !== ""){
+				scripts += config.scripts_no_consent;
 			}
 			removeCookies();
 		}
@@ -81,10 +81,11 @@
 	}
 	
 	function removeCookies() {
-		if(data.cookies === undefined || data.cookies === ""){
+		const cookieList = (config && config.cookies) || data.cookies;
+		if(cookieList === undefined || cookieList === ""){
 			return;
 		}
-		var cookiesToRemove = data.cookies.split(",").map(cookie => cookie.trim());
+		var cookiesToRemove = cookieList.split(",").map(cookie => cookie.trim());
 		
 		if(cookiesToRemove.length > 0){
 			var cookies = Object.keys(Cookies.get());

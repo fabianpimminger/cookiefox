@@ -3,43 +3,69 @@
 	import { cookie, forceNotice } from './stores.js';
 	import { triggerInit, triggerConsentChanged } from './events.js';
 	import { onMount } from 'svelte';
-	import { injectElements, getContainer } from './functions.js';
+	import Cookies from "js-cookie";
+	import { injectElements, getContainer, isCrawler } from './functions.js';
+	import { loadConfig, isConfigReady } from './config.js';
 	import SingleConsent from './SingleConsent.svelte';
 	import CategoryConsent from './CategoryConsent.svelte';
 	import focusTrap from './focus-trap.js';
 	
-	let consentComponent;
+	let consentComponent = isConfigReady(config) ? (data.consent_type === "category" ? CategoryConsent : SingleConsent) : undefined;
 	let forceDelay = false;
 	let handleConsentChange;
 	let setConsent;
+
+	if (isCrawler()) {
+		$cookie = data.consent_type === "category" ? {consent: {categories: {}}} : {consent: false};
+	} else {
+		const cookieData = Cookies.get(data.cookie_name);
+		if (cookieData !== undefined) {
+			try {
+				$cookie = JSON.parse(cookieData);
+			} catch (e) {
+				$cookie = undefined;
+			}
+		}
+	}
+
 	$: showNotice = ($forceNotice || ($cookie === undefined && !data.disabled_on_privacy_page && !forceDelay));
 
 	onMount(() => {
-		alwaysOnScripts();
-				
-		if(data.notice_delay && data.notice_delay > 0){
-			forceDelay = true;
-			
-			setTimeout(() => {
-  			forceDelay = false;
-			}, parseInt(data.notice_delay) * 1000)
-		}
-		
-		if(data.consent_type === "category"){
-			consentComponent = CategoryConsent;
-		} else {
-			consentComponent = SingleConsent;
-		}
-		
-		initAPI();
-		initEvents();
+		let cancelled = false;
 
+		(async () => {
+			if (!isConfigReady(config)) {
+				config = await loadConfig(data, config);
+				if (cancelled) {
+					return;
+				}
+				consentComponent = data.consent_type === "category" ? CategoryConsent : SingleConsent;
+			}
+
+			window.cookiefox.config = config;
+			alwaysOnScripts();
+
+			if(data.notice_delay && data.notice_delay > 0){
+				forceDelay = true;
+
+				setTimeout(() => {
+					forceDelay = false;
+				}, parseInt(data.notice_delay) * 1000)
+			}
+
+			initAPI();
+			initEvents();
+		})();
+
+		return () => {
+			cancelled = true;
+		};
 	});
 
 	function alwaysOnScripts() {
-		if(data.scripts_always !== undefined && data.scripts_always !== ""){
+		if(config && config.scripts_always !== undefined && config.scripts_always !== ""){
 			let container = getContainer();
-	    container.innerHTML = data.scripts_always;
+	    container.innerHTML = config.scripts_always;
 			injectElements(container.children);
 		}
 	}
@@ -101,7 +127,21 @@
 <div class="cookiefox cookiefox--notice cookiefox--{data.notice_display} cookiefox--{data.consent_type}" style="{showNotice ? 'display: flex;' : ''}" role="dialog"
         aria-modal="true" aria-labelledby="cookiefox__title" aria-hidden="{showNotice ? 'false' : 'true'}" data-nosnippet use:focusTrap={showNotice}>
 	<div class="cookiefox__inner">
+		{#if consentComponent}
 		<svelte:component this={consentComponent} data={data} config={config} bind:setConsent={setConsent} showNotice={showNotice} on:ready={consentInitHandler} on:consentChanged={consentChangedHandler} bind:handleConsentChange={handleConsentChange} />
+		{:else if showNotice}
+		<div class="cookiefox__body">
+			{#if data.notice_title}
+			<div class="cookiefox__title" id="cookiefox__title" role="heading" aria-level="2">{data.notice_title}</div>
+			{/if}
+			{#if data.notice_text}
+			<div class="cookiefox__text">{@html data.notice_text}</div>
+			{/if}
+			<div class="cookiefox__spinner">
+				<svg viewBox="0 0 64 64"><g><circle stroke-width="4" stroke-dasharray="128" stroke-dashoffset="82" r="26" cx="32" cy="32" fill="none"><animateTransform values="0,32,32;360,32,32" attributeName="transform" type="rotate" repeatCount="indefinite" dur="750ms"></animateTransform></circle></g></svg>
+			</div>
+		</div>
+		{/if}
 	</div>
 </div>
 
@@ -254,6 +294,7 @@
     overflow: auto;
 		overscroll-behavior: contain;
     max-height: 100%;
+		width: 100%;
 		max-width: 680px;
 		background: var(--cookiefox--background);
 		border-radius: var(--cookiefox__modal--border-radius);
