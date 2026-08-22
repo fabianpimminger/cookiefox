@@ -320,6 +320,11 @@ class Runtime_Config {
 				$category['integrations']['unblock_embeds'] = true;
 			}
 
+			$consent_mode = Consent_Mode::types_for_term($cat->term_id);
+			if (!empty($consent_mode)) {
+				$category['consent_mode'] = $consent_mode;
+			}
+
 			$categories[] = $category;
 		}
 

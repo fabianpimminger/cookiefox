@@ -22,6 +22,8 @@ add_action('template_redirect', function () {
 	$settings['config_via_rest'] = ($rest === '1' || $rest === 'on') ? 'on' : 'off';
 	$integration = isset($_GET['cookiefox_e2e_integration']) ? sanitize_key(wp_unslash($_GET['cookiefox_e2e_integration'])) : '';
 	$settings['integrations'] = ($integration === '1' || $integration === 'on') ? array('e2e-fake') : array();
+	$consent_mode = isset($_GET['cookiefox_e2e_consent_mode']) ? sanitize_key(wp_unslash($_GET['cookiefox_e2e_consent_mode'])) : '';
+	$settings['consent_mode'] = ($consent_mode === '1' || $consent_mode === 'on') ? 'on' : 'off';
 
 	update_option('cookiefox', $settings, true);
 	wp_safe_redirect(home_url('/'));
@@ -139,6 +141,10 @@ function cookiefox_e2e_insert_seed_content() {
 		add_term_meta($result['term_id'], 'always_on', $category['always_on'], true);
 		add_term_meta($result['term_id'], 'unblock_embeds', $category['unblock_embeds'], true);
 		add_term_meta($result['term_id'], 'order', $category['order'], true);
+	}
+
+	if (!empty($term_ids['marketing'])) {
+		update_term_meta($term_ids['marketing'], 'consent_mode', array('ad_storage', 'ad_user_data', 'ad_personalization'));
 	}
 
 	if (empty($term_ids['marketing'])) {

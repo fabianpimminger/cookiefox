@@ -5,6 +5,7 @@
 	import Cookies from "js-cookie";
 	import { onMount, createEventDispatcher } from 'svelte';
 	import { isCrawler, setCookie, injectElements, embedContent, getContainer, parseStoredConsent, stampConsentVersion } from './functions.js';
+	import { applyConsentMode } from './consent-mode.js';
 	
   const dispatch = createEventDispatcher();
 	let loaded = !!(config && Array.isArray(config.categories));
@@ -89,6 +90,7 @@
 			return;
 		}
 
+		applyConsentMode(data, config, consents);
 		let scripts = "";
 
 		

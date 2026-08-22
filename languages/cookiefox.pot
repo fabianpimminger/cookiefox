@@ -380,6 +380,34 @@ msgstr ""
 msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 
+#: includes/class-post_type.php:330
+msgid "Google Consent Mode Signals"
+msgstr ""
+
+#: includes/class-post_type.php:331
+msgid "Assign which Google Consent Mode v2 signals this category grants. <br> Do not assign signals to Always On categories."
+msgstr ""
+
+#: includes/class-consent_mode.php:80
+msgid "Analytics (analytics_storage)"
+msgstr ""
+
+#: includes/class-consent_mode.php:81
+msgid "Advertising cookies (ad_storage)"
+msgstr ""
+
+#: includes/class-consent_mode.php:82
+msgid "Advertising user data (ad_user_data)"
+msgstr ""
+
+#: includes/class-consent_mode.php:83
+msgid "Personalized advertising (ad_personalization)"
+msgstr ""
+
+#: includes/class-consent_mode.php:196
+msgid "Google Consent Mode is enabled, but no category has any signals assigned. Accepting cookies will still send denied to Google until you assign signals on the categories."
+msgstr ""
+
 #: includes/class-post_type.php:402
 msgid "Settings"
 msgstr ""
@@ -464,7 +492,19 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: includes/class-settings.php:57
+#: includes/class-settings.php:59
+msgid "Google Consent Mode"
+msgstr ""
+
+#: includes/class-settings.php:247
+msgid "Enable Google Consent Mode"
+msgstr ""
+
+#: includes/class-settings.php:241
+msgid "Send Google Consent Mode v2 signals from the visitor's CookieFox choice. Google tags receive a denied default, then an update after the visitor chooses. In category mode, assign signals on each category."
+msgstr ""
+
+#: includes/class-settings.php:65
 msgid "Disable on Privacy Page"
 msgstr ""
 

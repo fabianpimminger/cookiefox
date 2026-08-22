@@ -237,6 +237,19 @@ class Settings {
 		));
 		
 		$main_options->add_field(array(
+			'name' => __('Google Consent Mode', 'cookiefox'),
+			'desc' => __('Send Google Consent Mode v2 signals from the visitor\'s CookieFox choice. Google tags receive a denied default, then an update after the visitor chooses. In category mode, assign signals on each category.', 'cookiefox'),
+			'type' => 'title',
+			'id' => 'title_consent_mode',
+		));
+
+		$main_options->add_field(array(
+			'name' => esc_html__('Enable Google Consent Mode', 'cookiefox'),
+			'id' => 'consent_mode',
+			'type' => 'toggle',
+		));
+
+		$main_options->add_field(array(
 			'name' => __('Embedded Content', 'cookiefox'),
 			'desc' => __('Embedded content from external sites such as Youtube-Videos and Tweets can violate your users\' privacy. CookieFox allows users to opt-in.', 'cookiefox'),
 			'type' => 'title',

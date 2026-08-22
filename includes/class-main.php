@@ -46,6 +46,7 @@ class Main {
 		include_once COOKIEFOX_ABSPATH . 'includes/class-post_type.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-settings.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-frontend.php';
+		include_once COOKIEFOX_ABSPATH . 'includes/class-consent_mode.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-sample_content.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-shortcode.php';
 		include_once COOKIEFOX_ABSPATH . 'includes/class-embeds.php';

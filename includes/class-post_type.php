@@ -324,9 +324,17 @@ class Post_Type {
 			'desc' => __('If activated, embeds will be unblocked when this category is enabled.', 'cookiefox'),
 			'id' => 'unblock_embeds',
 			'type' => 'toggle',
-		));		
+		));
 
-		
+		$taxonomy_metabox->add_field(array(
+			'name' => esc_html__('Google Consent Mode Signals', 'cookiefox'),
+			'desc' => __('Assign which Google Consent Mode v2 signals this category grants. <br> Do not assign signals to Always On categories.', 'cookiefox'),
+			'id' => 'consent_mode',
+			'type' => 'multicheck',
+			'select_all_button' => false,
+			'options' => Consent_Mode::type_labels(),
+			'sanitization_cb' => array('CookieFox\Consent_Mode', 'sanitize_types'),
+		));
 	}
 	
 	public function use_block_editor($enabled, $post_type) {

@@ -10,8 +10,25 @@ async function loadMode(page, mode, options = {}) {
 	if (options.integration) {
 		url += '&cookiefox_e2e_integration=1';
 	}
+	if (options.consentMode) {
+		url += '&cookiefox_e2e_consent_mode=1';
+	}
 	await page.goto(url);
 	await waitForCookieFox(page);
+}
+
+async function lastConsentModeEvent(page) {
+	return page.evaluate(() => {
+		const layer = window.dataLayer || [];
+		const events = [];
+		for (let i = 0; i < layer.length; i++) {
+			const item = layer[i];
+			if (item && item.event === 'cookiefox_consent_update') {
+				events.push(item.cookiefox);
+			}
+		}
+		return events.length ? events[events.length - 1] : null;
+	});
 }
 
 async function getConsentCookie(context) {
@@ -32,4 +49,5 @@ module.exports = {
 	loadMode,
 	getConsentCookie,
 	parseConsentCookie,
+	lastConsentModeEvent,
 };

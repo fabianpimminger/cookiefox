@@ -24,6 +24,9 @@ class Frontend {
 		add_action('wp_enqueue_scripts', array($this, "enqueue_scripts"));
 		add_action('wp_footer', array($this, "footer"));
 		add_action('wp_head', array($this, "var_style"), 101);
+		if (Consent_Mode::is_enabled()) {
+			add_action('wp_head', array('CookieFox\Consent_Mode', 'print_head'), 0);
+		}
 		
 	}
 
@@ -154,6 +157,7 @@ class Frontend {
 		
 		$data["api_base"] = get_rest_url();
 		$data["lang"] = Helper::get_language();
+		$data["consent_mode"] = Consent_Mode::is_enabled();
 		$data["consent_version"] = (int) get_option('cookiefox_consent_version', 0);
 		$data["notice_button_back"] = __("Back", "cookiefox");
 		$data["notice_button_cookie_information"] = __("Cookie information", "cookiefox");

@@ -395,6 +395,34 @@ msgid "If activated, embeds will be unblocked when this category is enabled."
 msgstr ""
 "Der Datenschutz-Hinweis wird angezeigt wenn diese Option aktiviert ist."
 
+#: includes/class-post_type.php:330
+msgid "Google Consent Mode Signals"
+msgstr "Google Consent Mode Signale"
+
+#: includes/class-post_type.php:331
+msgid "Assign which Google Consent Mode v2 signals this category grants. <br> Do not assign signals to Always On categories."
+msgstr "Lege fest, welche Google Consent Mode v2 Signale diese Kategorie erteilt. <br> Weise Always-On-Kategorien keine Signale zu."
+
+#: includes/class-consent_mode.php:80
+msgid "Analytics (analytics_storage)"
+msgstr "Analytics (analytics_storage)"
+
+#: includes/class-consent_mode.php:81
+msgid "Advertising cookies (ad_storage)"
+msgstr "Werbe-Cookies (ad_storage)"
+
+#: includes/class-consent_mode.php:82
+msgid "Advertising user data (ad_user_data)"
+msgstr "Werbe-Nutzerdaten (ad_user_data)"
+
+#: includes/class-consent_mode.php:83
+msgid "Personalized advertising (ad_personalization)"
+msgstr "Personalisierte Werbung (ad_personalization)"
+
+#: includes/class-consent_mode.php:196
+msgid "Google Consent Mode is enabled, but no category has any signals assigned. Accepting cookies will still send denied to Google until you assign signals on the categories."
+msgstr "Google Consent Mode ist aktiv, aber keiner Kategorie sind Signale zugewiesen. Auch nach Zustimmung sendet CookieFox denied an Google, bis du Signale an den Kategorien festlegst."
+
 #: includes/class-post_type.php:402
 msgid "Settings"
 msgstr "Einstellungen"
@@ -506,7 +534,19 @@ msgstr "Einfach"
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-settings.php:57
+#: includes/class-settings.php:59
+msgid "Google Consent Mode"
+msgstr "Google Consent Mode"
+
+#: includes/class-settings.php:247
+msgid "Enable Google Consent Mode"
+msgstr "Google Consent Mode aktivieren"
+
+#: includes/class-settings.php:241
+msgid "Send Google Consent Mode v2 signals from the visitor's CookieFox choice. Google tags receive a denied default, then an update after the visitor chooses. In category mode, assign signals on each category."
+msgstr "Sendet Google Consent Mode v2 Signale entsprechend der CookieFox-Auswahl. Google-Tags erhalten standardmäßig denied und danach ein Update nach der Auswahl. Im Kategorie-Modus werden die Signale an den Kategorien zugewiesen."
+
+#: includes/class-settings.php:65
 msgid "Disable on Privacy Page"
 msgstr "Auf Datenschutzerklärung deaktivieren"
 

@@ -48,7 +48,8 @@ class Sample_Content {
 				"description" => __("Essential cookies that are required for the website to function.", "cookiefox"),
 				"order" => 0,
 				"always_on" => "on",
-				"unblock_embeds" => "off"
+				"unblock_embeds" => "off",
+				"consent_mode" => array()
 			),
 			array(
 				"name" => __("Statistics", "cookiefox"),
@@ -56,7 +57,8 @@ class Sample_Content {
 				"description" => __("Statisticial cookies track user behaviour and are used to collect information anonymously. This helps us to understand how our visitors use this website.", "cookiefox"),
 				"order" => 1,
 				"always_on" => "off",
-				"unblock_embeds" => "off"
+				"unblock_embeds" => "off",
+				"consent_mode" => array("analytics_storage")
 			),
 			array(
 				"name" => __("Marketing", "cookiefox"),
@@ -64,7 +66,8 @@ class Sample_Content {
 				"description" => __("Marketing cookies are used by third-party advertisers and publishers to display personalized ads and support online marketing. They do this by tracking visitors across websites.", "cookiefox"),
 				"order" => 2,
 				"always_on" => "off",
-				"unblock_embeds" => "off"
+				"unblock_embeds" => "off",
+				"consent_mode" => array("ad_storage", "ad_user_data", "ad_personalization")
 			),
 			array(
 				"name" => __("External Media", "cookiefox"),
@@ -72,7 +75,8 @@ class Sample_Content {
 				"description" => __("External content from video and social media platforms can track visitors across websites when they are embedded.", "cookiefox"),
 				"order" => 3,
 				"always_on" => "off",
-				"unblock_embeds" => "on"
+				"unblock_embeds" => "on",
+				"consent_mode" => array()
 			)
 		);
 	}
@@ -92,6 +96,9 @@ class Sample_Content {
 					add_term_meta($result["term_id"], "order", $term["order"], true);
 					add_term_meta($result["term_id"], "always_on", $term["always_on"], true);
 					add_term_meta($result["term_id"], "unblock_embeds", $term["unblock_embeds"], true);
+					if (!empty($term["consent_mode"])) {
+						add_term_meta($result["term_id"], "consent_mode", $term["consent_mode"], true);
+					}
 				}
 			}
 			
