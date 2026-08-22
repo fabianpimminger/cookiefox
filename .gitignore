@@ -6,3 +6,6 @@
 .DS_Store
 assets/frontend/js/
 assets/frontend/css/
+/test-results/
+/playwright-report/
+/playwright/.cache/

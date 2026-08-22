@@ -1,0 +1,22 @@
+{
+  "landingPage": "/",
+  "login": false,
+  "preferredVersions": {
+    "wp": "latest",
+    "php": "8.3"
+  },
+  "steps": [
+    {
+      "step": "activatePlugin",
+      "pluginPath": "/wordpress/wp-content/plugins/cookiefox/cookiefox.php"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/cookiefox-e2e.php",
+      "data": {
+        "resource": "bundled",
+        "path": "fixtures/cookiefox-e2e.php"
+      }
+    }
+  ]
+}

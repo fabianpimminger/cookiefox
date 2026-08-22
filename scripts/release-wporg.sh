@@ -226,6 +226,7 @@ rsync -a --delete --delete-excluded \
 	--exclude='node_modules/' \
 	--exclude='src/' \
 	--exclude='scripts/' \
+	--exclude='tests/' \
 	--exclude='release/' \
 	--exclude='package.json' \
 	--exclude='package-lock.json' \
