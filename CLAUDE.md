@@ -29,7 +29,7 @@ npm run test:e2e     # Playwright consent/embed tests (starts Playground)
 ## Architecture Overview
 
 ### Build System
-- Frontend built with Svelte and Rollup (ES2017+), using PostCSS for styling
+- Frontend built with Svelte 4 and Rollup 4 (ES2017+), using PostCSS for styling
 - Single production bundle: `assets/frontend/js/main.js`
 
 ### PHP Backend Architecture

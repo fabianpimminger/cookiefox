@@ -231,6 +231,7 @@ rsync -a --delete --delete-excluded \
 	--exclude='package.json' \
 	--exclude='package-lock.json' \
 	--exclude='rollup.config.js' \
+	--exclude='rollup.config.mjs' \
 	--exclude='composer.json' \
 	--exclude='composer.lock' \
 	--exclude='playwright.config.js' \
