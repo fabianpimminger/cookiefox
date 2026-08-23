@@ -241,7 +241,6 @@ rsync -a --delete --delete-excluded \
 	--exclude='AGENTS.md' \
 	--exclude='CLAUDE.md' \
 	--exclude='Claude.md' \
-	--exclude='AUDIT.md' \
 	--exclude='docs/' \
 	--exclude='README.md' \
 	--exclude='vendor/bin/' \
