@@ -242,6 +242,7 @@ rsync -a --delete --delete-excluded \
 	--exclude='CLAUDE.md' \
 	--exclude='Claude.md' \
 	--exclude='AUDIT.md' \
+	--exclude='docs/' \
 	--exclude='README.md' \
 	--exclude='vendor/bin/' \
 	--exclude='vendor/cmb2/cmb2/tools/' \
