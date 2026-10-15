@@ -9,12 +9,10 @@ const replaceContainer = function ( Component, options ) {
     return component;
 }
 
-const app = replaceContainer( CookieFox, {
+replaceContainer( CookieFox, {
   target: document.getElementById("cookiefox"),
 	props: {
 		data: window.cookiefox.data,
 		config: window.cookiefox.config ?? null
 	}
 });
-
-export default app;

@@ -24,7 +24,15 @@ npm run release:test # Deploy to test environment
 ```bash
 npm run playground   # WordPress Playground at http://127.0.0.1:9400
 npm run test:e2e     # Playwright consent/embed tests (starts Playground)
+npm run configurator       # Static server; standalone configurator at http://127.0.0.1:9401/configurator/
+npm run test:configurator  # Playwright tests for the configurator (no WordPress)
 ```
+
+### Standalone configurator
+- Source in `src/configurator/` (Svelte), built by the second Rollup entry into `configurator/build/` (gitignored, excluded from the WordPress.org release).
+- `src/configurator/snippet.js` mirrors the PHP defaults (`Helper::default_settings()`, `Frontend::prepare_data()`) and `Consent_Mode::print_head()`. Keep it in sync when those change.
+- Usage docs: `docs/STANDALONE.md`.
+- Deployed to GitHub Pages by `.github/workflows/pages.yml` on pushes to main; `npm run build:pages` assembles the same `_site/` locally.
 
 ## Architecture Overview
 

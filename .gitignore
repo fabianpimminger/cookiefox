@@ -10,3 +10,5 @@ assets/frontend/css/
 /playwright-report/
 /playwright/.cache/
 /messages.mo
+configurator/build/
+/_site/

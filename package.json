@@ -27,6 +27,7 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -w -c",
+    "build:pages": "bash scripts/build-pages.sh",
     "release:zip": "bestzip release/zip/cookiefox.zip assets/* cookiefox.php includes/* vendor/* languages/* readme.txt wpml-config.xml uninstall.php",
     "release": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php release/files/cookiefox",
     "release:test": "copyfiles './assets/**/*' ./cookiefox.php './includes/**/*' './vendor/**/*' 'languages/**/*' ./readme.txt ./wpml-config.xml ./uninstall.php /Users/fabianpimminger/Development/web/cmp-test/wp-content/plugins/cookiefox",
@@ -34,6 +35,8 @@
     "release:wporg:dry": "bash scripts/release-wporg.sh --dry-run",
     "playground": "npx @wp-playground/cli server --auto-mount --blueprint=tests/e2e/blueprint.json --blueprint-may-read-adjacent-files --port=9400",
     "test:e2e": "npx playwright test",
+    "configurator": "node tests/static-server.js 9401",
+    "test:configurator": "npx playwright test -c playwright.configurator.config.js",
     "test:e2e:install": "npx playwright install chromium"
   },
   "author": "",

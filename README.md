@@ -6,6 +6,10 @@ CookieFox is a performant and accessible cookie notice and consent solution for 
 
 Install CookieFox directly in your WordPress Dashboard or download the plugin in the [Plugin Directory](https://wordpress.org/plugins/cookiefox/).
 
+## Standalone Usage (without WordPress)
+
+The frontend script also runs on any non-WordPress site. Use the [configurator](https://fabianpimminger.github.io/cookiefox/), or run it locally with `npm run build` and `npm run configurator` (http://127.0.0.1:9401/configurator/). It walks you through the settings with a live preview and generates the code to paste into your pages. See [docs/STANDALONE.md](docs/STANDALONE.md).
+
 ## Documentation & How-Tos
 
 Documentation and tutorials/samples are available in the [Wiki](https://github.com/fabianpimminger/cookiefox/wiki).

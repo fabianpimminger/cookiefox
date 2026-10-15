@@ -8,16 +8,8 @@ import csso from 'postcss-csso';
 
 const production = !process.env.ROLLUP_WATCH;
 
-export default {
-	input: 'src/js/main.js',
-	output: {
-		sourcemap: production ? false : 'inline',
-		format: 'iife',
-		name: 'app',
-		dir: 'assets/frontend',
-		entryFileNames: 'js/main.js'
-	},
-	plugins: [
+function plugins(cssOutput) {
+	return [
 		svelte({
 			compilerOptions: {
 				dev: !production,
@@ -36,7 +28,7 @@ export default {
 				}
 			}),
 		}),
-		css({ output: 'css/main.css' }),
+		css({ output: cssOutput }),
 		resolve({
 			browser: true,
 			dedupe: ['svelte'],
@@ -48,8 +40,34 @@ export default {
 				comments: false
 			}
 		})
-	],
-	watch: {
-		clearScreen: false
+	];
+}
+
+export default [
+	{
+		input: 'src/js/main.js',
+		output: {
+			sourcemap: production ? false : 'inline',
+			format: 'iife',
+			dir: 'assets/frontend',
+			entryFileNames: 'js/main.js'
+		},
+		plugins: plugins('css/main.css'),
+		watch: {
+			clearScreen: false
+		}
+	},
+	{
+		input: 'src/configurator/main.js',
+		output: {
+			sourcemap: production ? false : 'inline',
+			format: 'iife',
+			dir: 'configurator/build',
+			entryFileNames: 'configurator.js'
+		},
+		plugins: plugins('configurator.css'),
+		watch: {
+			clearScreen: false
+		}
 	}
-};
+];
