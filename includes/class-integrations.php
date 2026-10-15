@@ -113,6 +113,8 @@ class Integrations {
 			'exactmetrics-premium' => 'class-exactmetrics.php',
 			'google-site-kit' => 'class-google-site-kit.php',
 			'jetpack' => 'class-jetpack.php',
+			'matomo' => 'class-matomo.php',
+			'wp-piwik' => 'class-wp-piwik.php',
 		);
 
 		$files = array();
